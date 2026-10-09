@@ -5,11 +5,10 @@ import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 
-public class DashBoardController {
+public class ApartamentoPanelController {
     @FXML
     private Button buttom_apartamento;
 
@@ -93,10 +92,6 @@ public class DashBoardController {
         rect_reserva_buttom.setVisible(false);
     }
     @FXML
-    void seleccionarPanelApartamento(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.APARTAMENTO_PANEL);
-    }
-    @FXML
     void seleccionarPanelConfiguracion(ActionEvent event){
         Navegacion.cambiarEscena(event, Paths.CONFIGURACION_PANEL);
     }
@@ -111,5 +106,9 @@ public class DashBoardController {
     @FXML
     void seleccionarPanelReserva(ActionEvent event){
         Navegacion.cambiarEscena(event, Paths.RESERVA_PANEL);
+    }
+    @FXML
+    void seleccionarPanelDashboard(ActionEvent event){
+        Navegacion.cambiarEscena(event,Paths.DASHBOARD);
     }
 }

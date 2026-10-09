@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.DashBoardController">
+<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.FolioPanelController">
    <left>
       <AnchorPane prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../css/HojaEstilos.css" BorderPane.alignment="CENTER">
          <children>
@@ -36,7 +36,7 @@
             </Pane>
             <Pane layoutX="1.0" layoutY="133.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="464.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="buttom_inicio" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onMouseEntered="#vistaMouseEncimaInicio" onMouseExited="#vistaMouseAfueraInicio" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
+                  <Button fx:id="buttom_inicio" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#seleccionarPanelDashboard" onMouseEntered="#vistaMouseEncimaInicio" onMouseExited="#vistaMouseAfueraInicio" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
                   <Rectangle fx:id="rect_inicio_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
                   <ImageView disable="true" fitHeight="28.0" fitWidth="32.0" layoutX="25.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -116,7 +116,7 @@
             </Pane>
             <Pane layoutX="4.0" layoutY="349.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="244.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="buttom_folio" layoutX="16.0" layoutY="6.0" mnemonicParsing="false" onAction="#seleccionarPanelFolio" onMouseEntered="#vistaMouseEncimaFolio" onMouseExited="#vistaMouseAfueraFolio" prefHeight="40.0" prefWidth="220.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
+                  <Button fx:id="buttom_folio" layoutX="16.0" layoutY="6.0" mnemonicParsing="false" onMouseEntered="#vistaMouseEncimaFolio" onMouseExited="#vistaMouseAfueraFolio" prefHeight="40.0" prefWidth="220.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
                   <Rectangle fx:id="rect_folio_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
                   <Label disable="true" layoutX="67.0" layoutY="11.0" text="Folio">
                      <font>
@@ -158,6 +158,13 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="67.0" layoutY="67.0" text="Folio">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </center>
 </BorderPane>

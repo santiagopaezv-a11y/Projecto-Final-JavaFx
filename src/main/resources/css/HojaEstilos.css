@@ -1,0 +1,23 @@
+
+.barra_lateral{
+    -fx-background-color: #f1f0f0;
+}
+.buttom-action{
+    -fx-background-color: transparent;
+}
+.buttom-action:hover{
+    -fx-background-color: #dddde3;
+    -fx-border-color:#eaecf6;
+    -fx-border-withd: 2px, 2px, 2px, 2px;
+    -fx-border-radius:5px;
+    -fx-background-radius:5px;
+    -fx-border-style:solid;
+    -fx-cursor:hand;
+}
+.rectangle_buttom{
+    fx-border-color: #7279b5;
+    -fx-background-color: #7279b5;
+}
+.opacitylbl{
+    -fx-opacity:1.0;
+}

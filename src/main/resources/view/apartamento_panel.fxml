@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.DashBoardController">
+<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.ApartamentoPanelController">
    <left>
-      <AnchorPane prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../css/HojaEstilos.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="650.0" prefWidth="240.0" styleClass="barra_lateral" stylesheets="@../css/HojaEstilos.css" BorderPane.alignment="CENTER">
          <children>
             <Pane layoutX="18.0" layoutY="21.0" prefHeight="81.0" prefWidth="200.0">
                <children>
@@ -56,7 +56,7 @@
             </Pane>
             <Pane layoutX="5.0" layoutY="188.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="409.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="buttom_apartamento" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#seleccionarPanelApartamento" onMouseEntered="#vistaMouseEncimaApart" onMouseExited="#vistaMouseAfueraApart" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
+                  <Button fx:id="buttom_apartamento" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onMouseEntered="#vistaMouseEncimaApart" onMouseExited="#vistaMouseAfueraApart" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
                   <Rectangle fx:id="rect_apart_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
                   <ImageView disable="true" fitHeight="43.0" fitWidth="40.0" layoutX="23.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -136,7 +136,7 @@
             </Pane>
             <Pane layoutX="4.0" layoutY="416.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="buttom_configuracion" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#seleccionarPanelConfiguracion" onMouseEntered="#vistaMouseEncimaConfig" onMouseExited="#vistaMouseAfueraConfig" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
+                  <Button fx:id="buttom_configuracion" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onMouseEntered="#vistaMouseEncimaConfig" onMouseExited="#vistaMouseAfueraConfig" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../css/HojaEstilos.css" />
                   <Rectangle fx:id="rect_config_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
                   <Label disable="true" layoutX="68.0" layoutY="12.0" stylesheets="@../css/HojaEstilos.css" text="Configuración">
                      <font>
@@ -158,6 +158,13 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="54.0" layoutY="61.0" text="Apartamentos">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </center>
 </BorderPane>
