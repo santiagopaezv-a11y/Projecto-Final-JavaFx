@@ -1,5 +1,8 @@
 package Aparta_Suites_UQ.utils;
 
+import Aparta_Suites_UQ.model.alojamiento.Apartamento;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,8 +13,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Navegacion {
+    private static Navegacion instance;
+    private final List<Apartamento> listaApartamentos = new ArrayList<>();
     public static void cambiarEscena(ActionEvent event, String rutaFxml) {
         try {
             FXMLLoader loader = new FXMLLoader(Navegacion.class.getResource(rutaFxml));
@@ -49,5 +56,23 @@ public class Navegacion {
         String userIngresado=textUser.getText().trim();
         String contrasenaIngresada=textContraseña.getText().trim();
         return usuario.equals(userIngresado)&&contrasena.equals(contrasenaIngresada);
+    }
+    public static Navegacion getInstance() {
+        if (instance == null) {
+            instance = new Navegacion();
+        }
+        return instance;
+    }
+    public List<Apartamento> getListaApartamentos() {
+        return listaApartamentos;
+    }
+    private Apartamento apartamentoSeleccionadoParaEditar;
+
+    public Apartamento getApartamentoSeleccionadoParaEditar() {
+        return apartamentoSeleccionadoParaEditar;
+    }
+
+    public void setApartamentoSeleccionadoParaEditar(Apartamento apartamento) {
+        this.apartamentoSeleccionadoParaEditar = apartamento;
     }
 }

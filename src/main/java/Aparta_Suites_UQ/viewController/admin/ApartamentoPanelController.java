@@ -1,16 +1,72 @@
-package Aparta_Suites_UQ.viewController.comunes;
+package Aparta_Suites_UQ.viewController.admin;
 
+import Aparta_Suites_UQ.model.alojamiento.Apartamento;
+import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
 import Aparta_Suites_UQ.utils.Navegacion;
 import Aparta_Suites_UQ.utils.Paths;
+import Aparta_Suites_UQ.viewController.comunes.ApartamentoCard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Rectangle;
 
-import javax.swing.*;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class ApartamentoPanelController {
+public class ApartamentoPanelController implements Initializable {
+    @FXML
+    private ScrollPane scrollPanePrincipal;
+    @FXML
+    private FlowPane contenedorTarjetas;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (scrollPanePrincipal != null) {
+            contenedorTarjetas.prefWidthProperty().bind(scrollPanePrincipal.widthProperty().subtract(30));
+        }
+        cargarTarjetasApartamentos();
+    }
+    private void cargarTarjetasApartamentos() {
+        List<Apartamento> listaDeApartamentos = /*Navegacion.getInstance().getListaApartamentos();*/obtenerApartamentosDePrueba();
+        contenedorTarjetas.getChildren().clear();
+        for (Apartamento apt : listaDeApartamentos) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.APARTAMENTO_CARD));
+                Node tarjetaNode = loader.load();
+                ApartamentoCard cardController = loader.getController();
+                cardController.setApartamento(apt);
+                cardController.setOnEliminarListener(() -> {
+                    cargarTarjetasApartamentos();
+                });
+                contenedorTarjetas.getChildren().add(tarjetaNode);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //Base de datos de prueba
+    private List<Apartamento> obtenerApartamentosDePrueba() {
+        return List.of(
+                new Apartamento("ApartamentoPedro", 1, 2, "Balcon",150000,EstadoOperativo.EN_PREPARACION),
+                new Apartamento("Sanchez", 2, 4, "Balcon y Cocina",180000,EstadoOperativo.PREPARADO),
+                new Apartamento("Paez", 3, 5, "Piscina",200000,EstadoOperativo.FUERA_DE_SERVICIO),
+                new Apartamento("Casallas", 2, 4, "Aire acondicionado",160000,EstadoOperativo.OCUPADO),
+                new Apartamento("Samuel",3,6,"Balcon y aire acondicionado", 175000,EstadoOperativo.OCUPADO),
+                new Apartamento("Apartamento2", 2, 4, "Balcon",150000,EstadoOperativo.EN_PREPARACION),
+                new Apartamento("Sanchez3", 2, 4, "Balcon y Cocina",180000,EstadoOperativo.PENDIENTE),
+                new Apartamento("Paesihno", 5, 12, "Piscina",200000,EstadoOperativo.FUERA_DE_SERVICIO),
+                new Apartamento("Casañas", 1, 1, "Aire acondicionado",160000,EstadoOperativo.OCUPADO),
+                new Apartamento("Maria",3,6,"Balcon y aire acondicionado", 175000,EstadoOperativo.PENDIENTE)
+
+        );
+    }
     @FXML
     private Button buttom_addApart;
     @FXML
@@ -135,5 +191,6 @@ public class ApartamentoPanelController {
     @FXML
     private void pedirDatosApartamento(ActionEvent event){
         Navegacion.abrirModal(event,Paths.ADDAPARTAMENTO_PANEL);
+        cargarTarjetasApartamentos();
     }
 }

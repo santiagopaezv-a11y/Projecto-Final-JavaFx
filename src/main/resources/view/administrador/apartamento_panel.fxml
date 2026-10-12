@@ -3,15 +3,17 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoPanelController">
+<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.admin.ApartamentoPanelController">
    <left>
       <AnchorPane prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css" BorderPane.alignment="CENTER">
          <children>
@@ -185,6 +187,11 @@
                   <Font name="Microsoft Sans Serif" size="26.0" />
                </font></Label>
             <Button fx:id="buttom_addApart" layoutX="62.0" layoutY="66.0" mnemonicParsing="false" onAction="#pedirDatosApartamento" styleClass="buttom_addObject" stylesheets="@../../css/HojaEstilos.css" text="Agregar Apartamento" />
+            <ScrollPane fx:id="scrollPanePrincipal" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="120.0" prefHeight="510.0" prefWidth="701.0" styleClass="scrollPane" stylesheets="@../../css/HojaEstilos.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="120.0">
+               <content>
+                  <FlowPane fx:id="contenedorTarjetas" hgap="20.0" style="-fx-padding: 10px;" vgap="20.0" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </center>

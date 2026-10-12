@@ -1,42 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="446.0" style="-fx-background-color: ECECECFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.AddApartamentoController">
+<AnchorPane prefHeight="400.0" prefWidth="446.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.AddApartamentoController">
    <children>
       <BorderPane layoutX="123.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <left>
             <AnchorPane prefHeight="337.0" prefWidth="218.0" stylesheets="@../../css/HojaEstilos.css" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Nombre" />
-                  <TextField layoutX="14.0" layoutY="31.0" promptText="Nombre apartamento" />
+                  <TextField fx:id="txtNombre" layoutX="14.0" layoutY="31.0" promptText="Nombre apartamento" />
+                  <Label layoutX="14.0" layoutY="65.0" text="Dormitorios" />
+                  <TextField fx:id="txtDormitorio" layoutX="14.0" layoutY="82.0" promptText="Cantidad dormitorios" />
+                  <Label layoutX="14.0" layoutY="115.0" text="Capacidad" />
+                  <TextField fx:id="txtCapacidad" layoutX="14.0" layoutY="136.0" promptText="Capacidad huespedes" />
+                  <Label layoutX="12.0" layoutY="208.0" text="Precio Noche" />
+                  <TextField fx:id="txtPrecioNoche" layoutX="15.0" layoutY="227.0" promptText="Precio por noche" />
+                  <ComboBox fx:id="cbEstado" layoutX="14.0" layoutY="264.0" prefWidth="150.0" promptText="Estado" styleClass="comboBox" stylesheets="@../../css/HojaEstilos.css" />
+                  <Label layoutX="14.0" layoutY="165.0" text="Caractisticas" />
+                  <TextField fx:id="txtCapacidad1" layoutX="14.0" layoutY="182.0" promptText="Capacidad huespedes" />
                </children>
             </AnchorPane>
          </left>
          <right>
             <AnchorPane prefHeight="337.0" prefWidth="201.0" style="-fx-background-color: 000;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="14.0" layoutY="14.0" prefHeight="181.0" prefWidth="181.0" styleClass="searchImagePanel" stylesheets="@../../css/HojaEstilos.css" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <Pane layoutX="14.0" layoutY="14.0" prefHeight="174.0" prefWidth="181.0" styleClass="searchImagePanel" stylesheets="@../../css/HojaEstilos.css" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="183.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="+" textFill="#f9fff2">
-                           <font>
-                              <Font size="70.0" />
-                           </font>
-                        </Button>
+                        <ImageView fitHeight="169.0" fitWidth="177.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../image/Apartamento3.jpeg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
+                  <Button fx:id="buttom_savedApart" layoutX="110.0" layoutY="304.0" mnemonicParsing="false" onAction="#guardarApartamento" styleClass="buttom_addObject" stylesheets="@../../css/HojaEstilos.css" text="Guardar" />
                </children>
             </AnchorPane>
          </right>
-         <bottom>
-            <AnchorPane prefHeight="31.0" prefWidth="419.0" BorderPane.alignment="CENTER" />
-         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

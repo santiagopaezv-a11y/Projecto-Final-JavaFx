@@ -22,11 +22,12 @@
     -fx-opacity:1.0;
 }
 .buttom_addObject{
-    -fx-background-color: #9dc880;
+    -fx-background-color: #d9ffd9;
     -fx-boder-width:2px,2px,2px,2px;
     -fx-border-color:transparent;
     -fx-border-radius:20px;
     -fx-background-radius:20px;
+    -fx-text-fill: #000;
     -fx-cursor:hand;
 }
 .addApart_Panel{
@@ -73,3 +74,91 @@
  .shadow{
      -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0, 0.0, 10.0)
  }
+ .estadoOperativoPreparado{
+     -fx-background-color: #45b641;
+     -fx-border-witdh:2px,2px,2px,2px;
+     -fx-border-color:transparent;
+     -fx-border-radius:15px;
+     -fx-background-radius:15px;
+ }
+.estadoOperativoEn_preparacion{
+    -fx-background-color: #efe356;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+}
+.estadoOperativoFuera_De_Servicio{
+    -fx-background-color: #e46666;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+}
+.estadoOperativoOcupado{
+    -fx-background-color: #222747;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+}
+.estadoOperativoPendiente{
+    -fx-background-color: #f1a84c;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+}
+.buttom_edition{
+    -fx-background-color: #fff;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:25px;
+    -fx-background-radius:25px;
+    -fx-cursor:hand;
+}
+.apartFondo{
+    -fx-background-color: #fff;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:8px;
+    -fx-background-radius:8px;
+}
+.scrollPane{
+    -fx-background-color: #dfdfdf;
+    -fx-border-witdh:2px,2px,2px,2px;
+    -fx-border-color:transparent;
+    -fx-border-radius:8px;
+    -fx-background-radius:8px;
+}
+.scrollPane .scroll-bar:vertical{
+    -fx-background-color: #ffffff;
+    -fx-background-radius:5px;
+}
+.scrollPane .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:transparent;
+    -fx-border-radius:0px;
+    -fx-background-radius:0px;
+}
+.scrollPane .scroll-bar:horizontal .decrement-button{
+    -fx-background-color: transparent;
+    -fx-background-radius:0px;
+    -fx-padding: 0 0 10 0;
+}
+.scrollPane .scroll-bar:vertical .decrement-button{
+    -fx-background-color: transparent;
+    -fx-background-radius:0px;
+    -fx-padding: 0 0 10 0;
+}
+.scrollPane .scroll-bar .increment-arrow,
+scrollPane .scroll-bar .decrement-arrow{
+    -fx-padding:-1;
+}
+.scrollPane .scroll-bar:vertical .thumb{
+    -fx-background-color: #575757;
+}
+.comboBox{
+    -fx-background-color: #d9ffd9;
+    -fx-background-radius:8px;
+}
