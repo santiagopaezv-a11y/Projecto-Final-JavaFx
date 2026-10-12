@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="UIs Principales, Menu, Apartamento,Huesped, Folio, Reserva, Configuracion">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/ConfiguracionPanelController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/DashBoardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/FolioPanelController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/HuespedPanelController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/ReservaPanelController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/apartamento_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamento_panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/configuracion_panel.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/dashboard.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/folio_panel.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/huesped_panel.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/reserva_panel.fxml" beforeDir="false" />
-    </list>
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="UIs Modulos USER, RECEPCION, ADMIN 2.0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,6 +128,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Repositorio Preparado 1.0" />
     <MESSAGE value="UIs Principales, Menu, Apartamento,Huesped, Folio, Reserva, Configuracion" />
-    <option name="LAST_COMMIT_MESSAGE" value="UIs Principales, Menu, Apartamento,Huesped, Folio, Reserva, Configuracion" />
+    <MESSAGE value="UIs Modulos USER, RECEPCION, ADMIN 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="UIs Modulos USER, RECEPCION, ADMIN 2.0" />
   </component>
 </project>
