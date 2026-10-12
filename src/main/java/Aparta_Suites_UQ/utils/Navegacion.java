@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -42,5 +43,11 @@ public class Navegacion {
             e.printStackTrace();
             return null;
         }
+    }
+    public static boolean validarCredencial(TextField textUser,TextField textContraseña,String usuario, String contrasena){
+        if (textUser==null||textContraseña==null) return false;
+        String userIngresado=textUser.getText().trim();
+        String contrasenaIngresada=textContraseña.getText().trim();
+        return usuario.equals(userIngresado)&&contrasena.equals(contrasenaIngresada);
     }
 }

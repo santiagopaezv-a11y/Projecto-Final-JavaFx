@@ -29,3 +29,47 @@
     -fx-background-radius:20px;
     -fx-cursor:hand;
 }
+.addApart_Panel{
+    -fx-background-color: #fff;
+    -fx-background-radius:8px;
+    -fx-border-width:2px,0px,2px,0px;
+    -fx-border-color:#transparent
+}.searchImagePanel{
+    -fx-background-color: #cbf6c1;
+    -fx-background-radius:6px;
+    -fx-border-width:2px,2px,2px,2px;
+    -fx-border-color: #cbf6c1;
+    -fx-border-radius:6px;
+ }
+ .perfilChange{
+     -fx-background-color: #9a9a9a;
+     -fx-background-radius:100px;
+     -fx-cursor:hand;
+ }
+ .changUsuario{
+     -fx-background-color: #e5f8d6;
+     -fx-boder-width:2px,2px,2px,2px;
+     -fx-border-color: #a3c6a3;
+     -fx-border-radius:20px;
+     -fx-background-radius:20px;
+ }
+ .buttomInvitado{
+     -fx-background-color: #b5b5b5;
+     -fx-boder-width:2px,2px,2px,2px;
+     -fx-border-color: transparent;
+     -fx-border-radius:20px;
+     -fx-background-radius:20px;
+ }
+ .textField{
+     -fx-background-color: #5dba5a;
+     -fx-opacity:0.5;
+     -fx-boder-width:2px,2px,2px,2px;
+     -fx-border-color: transparent;
+     -fx-border-radius:5px;
+     -fx-background-radius:5px;
+     -fx-prompt-text-fill: #ffffff;
+     -fx-text-fill:#fff;
+ }
+ .shadow{
+     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0, 0.0, 10.0)
+ }
