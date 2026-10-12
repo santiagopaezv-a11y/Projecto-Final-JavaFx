@@ -5,7 +5,6 @@ public class Paths {
     public static final String APARTAMENTO_PANEL= "/view/comunes/apartamento_panel.fxml";
     public static final String CONFIGURACION_PANEL="/view/administrador/interfazConfiguracion.fxml";
     public static final String FOLIO_PANEL= "/view/recepcion/interfazFolio.fxml";
-    public static final String HUESPED_PANEL="/view/huesped_panel.fxml";
     public static final String RESERVA_PANEL= "/view/usuario/InterfazReserva.fxml";
     public static final String ADDAPARTAMENTO_PANEL= "/view/comunes/addApartamento_panel.fxml";
     public static final String TEMPORADAS_PANEL= "/view/administrador/interfazTemporadas.fxml";
