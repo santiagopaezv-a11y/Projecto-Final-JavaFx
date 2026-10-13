@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="204.0" stylesheets="@../../css/HojaEstilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoCard">
+   <children>
+      <Pane layoutY="85.0" prefHeight="125.0" prefWidth="218.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+         <children>
+            <Label fx:id="lblPrecioNoche" layoutX="14.0" layoutY="74.0" text="Label">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDormidorios" layoutX="12.0" layoutY="23.0" text="Label" />
+            <Label fx:id="lblCaracteristicas" layoutX="12.0" layoutY="57.0" text="&quot;Caractericas&quot;" />
+            <VBox fx:id="pane_estado" alignment="CENTER" layoutX="16.0" layoutY="97.0" prefHeight="22.0" prefWidth="86.0" stylesheets="@../../css/HojaEstilos.css">
+               <children>
+                  <Label fx:id="lblEstado" stylesheets="@../../css/HojaEstilos.css" text="&quot;Estado&quot;" textAlignment="CENTER">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label fx:id="lblCodigoCard" layoutX="12.0" layoutY="5.0" text="Label" />
+            <Label fx:id="lblCapacidad" layoutX="12.0" layoutY="39.0" text="Label" />
+            <HBox layoutX="122.0" layoutY="95.0" prefHeight="29.0" prefWidth="73.0">
+               <children>
+                  <Button fx:id="buttom_eliminar" mnemonicParsing="false" onAction="#eliminarApartamento" prefHeight="25.0" prefWidth="25.0" styleClass="buttom_edition" stylesheets="@../../css/HojaEstilos.css">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/eliminar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="buttom_editar" alignment="CENTER" mnemonicParsing="false" onAction="#editarApartamento" prefHeight="26.0" prefWidth="29.0" styleClass="buttom_edition" stylesheets="@../../css/HojaEstilos.css" translateX="5.0">
+                     <graphic>
+                        <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/modificar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="4.0" layoutY="4.0" prefHeight="92.0" prefWidth="196.0">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="196.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../image/Apartamento3.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+   <styleClass>
+      <String fx:value="apartFondo" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

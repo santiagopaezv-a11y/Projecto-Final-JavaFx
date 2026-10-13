@@ -17,13 +17,8 @@ import java.util.ResourceBundle;
 public class AddApartamentoController implements Initializable {
     @FXML
     private Button buttom_savedApart;
-
-    @FXML
-    private Button buttom_selectImg;
-
     @FXML
     private ComboBox<String> cbEstado;
-
     @FXML
     private TextField txtCapacidad;
 
@@ -37,6 +32,7 @@ public class AddApartamentoController implements Initializable {
     private TextField txtPrecioNoche;
     @FXML
     private TextField txtCaracteristica;
+
     private Apartamento apartamentoCreado;
     @FXML
     void guardarApartamento(ActionEvent event) {
@@ -63,7 +59,6 @@ public class AddApartamentoController implements Initializable {
             aptEdicion.setCaracteristicas(caracteristicas);
             aptEdicion.setPrecioNoche(precioNoche);
             aptEdicion.setEstadoOperativo(estadoOperativo);
-            System.out.println("Apartamento actualizado con éxito.");
             Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(null);
 
         } else {

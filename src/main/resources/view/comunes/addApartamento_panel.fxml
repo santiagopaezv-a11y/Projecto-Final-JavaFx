@@ -26,7 +26,7 @@
                   <TextField fx:id="txtPrecioNoche" layoutX="15.0" layoutY="227.0" promptText="Precio por noche" />
                   <ComboBox fx:id="cbEstado" layoutX="14.0" layoutY="264.0" prefWidth="150.0" promptText="Estado" styleClass="comboBox" stylesheets="@../../css/HojaEstilos.css" />
                   <Label layoutX="14.0" layoutY="165.0" text="Caractisticas" />
-                  <TextField fx:id="txtCapacidad1" layoutX="14.0" layoutY="182.0" promptText="Capacidad huespedes" />
+                  <TextField fx:id="txtCaracteristica" layoutX="14.0" layoutY="182.0" promptText="Capacidad huespedes" />
                </children>
             </AnchorPane>
          </left>

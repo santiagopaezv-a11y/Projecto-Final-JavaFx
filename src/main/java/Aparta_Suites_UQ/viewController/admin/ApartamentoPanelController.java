@@ -33,7 +33,7 @@ public class ApartamentoPanelController implements Initializable {
         cargarTarjetasApartamentos();
     }
     private void cargarTarjetasApartamentos() {
-        List<Apartamento> listaDeApartamentos = /*Navegacion.getInstance().getListaApartamentos();*/obtenerApartamentosDePrueba();
+        List<Apartamento> listaDeApartamentos = Navegacion.getInstance().getListaApartamentos();/*obtenerApartamentosDePrueba();*/
         contenedorTarjetas.getChildren().clear();
         for (Apartamento apt : listaDeApartamentos) {
             try {
