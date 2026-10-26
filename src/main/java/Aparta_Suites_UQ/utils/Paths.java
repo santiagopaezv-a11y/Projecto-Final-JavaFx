@@ -19,4 +19,5 @@ public class Paths {
     public static final String APARTAMENTORECEPCION_PANEL="/view/recepcion/interfazApartamento.fxml";
     public static final String RESERVADIRECTA_PANEL="/view/recepcion/interfazReservaDirecta.fxml";
     public static final String APARTAMENTO_CARD="/view/comunes/apartamentoCard.fxml";
+    public static final String FUERASERVICIO="/view/comunes/apartamentoFueraServicio.fxml";
 }

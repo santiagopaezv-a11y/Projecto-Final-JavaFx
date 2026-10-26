@@ -20,8 +20,14 @@
                   <Font name="Calibri Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblDormidorios" layoutX="12.0" layoutY="23.0" text="Label" />
-            <Label fx:id="lblCaracteristicas" layoutX="12.0" layoutY="57.0" text="&quot;Caractericas&quot;" />
+            <Label fx:id="lblDormidorios" layoutX="12.0" layoutY="22.0" text="Label">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            <Label fx:id="lblCaracteristicas" layoutX="12.0" layoutY="57.0" text="&quot;Caractericas&quot;">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
             <VBox fx:id="pane_estado" alignment="CENTER" layoutX="16.0" layoutY="97.0" prefHeight="22.0" prefWidth="86.0" stylesheets="@../../css/HojaEstilos.css">
                <children>
                   <Label fx:id="lblEstado" stylesheets="@../../css/HojaEstilos.css" text="&quot;Estado&quot;" textAlignment="CENTER">
@@ -31,8 +37,14 @@
                   </Label>
                </children>
             </VBox>
-            <Label fx:id="lblCodigoCard" layoutX="12.0" layoutY="5.0" text="Label" />
-            <Label fx:id="lblCapacidad" layoutX="12.0" layoutY="39.0" text="Label" />
+            <Label fx:id="lblCodigoCard" layoutX="12.0" layoutY="5.0" text="Label">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            <Label fx:id="lblCapacidad" layoutX="12.0" layoutY="39.0" text="Label">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
             <HBox layoutX="122.0" layoutY="95.0" prefHeight="29.0" prefWidth="73.0">
                <children>
                   <Button fx:id="buttom_eliminar" mnemonicParsing="false" onAction="#eliminarApartamento" prefHeight="25.0" prefWidth="25.0" styleClass="buttom_edition" stylesheets="@../../css/HojaEstilos.css">
@@ -55,6 +67,16 @@
                   </Button>
                </children>
             </HBox>
+            <Label fx:id="lbl_motivoFueraServicio" layoutX="119.0" layoutY="22.0" prefHeight="17.0" prefWidth="79.0" text="Label" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_motivoFueraServicio1" layoutX="118.0" layoutY="8.0" prefHeight="17.0" prefWidth="73.0" text="Razon:" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="4.0" layoutY="4.0" prefHeight="92.0" prefWidth="196.0">

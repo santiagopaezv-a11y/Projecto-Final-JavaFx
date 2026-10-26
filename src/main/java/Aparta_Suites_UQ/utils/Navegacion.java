@@ -1,6 +1,8 @@
 package Aparta_Suites_UQ.utils;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
+import Aparta_Suites_UQ.model.reserva.Reserva;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,9 +10,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ import java.util.List;
 public class Navegacion {
     private static Navegacion instance;
     private final List<Apartamento> listaApartamentos = new ArrayList<>();
+    private final List<Reserva> listaReservas=new ArrayList<>();
     public static void cambiarEscena(ActionEvent event, String rutaFxml) {
         try {
             FXMLLoader loader = new FXMLLoader(Navegacion.class.getResource(rutaFxml));
@@ -51,6 +56,25 @@ public class Navegacion {
             return null;
         }
     }
+    public static void enviarAlertaWarning(String mensaje){
+        Alert alert=new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    public static void enviarAlertaInfo(String mensaje){
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    public static void enviarAlertaConfirmacion(String mensaje){
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
     public static boolean validarCredencial(TextField textUser,TextField textContraseña,String usuario, String contrasena){
         if (textUser==null||textContraseña==null) return false;
         String userIngresado=textUser.getText().trim();
@@ -65,6 +89,9 @@ public class Navegacion {
     }
     public List<Apartamento> getListaApartamentos() {
         return listaApartamentos;
+    }
+    public List<Reserva> getListaReservas() {
+        return listaReservas;
     }
     private Apartamento apartamentoSeleccionadoParaEditar;
 

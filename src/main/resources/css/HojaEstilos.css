@@ -48,28 +48,29 @@
      -fx-cursor:hand;
  }
  .changUsuario{
-     -fx-background-color: #e5f8d6;
+     -fx-background-color: #d1d1d1;
      -fx-boder-width:2px,2px,2px,2px;
-     -fx-border-color: #a3c6a3;
+     -fx-border-color: #d1d1d1;
      -fx-border-radius:20px;
      -fx-background-radius:20px;
  }
  .buttomInvitado{
-     -fx-background-color: #b5b5b5;
+     -fx-background-color: #efe6e6;
      -fx-boder-width:2px,2px,2px,2px;
      -fx-border-color: transparent;
      -fx-border-radius:20px;
      -fx-background-radius:20px;
+     -fx-cursor:hand;
  }
  .textField{
-     -fx-background-color: #5dba5a;
+     -fx-background-color: #f4fff4;
      -fx-opacity:0.5;
      -fx-boder-width:2px,2px,2px,2px;
      -fx-border-color: transparent;
      -fx-border-radius:5px;
      -fx-background-radius:5px;
-     -fx-prompt-text-fill: #ffffff;
-     -fx-text-fill:#fff;
+     -fx-prompt-text-fill: #606060;
+     -fx-text-fill:#000;
  }
  .shadow{
      -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0, 0.0, 10.0)
@@ -161,4 +162,21 @@ scrollPane .scroll-bar .decrement-arrow{
 .comboBox{
     -fx-background-color: #d9ffd9;
     -fx-background-radius:8px;
+}
+.textField2{
+    -fx-background-color:#fff;
+    -fx-boder-width:2px,2px,2px,2px;
+    -fx-border-color: transparent;
+    -fx-border-radius:5px;
+    -fx-background-radius:5px;
+    -fx-prompt-text-fill: #606060;
+    -fx-text-fill:#000;
+}
+.buttom_saved{
+    -fx-background-color: #fff;
+    -fx-boder-width:2px,2px,2px,2px;
+    -fx-border-color: transparent;
+    -fx-border-radius:20px;
+    -fx-background-radius:20px;
+    -fx-cursor:hand;
 }

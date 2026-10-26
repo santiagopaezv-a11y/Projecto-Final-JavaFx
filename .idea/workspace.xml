@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="UIs CRUD Apartamento 1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/addApartamento_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/comunes/addApartamento_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoCard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +26,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="JUnit5 Test Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -62,11 +70,14 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.IniciarPrograma.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddApartamentoControllerTest.verficarValores.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -82,7 +93,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -95,11 +106,33 @@
       <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\ProjectoFinal\src\main\resources\view\comunes" />
       <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\ProjectoFinal\src\main\resources\view\recepcion" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Aparta_Suites_UQ.viewController.comunes" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.IniciarPrograma">
     <configuration name="IniciarPrograma" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Aparta_Suites_UQ.Launcher" />
       <module name="demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddApartamentoControllerTest.verficarValores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Aparta_Suites_UQ.viewController.comunes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Aparta_Suites_UQ.viewController.comunes" />
+      <option name="MAIN_CLASS_NAME" value="Aparta_Suites_UQ.viewController.comunes.AddApartamentoControllerTest" />
+      <option name="METHOD_NAME" value="verficarValores" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -113,6 +146,11 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AddApartamentoControllerTest.verficarValores" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -134,6 +172,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Repositorio Preparado 1.0" />

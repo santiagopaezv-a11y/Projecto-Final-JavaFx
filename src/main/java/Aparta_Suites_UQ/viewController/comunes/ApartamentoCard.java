@@ -17,6 +17,10 @@ public class ApartamentoCard {
     @FXML
     private VBox pane_estado;
     @FXML
+    private Label lbl_motivoFueraServicio;
+    @FXML
+    private Label lbl_motivoFueraServicio1;
+    @FXML
     private Button buttom_editar;
 
     @FXML
@@ -72,6 +76,14 @@ public class ApartamentoCard {
                 lblEstado.setText("Fuera de servicio");
                 pane_estado.getStyleClass().add("estadoOperativoFuera_De_Servicio");
                 break;
+        }
+        if (apart.getMotivoFueraServicio()!=null&&apart.getEstadoOperativo()==EstadoOperativo.FUERA_DE_SERVICIO){
+            lbl_motivoFueraServicio.setText(apart.getMotivoFueraServicio());
+            lbl_motivoFueraServicio.setVisible(true);
+            lbl_motivoFueraServicio1.setVisible(true);
+        }else {
+            lbl_motivoFueraServicio1.setVisible(false);
+            lbl_motivoFueraServicio.setVisible(false);
         }
     }
     private Apartamento apartamentoActual;

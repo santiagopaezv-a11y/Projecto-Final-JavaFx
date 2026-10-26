@@ -184,7 +184,7 @@
             <Label layoutX="98.0" layoutY="64.0" text="Administrador" />
             <AnchorPane layoutX="476.0" prefHeight="348.0" prefWidth="431.0">
                <children>
-                  <AnchorPane fx:id="panelChangeUsuario" layoutX="127.0" layoutY="63.0" prefHeight="200.0" prefWidth="317.0" styleClass="changUsuario" stylesheets="@../../css/HojaEstilos.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="63.0">
+                  <AnchorPane fx:id="panelChangeUsuario" layoutX="127.0" layoutY="63.0" prefHeight="200.0" prefWidth="317.0" stylesheets="@../../css/HojaEstilos.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="63.0">
                      <children>
                         <Label layoutX="34.0" layoutY="25.0" text="Nombre Usuario">
                            <font>
@@ -196,11 +196,15 @@
                               <Font name="Microsoft Sans Serif" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="buttom_guestUser" layoutX="170.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloUser" style="-fx-cursor: hand;" styleClass="buttomInvitado" stylesheets="@../../css/HojaEstilos.css" text="Entrar como invitado" />
-                        <Button fx:id="buttom_accesRecepcion" layoutX="29.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloRecepcion" styleClass="buttom_addObject" stylesheets="@../../css/HojaEstilos.css" text="Acceder" />
+                        <Button fx:id="buttom_guestUser" layoutX="170.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloUser" styleClass="buttomInvitado" stylesheets="@../../css/HojaEstilos.css" text="Entrar como invitado" />
+                        <Button fx:id="buttom_accesRecepcion" layoutX="29.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloRecepcion" styleClass="buttomInvitado" stylesheets="@../../css/HojaEstilos.css" text="Acceder" />
                         <TextField fx:id="txtNombreUsuario" layoutX="48.0" layoutY="51.0" promptText="Agregar usuario" styleClass="textField" stylesheets="@../../css/HojaEstilos.css" />
                         <TextField fx:id="txtContrasenaUsuario" layoutX="48.0" layoutY="108.0" promptText="Agregar contraseña" styleClass="textField" stylesheets="@../../css/HojaEstilos.css" />
                      </children>
+                     <styleClass>
+                        <String fx:value="changUsuario" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                   </AnchorPane>
                   <Pane layoutX="409.0" prefHeight="81.0" prefWidth="80.0">
                      <children>

@@ -1,5 +1,7 @@
 package Aparta_Suites_UQ.model.alojamiento;
 
+import Aparta_Suites_UQ.utils.Navegacion;
+
 public class Apartamento {
     private final String id;
     private String nombre;
@@ -8,6 +10,7 @@ public class Apartamento {
     private String caracteristicas;
     private double precioNoche;
     private EstadoOperativo estadoOperativo;
+    private String motivoFueraServicio;
     //private String rutaImage;
     static int numeroApartamentos=0;
 
@@ -21,7 +24,6 @@ public class Apartamento {
         this.id="Apart_"+(++numeroApartamentos);
         //this.rutaImage=rutaImage;
     }
-
 //    public String getRutaImage() {
 //        return rutaImage;
 //    }
@@ -29,6 +31,14 @@ public class Apartamento {
 //    public void setRutaImage(String rutaImage) {
 //        this.rutaImage = rutaImage;
 //    }
+
+    public String getMotivoFueraServicio() {
+        return motivoFueraServicio;
+    }
+
+    public void setMotivoFueraServicio(String motivoFueraServicio) {
+        this.motivoFueraServicio = motivoFueraServicio;
+    }
 
     public String getId() {
         return id;
@@ -84,5 +94,10 @@ public class Apartamento {
 
     public void setEstadoOperativo(EstadoOperativo estadoOperativo) {
         this.estadoOperativo = estadoOperativo;
+    }
+    private void setFueraServicioMotivio(EstadoOperativo estadoOperativo){
+        if (estadoOperativo==EstadoOperativo.FUERA_DE_SERVICIO){
+
+        }
     }
 }
