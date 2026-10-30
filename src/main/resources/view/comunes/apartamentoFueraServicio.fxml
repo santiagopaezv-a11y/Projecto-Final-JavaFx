@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="172.0" prefWidth="293.0" style="-fx-background-color: E6E6E6;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoFueraServicioController">
+   <children>
+      <Label layoutX="20.0" layoutY="28.0" text="Motivo por el cual la habitacion">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="52.0" text="está fuera de servicio">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMotivo" layoutX="19.0" layoutY="88.0" prefHeight="27.0" prefWidth="257.0" promptText="Agregar motivo" styleClass="textField2" stylesheets="@../../css/HojaEstilos.css" />
+      <Button fx:id="buttom_savedFServicio" layoutX="20.0" layoutY="131.0" mnemonicParsing="false" styleClass="buttom_saved" stylesheets="@../../css/HojaEstilos.css" text="Guardar Informacion" />
+   </children>
+</AnchorPane>
