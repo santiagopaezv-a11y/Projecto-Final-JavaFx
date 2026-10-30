@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="UIs CRUD Apartamento 1.0">
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="Actualizacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/addApartamento_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/comunes/addApartamento_panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoCard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +179,8 @@
     <MESSAGE value="UIs Principales, Menu, Apartamento,Huesped, Folio, Reserva, Configuracion" />
     <MESSAGE value="UIs Modulos USER, RECEPCION, ADMIN 2.0" />
     <MESSAGE value="UIs CRUD Apartamento 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="UIs CRUD Apartamento 1.0" />
+    <MESSAGE value="Actualizacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizacion" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
