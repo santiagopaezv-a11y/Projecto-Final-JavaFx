@@ -12,9 +12,17 @@ public class Novedad {
     private Empleado reportado;
 
     public Novedad(Apartamento apartamento, String descripcion, Empleado reportado) {
-
+        if (apartamento == null) {
+            throw new IllegalArgumentException("El apartamento no puede estar vacio. ");
+        }
+        if (descripcion == null || descripcion.trim().isEmpty()) {
+            throw new IllegalArgumentException("La descripcion no puede estar vacia.");
+        }
+        if (reportado == null) {
+            throw new IllegalArgumentException("El empleado que reporta la novedad no puede ser nulo. ");
+        }
         this.apartamento = apartamento;
-        this.descripcion = descripcion;
+        this.descripcion = descripcion.trim();
         this.fecha = LocalDateTime.now();
         this.reportado = reportado;
     }

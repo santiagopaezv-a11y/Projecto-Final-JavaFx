@@ -6,20 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="Actualizacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Recepcionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Novedad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Novedad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Pago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Temporada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Temporada.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +161,15 @@
       <option name="presentableId" value="Default" />
       <updated>1791522488488</updated>
     </task>
+    <task id="LOCAL-00001" summary="Actualizacion">
+      <option name="closed" value="true" />
+      <created>1793553388073</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1793553388073</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -7,6 +7,12 @@ public class Pago {
     private MedioPago medioPago;
     private LocalDateTime fecha;
     public Pago(int valor, MedioPago medioPago) {
+        if (valor <= 0) {
+            throw new IllegalArgumentException("El valor del pago debe ser mayor a 0. ");
+        }
+        if (medioPago == null) {
+            throw new IllegalArgumentException("El medio de pago no puede estar vacio. ");
+        }
         this.valor = valor;
         this.medioPago = medioPago;
         this.fecha = LocalDateTime.now();
