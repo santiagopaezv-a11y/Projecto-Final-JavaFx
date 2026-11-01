@@ -1,5 +1,10 @@
 package Aparta_Suites_UQ.model.alojamiento;
+import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.utils.Navegacion;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Apartamento {
@@ -14,7 +19,7 @@ public class Apartamento {
     private String motivoFueraServicio;
     //private String rutaImage;
     static int numeroApartamentos=0;
-
+    private List<Reserva> reservas;
 
     public Apartamento(String nombre, int numeroDormitorios, int cantMaximaPersonas, String caracteristicas, double precioNoche, EstadoOperativo estadoOperativo ) {//String rutaImage
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -41,6 +46,7 @@ public class Apartamento {
         this.caracteristicas = caracteristicas;
         this.precioNoche = precioNoche;
         this.estadoOperativo = estadoOperativo;
+        this.reservas = new ArrayList<>();
         this.id="Apart_"+(++numeroApartamentos);
         //this.rutaImage=rutaImage;
     }
@@ -52,6 +58,30 @@ public class Apartamento {
 //        this.rutaImage = rutaImage;
 //    }
 
+    public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
+        if (fechaEntrada ==  null || fechaSalida == null) {
+            throw new IllegalArgumentException("Las fechas no pueden ser nulas. ");
+        }
+        if (this.estadoOperativo == EstadoOperativo.FUERA_DE_SERVICIO){
+            return false;
+        }
+        for (Reserva reservaExistente : reservas) {
+            if (reservaExistente.seSolapaCon(fechaEntrada, fechaSalida)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void agregarReserva(Reserva nuevaReserva){
+        if (nuevaReserva == null){
+            throw new IllegalArgumentException("La reserva no puede ser nula. ");
+        }
+        if (!estaDisponible(nuevaReserva.getFechaEntrada(), nuevaReserva.getFechaSalida())){
+            throw  new IllegalStateException("El apartamento " + nombre + " ya tiene una reserva en el rango seleccionado. ");
+        }
+        this.reservas.add(nuevaReserva);
+    }
 
     public void ponerFueraDeServicio(String motivoFueraServicio) {
         if (motivoFueraServicio == null || motivoFueraServicio.trim().isEmpty()) {
@@ -65,6 +95,7 @@ public class Apartamento {
         return this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
 
+    //GETTERS Y SETTERS
 
     public String getId() {
         return id;
@@ -102,7 +133,7 @@ public class Apartamento {
 
     public void setCantMaximaPersonas(int cantMaximaPersonas) {
         if (cantMaximaPersonas <= 0) {
-            throw new IllegalArgumentException("El numero de dormitorios debe ser mayor a 0. ");
+            throw new IllegalArgumentException("La cantidad maxima de personas debe ser mayor a 0. ");
         }
         this.cantMaximaPersonas = cantMaximaPersonas;
     }
@@ -149,5 +180,9 @@ public class Apartamento {
 
     public void setMotivoFueraServicio(String motivoFueraServicio) {
         this.motivoFueraServicio = motivoFueraServicio;
+    }
+
+    public List<Reserva> getReservas() {
+        return new ArrayList<>(reservas);
     }
 }
