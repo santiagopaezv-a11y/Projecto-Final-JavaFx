@@ -4,6 +4,7 @@ import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
 import Aparta_Suites_UQ.model.huesped.Huesped;
 import Aparta_Suites_UQ.model.huesped.Ocupante;
+import Aparta_Suites_UQ.model.transacciones.Temporada;
 import Aparta_Suites_UQ.utils.Navegacion;
 
 import java.time.LocalDate;
@@ -44,8 +45,8 @@ public class Reserva {
         }
         validarFechas(fechaEntrada, fechaSalida);
 
-        this.codigo = codigo;
-        this.codigoExterno = codigoExterno;
+        this.codigo = codigo.trim();
+        this.codigoExterno = (codigoExterno != null) ? codigoExterno.trim() : null;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.fechaCreacion = LocalDateTime.now();
@@ -58,15 +59,7 @@ public class Reserva {
     }
 
     // Validaciones
-    public boolean verificarDisponibilidad(Apartamento apt, LocalDate inicio, LocalDate fin) {
-        for (Reserva reserva : Navegacion.getInstance().getListaReservas()) {
-            if (reserva.getApartamento().equals(apt) && reserva.getEstado() != EstadoReserva.CANCELADA) {
-                boolean seSolapa = !(fin.isBefore(reserva.getFechaEntrada()) || inicio.isAfter(reserva.getFechaSalida()));
-                if (seSolapa) return false;
-            }
-        }
-        return true; // Disponible
-    }
+
     private void validarFechas(LocalDate entrada, LocalDate salida) {
         if (entrada == null || salida == null) {
             throw new IllegalArgumentException("Las fechas no pueden ser nulas.");
@@ -87,6 +80,24 @@ public class Reserva {
 
     public long getNoches() {
         return ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
+    }
+    // CALCULOS
+
+    public int calcularComision(List<Temporada> temporadas){
+        Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
+        int valorEstancia = estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
+        return  this.canal.calcularComision(valorEstancia);
+    }
+
+    public int calcularAnticipoRequerido(List<Temporada> temporadas){
+        Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
+        int valorEstancia = estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
+        return this.canal.calcularAnticipoRequerido(valorEstancia);
+    }
+
+    public int calcularValorTotalEstancia(List<Temporada> temporadas){
+        Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
+        return estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
     }
 
     // OCUPANTES
@@ -138,7 +149,7 @@ public class Reserva {
             throw new IllegalStateException("Solo se puede hacer check-out a una reserva en curso");
         }
         if (folio.getSaldo() > 0){
-            throw new IllegalArgumentException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo() );
+            throw new IllegalStateException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo() );
         }
         this.estado = EstadoReserva.FINALIZADA;
         apartamento.setEstadoOperativo(EstadoOperativo.EN_PREPARACION);
@@ -162,9 +173,11 @@ public class Reserva {
     public String getCodigoExterno() { return codigoExterno; }
     public void setCodigoExterno(String codigoExterno) { this.codigoExterno = codigoExterno; }
     //Get fechas
+
     public LocalDate getFechaEntrada() { return fechaEntrada; }
     public LocalDate getFechaSalida() { return fechaSalida; }
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
+
     //Get enums
     public CanalReserva getCanal() { return canal; }
     public EstadoReserva getEstado() { return estado; }

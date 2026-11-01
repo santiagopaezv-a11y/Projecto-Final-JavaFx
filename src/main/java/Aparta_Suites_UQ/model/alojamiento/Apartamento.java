@@ -1,5 +1,6 @@
 package Aparta_Suites_UQ.model.alojamiento;
 import Aparta_Suites_UQ.model.reserva.Reserva;
+import Aparta_Suites_UQ.model.transacciones.TipoTemporada;
 import Aparta_Suites_UQ.utils.Navegacion;
 
 import java.time.LocalDate;
@@ -95,7 +96,27 @@ public class Apartamento {
         return this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
 
+
+
     //GETTERS Y SETTERS
+
+    public int getTarifaSegunTemporada(TipoTemporada tipoTemporada){
+        if (tipoTemporada == null) {
+            return (int) Math.round(this.precioNoche);
+        }
+
+        switch (tipoTemporada){
+            case ALTA:
+                return (int) Math.round(this.precioNoche * 1.50);
+
+            case MEDIA:
+                return (int) Math.round(this.precioNoche * 1.20);
+
+            case BAJA:
+            default:
+                return (int) Math.round(this.precioNoche);
+        }
+    }
 
     public String getId() {
         return id;

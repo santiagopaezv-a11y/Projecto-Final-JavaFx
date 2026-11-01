@@ -18,13 +18,13 @@ public class Folio {
 
     public void agregarCargo(Cargo cargo) {
        if (cargo == null) {
-       throw  new NullPointerException("El cargo no puede ser nulo.");
+       throw  new IllegalArgumentException("El cargo no puede ser nulo.");
        }
        this.cargos.add(cargo);
     }
     public void registrarPago(Pago pago) {
         if (pago == null) {
-        throw  new NullPointerException("El pago no puede ser nulo.");
+        throw  new IllegalArgumentException("El pago no puede ser nulo.");
         }
         this.pagos.add(pago);
     }
@@ -47,7 +47,7 @@ public class Folio {
         if (motivo == null || motivo.trim().isEmpty()) {
             throw new IllegalArgumentException("El motivo no puede ser nulo.");
         }
-        if (valorNegativo > 0){
+        if (valorNegativo >= 0){
             throw new IllegalArgumentException("El valor de la correccion no puede ser mayor a 0");
         }
         this.cargos.add(new Cargo("Corrección - " + motivo.trim(), valorNegativo));
@@ -56,7 +56,7 @@ public class Folio {
        if (medio == null) {
            throw new IllegalArgumentException("El medio de pago no puede ser nulo.");
        }
-       if (valorNegativo > 0){
+       if (valorNegativo >= 0){
            throw new IllegalArgumentException("El valor de la correccion no puede ser mayor a 0");
        }
         this.pagos.add(new Pago(valorNegativo, medio));

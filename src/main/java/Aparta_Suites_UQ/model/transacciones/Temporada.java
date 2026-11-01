@@ -12,6 +12,7 @@ public class Temporada {
             throw new IllegalArgumentException("Tipo de temporada no puede ser nulo");
         }
         validarFechas(fechaInicio, fechaFin);
+
         this.tipo = tipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -26,7 +27,28 @@ public class Temporada {
         }
     }
 
+    public boolean aplicaEnFecha(LocalDate fecha){
+        if (fecha == null) return false;
+
+        return !fecha.isBefore(fechaInicio) && !fecha.isAfter(fechaFin);
+    }
+
+
+    //GETTERS Y SETTERS
+
     public TipoTemporada getTipo() { return tipo; }
+    public void setTipo(TipoTemporada tipo) {
+        if (tipo == null) {
+            throw new IllegalArgumentException("Tipo de temporada no puede ser nulo. ");
+        }
+        this.tipo = tipo;
+    }
     public LocalDate getFechaInicio() { return fechaInicio; }
     public LocalDate getFechaFin() { return fechaFin; }
+
+    public void setRangoFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        validarFechas(fechaInicio, fechaFin);
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }
 }

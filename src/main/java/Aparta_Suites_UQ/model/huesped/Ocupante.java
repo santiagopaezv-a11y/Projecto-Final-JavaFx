@@ -1,5 +1,7 @@
 package Aparta_Suites_UQ.model.huesped;
 
+import Aparta_Suites_UQ.utils.Navegacion;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -8,12 +10,20 @@ public class Ocupante {
    private LocalDate fechaNacimiento;
 
     public Ocupante(String nombre, LocalDate fechaNacimiento) {
-        if (nombre == null || fechaNacimiento == null) {
-            throw new IllegalArgumentException("El nombre y la fecha no pueden estar vacios. ");
+        if (nombre == null || nombre.trim().isEmpty()) {
+           throw new IllegalArgumentException("Nombre no puede estar vacio. ");
+       }
+        if ( fechaNacimiento == null) {
+            throw new IllegalArgumentException("La fecha no puede estar vacia. ");
         }
-        this.nombre = nombre;
+        if (fechaNacimiento.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("La fecha no puede ser futura. ");
+        }
+
+        this.nombre = nombre.trim();
         this.fechaNacimiento = fechaNacimiento;
     }
+
     public int calcularEdad(LocalDate fecha) {
         if (fecha == null || fechaNacimiento == null) {
             return 0;
@@ -26,17 +36,28 @@ public class Ocupante {
     public boolean pagaTarifa(LocalDate fecha) {
         return calcularEdad(fecha) >= 6;
     }
+    // GETTERS Y SETTERS
+
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nombre no puede estar vacio. ");
+        }
+        this.nombre = nombre.trim();
     }
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        if ( fechaNacimiento == null) {
+            throw new IllegalArgumentException("La fecha no puede estar vacia. ");
+        }
+        if (fechaNacimiento.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("La fecha no puede ser futura. ");
+        }
         this.fechaNacimiento = fechaNacimiento;
     }
 }
