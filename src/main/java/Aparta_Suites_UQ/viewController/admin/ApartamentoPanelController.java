@@ -189,8 +189,8 @@ public class ApartamentoPanelController implements Initializable {
         Navegacion.cambiarEscena(event,Paths.ADMINPANEL);
     }
     @FXML
-    private void pedirDatosApartamento(ActionEvent event){
-        Navegacion.abrirModal(event,Paths.ADDAPARTAMENTO_PANEL);
+    private void pedirDatosApartamento(ActionEvent event) {
+        Navegacion.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
         cargarTarjetasApartamentos();
     }
 }

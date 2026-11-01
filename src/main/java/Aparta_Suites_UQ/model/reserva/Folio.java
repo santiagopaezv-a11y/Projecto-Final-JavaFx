@@ -15,10 +15,10 @@ public class Folio {
         this.pagos = new ArrayList<>();
     }
     public void agregarCargo(Cargo cargo) {
-        this.cargos.add(cargo);
+       if (cargo != null) this.cargos.add(cargo);
     }
     public void registrarPago(Pago pago) {
-        this.pagos.add(pago);
+        if (pago != null) this.pagos.add(pago);
     }
 
     //Saldo es la diferencia del total menos los pagos actuales

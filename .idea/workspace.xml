@@ -6,6 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="Actualizacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Recepcionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Novedad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Novedad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +48,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/santiagopaezv-a11y/Projecto-Final-JavaFx&quot;,
-    &quot;accountId&quot;: &quot;468091cd-aeff-4fa2-8244-62b3ef5d10a7&quot;
+    &quot;url&quot;: &quot;https://github.com/santiagopaezv-a11y/Projecto-Final-JavaFx.git&quot;,
+    &quot;accountId&quot;: &quot;12b47696-9efd-4da5-9950-40c4246599d6&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -145,8 +159,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
       </set>
     </attachedChunks>
   </component>

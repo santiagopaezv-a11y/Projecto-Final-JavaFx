@@ -12,6 +12,7 @@ public class Novedad {
     private Empleado reportado;
 
     public Novedad(Apartamento apartamento, String descripcion, Empleado reportado) {
+
         this.apartamento = apartamento;
         this.descripcion = descripcion;
         this.fecha = LocalDateTime.now();

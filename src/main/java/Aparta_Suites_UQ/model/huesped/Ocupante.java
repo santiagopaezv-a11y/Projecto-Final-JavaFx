@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Ocupante {
-    String nombre;
-    LocalDate fechaNacimiento;
+   private String nombre;
+   private LocalDate fechaNacimiento;
 
     public Ocupante(String nombre, LocalDate fechaNacimiento) {
         this.nombre = nombre;
@@ -27,8 +27,10 @@ public class Ocupante {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    int calcularEdad(){
-        Period periodo= Period.between(getFechaNacimiento(),LocalDate.now());
-        return periodo.getYears();
+    public int getEdad() {
+        if (fechaNacimiento == null){
+            return 0;
+        }
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
     }
 }

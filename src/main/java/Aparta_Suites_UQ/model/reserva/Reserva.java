@@ -32,8 +32,13 @@ public class Reserva {
 
     public Reserva(String codigo, LocalDate fechaEntrada, LocalDate fechaSalida,
                    CanalReserva canal, Huesped titular, Apartamento apartamento) {
+        this(codigo, null, fechaEntrada,fechaSalida,canal, titular, apartamento);
+    }
+    public Reserva(String codigo, String codigoExterno, LocalDate fechaEntrada, LocalDate fechaSalida,
+                   CanalReserva canal, Huesped titular, Apartamento apartamento) {
         validarFechas(fechaEntrada, fechaSalida);
         this.codigo = codigo;
+        this.codigoExterno = codigoExterno;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.fechaCreacion = LocalDateTime.now();

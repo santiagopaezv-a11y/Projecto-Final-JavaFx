@@ -1,12 +1,14 @@
 package Aparta_Suites_UQ.model.huesped;
 
 import java.time.LocalDate;
-import java.time.Period;
 
-public class Huesped extends Persona{
-    String imagenOpcional;
-    public Huesped(String nombre, String documento, LocalDate fechaNacimiento, String telefono, String correo) {
+public class Huesped extends Persona {
+
+    private String imagenOpcional;
+
+    public Huesped(String nombre, String documento, LocalDate fechaNacimiento, String telefono, String correo, String imagenOpcional) {
         super(nombre, documento, fechaNacimiento, telefono, correo);
+        this.imagenOpcional = imagenOpcional;
     }
 
     public String getImagenOpcional() {
@@ -17,3 +19,5 @@ public class Huesped extends Persona{
         this.imagenOpcional = imagenOpcional;
     }
 }
+
+
