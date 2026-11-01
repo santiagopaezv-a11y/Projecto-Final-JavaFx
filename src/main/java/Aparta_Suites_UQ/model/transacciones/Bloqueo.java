@@ -14,7 +14,7 @@ public class Bloqueo {
         if (apartamento == null) {
             throw new IllegalArgumentException("El apartamento no puede estar vacio.");
         }
-        if (motivo == null) {
+        if (motivo == null ||  motivo.trim().isEmpty()) {
             throw new IllegalArgumentException("El motivo no puede estar vacio.");
         }
         validarFechas(fechaInicio, fechaFin);
@@ -28,10 +28,17 @@ public class Bloqueo {
         if (fechaInicio == null||fechaFin == null){
             throw new IllegalArgumentException("Las fechas de bloqueo no pueden ser nulas.");
         }
-        if (fechaFin.isBefore(fechaInicio)){
+        if (!fechaFin.isAfter(fechaInicio)){
             throw new IllegalArgumentException("La fecha fin no debe ser anterior a la fecha de inicio. ");
         }
     }
+    public boolean seSolapaCon (LocalDate fechaInicio, LocalDate fechaFin){
+        if (fechaInicio == null || fechaFin == null){
+            return false;
+        }
+        return fechaInicio.isBefore(this.fechaFin) && fechaFin.isAfter(this.fechaInicio);
+    }
+
     public Apartamento getApartamento() { return apartamento; }
     public LocalDate getFechaInicio() { return fechaInicio; }
     public LocalDate getFechaFin() { return fechaFin; }

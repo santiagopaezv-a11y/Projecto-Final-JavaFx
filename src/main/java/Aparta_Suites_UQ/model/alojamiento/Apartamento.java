@@ -1,6 +1,7 @@
 package Aparta_Suites_UQ.model.alojamiento;
 import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.TipoTemporada;
+import Aparta_Suites_UQ.model.transacciones.Bloqueo;
 import Aparta_Suites_UQ.utils.Navegacion;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class Apartamento {
     //private String rutaImage;
     static int numeroApartamentos=0;
     private List<Reserva> reservas;
+    private List<Bloqueo> bloqueos;
 
     public Apartamento(String nombre, int numeroDormitorios, int cantMaximaPersonas, String caracteristicas, double precioNoche, EstadoOperativo estadoOperativo ) {//String rutaImage
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -41,6 +43,10 @@ public class Apartamento {
             throw new IllegalArgumentException("El estado operativo no puede ser nulo. ");
         }
 
+        if (precioNoche <= 0){
+            throw new IllegalArgumentException("El precio debe ser mayor a 0. ");
+        }
+
         this.nombre = nombre;
         this.numeroDormitorios = numeroDormitorios;
         this.cantMaximaPersonas = cantMaximaPersonas;
@@ -48,6 +54,7 @@ public class Apartamento {
         this.precioNoche = precioNoche;
         this.estadoOperativo = estadoOperativo;
         this.reservas = new ArrayList<>();
+        this.bloqueos = new ArrayList<>();
         this.id="Apart_"+(++numeroApartamentos);
         //this.rutaImage=rutaImage;
     }
@@ -59,19 +66,27 @@ public class Apartamento {
 //        this.rutaImage = rutaImage;
 //    }
 
-    public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
-        if (fechaEntrada ==  null || fechaSalida == null) {
-            throw new IllegalArgumentException("Las fechas no pueden ser nulas. ");
+    public void agregarBloqueo(Bloqueo nuevoBloqueo){
+        if (nuevoBloqueo == null){
+            throw new IllegalArgumentException("El bloqueo no puede estar vacio. ");
         }
-        if (this.estadoOperativo == EstadoOperativo.FUERA_DE_SERVICIO){
+        if (!estaDisponible(nuevoBloqueo.getFechaInicio(), nuevoBloqueo.getFechaFin())){
+            throw new IllegalStateException("No se puede registrar el bloqueo porque el apartamento " + nombre + " tiene reservas o bloqueos solapados. ");
+        }
+        this.bloqueos.add(nuevoBloqueo);
+    }
+
+
+    public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
+
+        boolean tieneReservaSolapada = reservas.stream().anyMatch(reserva -> reserva.seSolapaCon(fechaEntrada, fechaSalida));
+
+        if (tieneReservaSolapada) {
             return false;
         }
-        for (Reserva reservaExistente : reservas) {
-            if (reservaExistente.seSolapaCon(fechaEntrada, fechaSalida)){
-                return false;
-            }
-        }
-        return true;
+
+        boolean tieneBloqueoSolapado = bloqueos.stream().anyMatch(bloqueo -> bloqueo.seSolapaCon(fechaEntrada, fechaSalida));
+        return !tieneBloqueoSolapado;
     }
 
     public void agregarReserva(Reserva nuevaReserva){
@@ -205,5 +220,9 @@ public class Apartamento {
 
     public List<Reserva> getReservas() {
         return new ArrayList<>(reservas);
+    }
+
+    public List<Bloqueo> getBloqueos() {
+        return new ArrayList<>(bloqueos);
     }
 }
