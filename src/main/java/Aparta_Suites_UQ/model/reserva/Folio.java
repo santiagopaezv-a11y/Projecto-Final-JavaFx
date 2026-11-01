@@ -44,9 +44,21 @@ public class Folio {
     }
 
     public void registrarCorreccionCargo(String motivo, int valorNegativo) {
-        this.cargos.add(new Cargo("Corrección - " + motivo, valorNegativo));
+        if (motivo == null || motivo.trim().isEmpty()) {
+            throw new IllegalArgumentException("El motivo no puede ser nulo.");
+        }
+        if (valorNegativo > 0){
+            throw new IllegalArgumentException("El valor de la correccion no puede ser mayor a 0");
+        }
+        this.cargos.add(new Cargo("Corrección - " + motivo.trim(), valorNegativo));
     }
     public void registrarCorreccionPago(int valorNegativo, MedioPago medio) {
+       if (medio == null) {
+           throw new IllegalArgumentException("El medio de pago no puede ser nulo.");
+       }
+       if (valorNegativo > 0){
+           throw new IllegalArgumentException("El valor de la correccion no puede ser mayor a 0");
+       }
         this.pagos.add(new Pago(valorNegativo, medio));
     }
     public List<Cargo> getCargos() { return new ArrayList<>(cargos); }

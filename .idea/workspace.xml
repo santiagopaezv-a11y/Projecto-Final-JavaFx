@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="Actualizaciones y Persona">
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="avances validaciones y reglas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793555496945</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="avances validaciones y reglas">
+      <option name="closed" value="true" />
+      <created>1793556790299</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1793556790299</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +208,8 @@
     <MESSAGE value="UIs CRUD Apartamento 1.0" />
     <MESSAGE value="Actualizacion" />
     <MESSAGE value="Actualizaciones y Persona" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actualizaciones y Persona" />
+    <MESSAGE value="avances validaciones y reglas" />
+    <option name="LAST_COMMIT_MESSAGE" value="avances validaciones y reglas" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

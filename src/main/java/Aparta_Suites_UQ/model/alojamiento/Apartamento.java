@@ -17,6 +17,24 @@ public class Apartamento {
 
 
     public Apartamento(String nombre, int numeroDormitorios, int cantMaximaPersonas, String caracteristicas, double precioNoche, EstadoOperativo estadoOperativo ) {//String rutaImage
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre del apartamento no puede estar vacio. ");
+        }
+        if (caracteristicas == null || caracteristicas.trim().isEmpty()) {
+            throw new IllegalArgumentException("Las caracteristicas del apartamento no pueden ser nulas. ");
+        }
+        if (numeroDormitorios <= 0){
+            throw new IllegalArgumentException("El numero de dormitorios debe ser mayor a 0. ");
+        }
+
+        if (cantMaximaPersonas <= 0){
+            throw new IllegalArgumentException( "La cantidad maxima de personas debe ser mayor a 0. ");
+        }
+
+        if (estadoOperativo == null){
+            throw new IllegalArgumentException("El estado operativo no puede ser nulo. ");
+        }
+
         this.nombre = nombre;
         this.numeroDormitorios = numeroDormitorios;
         this.cantMaximaPersonas = cantMaximaPersonas;
@@ -36,18 +54,17 @@ public class Apartamento {
 
 
     public void ponerFueraDeServicio(String motivoFueraServicio) {
+        if (motivoFueraServicio == null || motivoFueraServicio.trim().isEmpty()) {
+            throw new IllegalArgumentException("Debe especificar un motivo para poner el apartamento fuera de servicio. ");
+        }
         this.estadoOperativo = EstadoOperativo.FUERA_DE_SERVICIO;
         this.motivoFueraServicio = motivoFueraServicio;
     }
 
-
-    public String getMotivoFueraServicio() {
-        return motivoFueraServicio;
+    public boolean estaHabilitadoParaReservar(){
+        return this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
 
-    public void setMotivoFueraServicio(String motivoFueraServicio) {
-        this.motivoFueraServicio = motivoFueraServicio;
-    }
 
     public String getId() {
         return id;
@@ -62,7 +79,10 @@ public class Apartamento {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("EL nombre del apartamento no puede estar vacio. ");
+        }
+        this.nombre = nombre.trim();
     }
 
     public int getNumeroDormitorios() {
@@ -70,6 +90,9 @@ public class Apartamento {
     }
 
     public void setNumeroDormitorios(int numeroDormitorios) {
+        if (numeroDormitorios <= 0) {
+            throw new IllegalArgumentException("El numero de dormitorios debe ser mayor a 0. ");
+        }
         this.numeroDormitorios = numeroDormitorios;
     }
 
@@ -78,6 +101,9 @@ public class Apartamento {
     }
 
     public void setCantMaximaPersonas(int cantMaximaPersonas) {
+        if (cantMaximaPersonas <= 0) {
+            throw new IllegalArgumentException("El numero de dormitorios debe ser mayor a 0. ");
+        }
         this.cantMaximaPersonas = cantMaximaPersonas;
     }
 
@@ -86,6 +112,9 @@ public class Apartamento {
     }
 
     public void setCaracteristicas(String caracteristicas) {
+        if (caracteristicas == null || caracteristicas.trim().isEmpty()) {
+            throw new IllegalArgumentException("Las caracteristicas no pueden estar vacias");
+        }
         this.caracteristicas = caracteristicas;
     }
 
@@ -94,6 +123,9 @@ public class Apartamento {
     }
 
     public void setPrecioNoche(double precioNoche) {
+        if (precioNoche <= 0) {
+            throw new IllegalArgumentException("El precio por noche debe ser mayor a 0. ");
+        }
         this.precioNoche = precioNoche;
     }
 
@@ -102,9 +134,20 @@ public class Apartamento {
     }
 
     public void setEstadoOperativo(EstadoOperativo estadoOperativo) {
-        this.estadoOperativo = estadoOperativo;
-        if (estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO){
-            this.motivoFueraServicio = "";
+        if (estadoOperativo == null) {
+            throw new IllegalArgumentException("El estado operativo no puede ser nulo. ");
         }
+        this.estadoOperativo = estadoOperativo;
+        if (estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO) {
+            this.motivoFueraServicio = null;
+        }
+    }
+
+    public String getMotivoFueraServicio() {
+        return motivoFueraServicio;
+    }
+
+    public void setMotivoFueraServicio(String motivoFueraServicio) {
+        this.motivoFueraServicio = motivoFueraServicio;
     }
 }

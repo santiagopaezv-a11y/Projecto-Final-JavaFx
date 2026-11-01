@@ -36,7 +36,14 @@ public class Reserva {
     }
     public Reserva(String codigo, String codigoExterno, LocalDate fechaEntrada, LocalDate fechaSalida,
                    CanalReserva canal, Huesped titular, Apartamento apartamento) {
+        if (codigo == null || codigo.trim().isEmpty()) {
+            throw new IllegalArgumentException("El codigo de la reserva no puede estar vacio. ");
+        }
+        if (canal == null || titular == null || apartamento == null) {
+            throw new IllegalArgumentException("El canal, titular y apartamento no pueden ser nulos. ");
+        }
         validarFechas(fechaEntrada, fechaSalida);
+
         this.codigo = codigo;
         this.codigoExterno = codigoExterno;
         this.fechaEntrada = fechaEntrada;
@@ -71,16 +78,31 @@ public class Reserva {
             throw new IllegalArgumentException("La fecha de salida debe ser posterior a la de entrada (mínimo 1 noche).");
         }
     }
+    public boolean seSolapaCon (LocalDate inicio, LocalDate fin) {
+        if (this.estado == EstadoReserva.CANCELADA || this.estado == EstadoReserva.NO_SHOW) {
+            return false;
+        }
+        return inicio.isBefore(this.fechaSalida) && fin.isAfter(this.fechaEntrada);
+    }
+
     public long getNoches() {
         return ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
     }
+
+    // OCUPANTES
+
     public void agregarOcupante(Ocupante ocupante) {
-        if (ocupantes.size() + 1 > apartamento.getCantMaximaPersonas()) {
+        if (ocupante == null) {
+            throw new IllegalArgumentException("El ocupante no puede ser nulo. ");
+        }
+        int totalPersonasFuturo = 1 + this.ocupantes.size() + 1;
+        if (totalPersonasFuturo > apartamento.getCantMaximaPersonas()) {
             throw new IllegalStateException("Se supera la capacidad máxima del apartamento ("
-                    + apartamento.getCantMaximaPersonas() + " personas).");
+                    + apartamento.getCantMaximaPersonas() + " personas incluyendo al titular).");
         }
         this.ocupantes.add(ocupante);
     }
+
   //Para revisar que si han pasado 24 horas se cancele
     public boolean verificarVencimiento24Horas() {
         if (this.estado == EstadoReserva.PENDIENTE &&
@@ -90,6 +112,7 @@ public class Reserva {
         }
         return false;
     }
+
     // Transiciones de reservas
     public void confirmar() {
         if (this.estado != EstadoReserva.PENDIENTE) {
@@ -97,6 +120,7 @@ public class Reserva {
         }
         this.estado = EstadoReserva.CONFIRMADA;
     }
+
     public void hacerCheckIn() {
         if (this.estado != EstadoReserva.CONFIRMADA) {
             throw new IllegalStateException("Solo se puede hacer check-in a una reserva confirmada");
@@ -108,9 +132,13 @@ public class Reserva {
         this.estado = EstadoReserva.EN_CURSO;
         apartamento.setEstadoOperativo(EstadoOperativo.OCUPADO);
     }
+
     public void hacerCheckOut() {
         if (this.estado != EstadoReserva.EN_CURSO) {
             throw new IllegalStateException("Solo se puede hacer check-out a una reserva en curso");
+        }
+        if (folio.getSaldo() > 0){
+            throw new IllegalArgumentException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo() );
         }
         this.estado = EstadoReserva.FINALIZADA;
         apartamento.setEstadoOperativo(EstadoOperativo.EN_PREPARACION);
