@@ -11,6 +11,13 @@ public class Huesped extends Persona {
         this.imagenOpcional = imagenOpcional;
     }
 
+    public Huesped(String nombre, String documento, LocalDate fechaNacimiento, String telefono, String correo) {
+        this(nombre, documento, fechaNacimiento, telefono, correo, null);
+    }
+
+    public boolean pagaTarifa(LocalDate fechaEntrada){
+        return calcularEdad(fechaEntrada) >= 6;
+    }
     public String getImagenOpcional() {
         return imagenOpcional;
     }
