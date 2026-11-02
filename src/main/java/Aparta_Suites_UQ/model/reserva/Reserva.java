@@ -39,8 +39,9 @@ public class Reserva {
 
     public Reserva(String codigo, LocalDate fechaEntrada, LocalDate fechaSalida,
                    CanalReserva canal, Huesped titular, Apartamento apartamento) {
-        this(codigo, null, fechaEntrada,fechaSalida,canal, titular, apartamento);
+        this(codigo, null, fechaEntrada, fechaSalida, canal, titular, apartamento);
     }
+
     public Reserva(String codigo, String codigoExterno, LocalDate fechaEntrada, LocalDate fechaSalida,
                    CanalReserva canal, Huesped titular, Apartamento apartamento) {
         if (codigo == null || codigo.trim().isEmpty()) {
@@ -76,7 +77,8 @@ public class Reserva {
             throw new IllegalArgumentException("La fecha de salida debe ser posterior a la de entrada (mínimo 1 noche).");
         }
     }
-    public boolean seSolapaCon (LocalDate inicio, LocalDate fin) {
+
+    public boolean seSolapaCon(LocalDate inicio, LocalDate fin) {
         if (this.estado == EstadoReserva.CANCELADA || this.estado == EstadoReserva.NO_SHOW) {
             return false;
         }
@@ -91,19 +93,19 @@ public class Reserva {
     }
     // CALCULOS
 
-    public int calcularComision(List<Temporada> temporadas){
+    public int calcularComision(List<Temporada> temporadas) {
         Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
         int valorEstancia = estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
-        return  this.canal.calcularComision(valorEstancia);
+        return this.canal.calcularComision(valorEstancia);
     }
 
-    public int calcularAnticipoRequerido(List<Temporada> temporadas){
+    public int calcularAnticipoRequerido(List<Temporada> temporadas) {
         Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
         int valorEstancia = estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
         return this.canal.calcularAnticipoRequerido(valorEstancia);
     }
 
-    public int calcularValorTotalEstancia(List<Temporada> temporadas){
+    public int calcularValorTotalEstancia(List<Temporada> temporadas) {
         Estancia estancia = new Estancia(this.fechaEntrada, this.fechaSalida);
         return estancia.calcularValorTotal(this.apartamento, this.ocupantes, temporadas);
     }
@@ -122,7 +124,7 @@ public class Reserva {
         this.ocupantes.add(ocupante);
     }
 
-  //Para revisar que si han pasado 24 horas se cancele
+    //Para revisar que si han pasado 24 horas se cancele
     public boolean verificarVencimiento24Horas() {
         if (this.estado == EstadoReserva.PENDIENTE &&
                 LocalDateTime.now().isAfter(fechaCreacion.plusHours(24))) {
@@ -143,9 +145,9 @@ public class Reserva {
     public void hacerCheckIn() {
         if (this.estado != EstadoReserva.CONFIRMADA) {
             throw new IllegalStateException("Solo se puede hacer check-in a una reserva confirmada");
-        }else if (!LocalDate.now().isEqual(fechaEntrada)){
+        } else if (!LocalDate.now().isEqual(fechaEntrada)) {
             throw new IllegalStateException("Solo se permite el check-in en la fecha de entrada.");
-        }else if (apartamento.getEstadoOperativo() != EstadoOperativo.PREPARADO){
+        } else if (apartamento.getEstadoOperativo() != EstadoOperativo.PREPARADO) {
             throw new IllegalStateException("El apartamento no está preparado");
         }
         this.estado = EstadoReserva.EN_CURSO;
@@ -156,8 +158,8 @@ public class Reserva {
         if (this.estado != EstadoReserva.EN_CURSO) {
             throw new IllegalStateException("Solo se puede hacer check-out a una reserva en curso");
         }
-        if (folio.getSaldo() != 0){
-            throw new IllegalStateException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo() );
+        if (folio.getSaldo() != 0) {
+            throw new IllegalStateException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo());
         }
         this.estado = EstadoReserva.FINALIZADA;
         apartamento.setEstadoOperativo(EstadoOperativo.EN_PREPARACION);
@@ -177,17 +179,17 @@ public class Reserva {
         this.estado = EstadoReserva.NO_SHOW;
     }
 
-    public LocalDateTime getFechaHoraEntrada(){
+    public LocalDateTime getFechaHoraEntrada() {
         return this.fechaEntrada.atTime(HORA_CHECK_IN);
     }
 
-    public LocalDateTime getFechaHoraSalida(){
+    public LocalDateTime getFechaHoraSalida() {
         return this.fechaSalida.atTime(HORA_CHECK_OUT);
     }
 
-    public boolean cumpleTiempoPreparacion(Reserva reserva){
+    public boolean cumpleTiempoPreparacion(Reserva reserva) {
         if (!this.apartamento.equals(reserva.getApartamento())) {
-            return  true;
+            return true;
         }
         if (this.fechaSalida.isEqual(reserva.getFechaEntrada())) {
             long horasDiferencia = ChronoUnit.HOURS.between(this.getFechaHoraSalida(), reserva.getFechaHoraEntrada());
@@ -196,14 +198,35 @@ public class Reserva {
         return true;
     }
 
- // POLITICA DE CANCELACION
+    // POLITICA DE CANCELACION
 
+    public ResultadoCancelacion calcularResultadoCancelacion(List<Temporada> temporadas){
+        double totalPagado = (double) this.folio.getTotalPagos();
+        double valorTotalEstancia = this.calcularValorTotalEstancia(temporadas);
 
+        long diasAntelacion = ChronoUnit.DAYS.between(LocalDate.now(), this.fechaEntrada);
 
+        double porcentajeRetencion;
+        double montoRetenido;
+        double montoADevolver;
 
-
-
-
+        if (this.estado == EstadoReserva.NO_SHOW || diasAntelacion < 2){
+            porcentajeRetencion = 1;
+            montoRetenido = Math.min(totalPagado, valorTotalEstancia);
+            montoADevolver = 0;
+        }
+        else if (diasAntelacion <= 7){
+            porcentajeRetencion = 0.5;
+            montoRetenido = valorTotalEstancia * porcentajeRetencion;
+            montoADevolver = Math.max(0, totalPagado - montoRetenido);
+        }
+        else {
+            porcentajeRetencion = 0;
+            montoRetenido = 0;
+            montoADevolver = totalPagado;
+        }
+        return new ResultadoCancelacion (totalPagado,valorTotalEstancia,diasAntelacion, montoRetenido, montoADevolver);
+    }
 
     //Get codigos
     public String getCodigo() { return codigo; }
