@@ -111,7 +111,12 @@ public class Apartamento {
         return this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
 
-
+    public boolean existeCodigoExterno(String codigoExterno){
+        if (codigoExterno == null || codigoExterno.trim().isEmpty()){
+            return false;
+        }
+        return reservas.stream().filter(reserva -> reserva.getCodigoExterno() != null).anyMatch(reserva -> reserva.getCodigoExterno().equalsIgnoreCase(codigoExterno.trim()));
+    }
 
     //GETTERS Y SETTERS
 
