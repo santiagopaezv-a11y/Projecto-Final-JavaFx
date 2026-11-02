@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva {
+    // CONSTANTES
+    public static final java.time.LocalTime HORA_CHECK_OUT = java.time.LocalTime.of(11, 0);
+    public static final java.time.LocalTime HORA_CHECK_IN = java.time.LocalTime.of(15, 0);
+    public static final long HORAS_MINIMAS_PREPARACION = 3;
+
+
     private String codigo;
     private String codigoExterno; // Opcional, para el canal Externo
     private LocalDate fechaEntrada;
@@ -57,7 +63,6 @@ public class Reserva {
         this.ocupantes = new ArrayList<>();
         this.folio = new Folio();
     }
-
     // Validaciones
 
     private void validarFechas(LocalDate entrada, LocalDate salida) {
@@ -73,6 +78,9 @@ public class Reserva {
     }
     public boolean seSolapaCon (LocalDate inicio, LocalDate fin) {
         if (this.estado == EstadoReserva.CANCELADA || this.estado == EstadoReserva.NO_SHOW) {
+            return false;
+        }
+        if (inicio == null || fin == null) {
             return false;
         }
         return inicio.isBefore(this.fechaSalida) && fin.isAfter(this.fechaEntrada);
@@ -148,7 +156,7 @@ public class Reserva {
         if (this.estado != EstadoReserva.EN_CURSO) {
             throw new IllegalStateException("Solo se puede hacer check-out a una reserva en curso");
         }
-        if (folio.getSaldo() > 0){
+        if (folio.getSaldo() != 0){
             throw new IllegalStateException("No se puede hacer check-out. EL folio tiene un saldo pendiente de $" + folio.getSaldo() );
         }
         this.estado = EstadoReserva.FINALIZADA;
@@ -168,6 +176,35 @@ public class Reserva {
         }
         this.estado = EstadoReserva.NO_SHOW;
     }
+
+    public LocalDateTime getFechaHoraEntrada(){
+        return this.fechaEntrada.atTime(HORA_CHECK_IN);
+    }
+
+    public LocalDateTime getFechaHoraSalida(){
+        return this.fechaSalida.atTime(HORA_CHECK_OUT);
+    }
+
+    public boolean cumpleTiempoPreparacion(Reserva reserva){
+        if (!this.apartamento.equals(reserva.getApartamento())) {
+            return  true;
+        }
+        if (this.fechaSalida.isEqual(reserva.getFechaEntrada())) {
+            long horasDiferencia = ChronoUnit.HOURS.between(this.getFechaHoraSalida(), reserva.getFechaHoraEntrada());
+            return horasDiferencia >= HORAS_MINIMAS_PREPARACION;
+        }
+        return true;
+    }
+
+ // POLITICA DE CANCELACION
+
+
+
+
+
+
+
+
     //Get codigos
     public String getCodigo() { return codigo; }
     public String getCodigoExterno() { return codigoExterno; }

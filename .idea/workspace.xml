@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="regla del pago">
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="regla del bloqueo apartamento">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793575160244</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="regla del bloqueo apartamento">
+      <option name="closed" value="true" />
+      <created>1793577492484</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1793577492484</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +242,8 @@
     <MESSAGE value="validaciones y metodos" />
     <MESSAGE value="Regla de doble venta" />
     <MESSAGE value="regla del pago" />
-    <option name="LAST_COMMIT_MESSAGE" value="regla del pago" />
+    <MESSAGE value="regla del bloqueo apartamento" />
+    <option name="LAST_COMMIT_MESSAGE" value="regla del bloqueo apartamento" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
