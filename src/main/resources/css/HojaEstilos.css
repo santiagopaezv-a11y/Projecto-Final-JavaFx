@@ -43,7 +43,7 @@
     -fx-border-radius:6px;
  }
  .perfilChange{
-     -fx-background-color: #9a9a9a;
+     -fx-background-color: #dddddd;
      -fx-background-radius:100px;
      -fx-cursor:hand;
  }
@@ -111,7 +111,7 @@
     -fx-background-radius:15px;
 }
 .buttom_edition{
-    -fx-background-color: #fff;
+    -fx-background-color: #d3d3d3;
     -fx-border-witdh:2px,2px,2px,2px;
     -fx-border-color:transparent;
     -fx-border-radius:25px;
@@ -288,5 +288,13 @@ scrollPane .scroll-bar .decrement-arrow{
     -fx-border-color: #000;
     -fx-border-radius:8px;
     -fx-background-radius:8px;
+    -fx-cursor:hand;
+}
+.buttom-login{
+    -fx-background-color: #3498db;
+    -fx-text-fill:#fff;
+    -fx-background-radius: 5;
+    -fx-padding:10;
+    -fx-font-weight:bold;
     -fx-cursor:hand;
 }

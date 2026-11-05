@@ -3,7 +3,9 @@ package Aparta_Suites_UQ.utils;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.Temporada;
 import Aparta_Suites_UQ.model.alojamiento.TipoTemporada;
+import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
+import Aparta_Suites_UQ.model.huesped.Recepcionista;
 import Aparta_Suites_UQ.model.reserva.Reserva;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -14,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +26,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Navegacion {
     private static Navegacion instance;
@@ -30,6 +34,7 @@ public class Navegacion {
     private final List<Reserva> listaReservas = new ArrayList<>();
     private final List<Huesped> listaHuespedes = new ArrayList<>();
     private final List<Temporada> listaTemporadas = new ArrayList<>();
+    private final List<Empleado> listaEmpleados= new ArrayList<>();
 
     private Navegacion() {
         // Precargar temporadas por defecto al instanciar el Singleton
@@ -77,6 +82,8 @@ public class Navegacion {
             Stage stagePrincipal = (Stage) source.getScene().getWindow();
             Scene scene = new Scene(root);
             stagePrincipal.setScene(scene);
+            stagePrincipal.setTitle("Aparta Suites UQ");
+            stagePrincipal.centerOnScreen();
             stagePrincipal.show();
 
         } catch (Exception e) {
@@ -117,11 +124,12 @@ public class Navegacion {
         alert.showAndWait();
     }
 
-    public static void enviarAlertaConfirmacion(String mensaje){
+    public static boolean enviarAlertaConfirmacion(String mensaje){
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
-        alert.showAndWait();
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 
     public static boolean validarCredencial(TextField textUser,TextField textContraseña,String usuario, String contrasena){
@@ -154,16 +162,26 @@ public class Navegacion {
         return listaTemporadas;
     }
 
+    public List<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
     public void agregarTemporada(Temporada temporada) {
         if (temporada != null) {
             this.listaTemporadas.add(temporada);
         }
     }
-
+    private Empleado recepcionistaEditar;
     private Huesped huespedEditar;
     private Apartamento apartamentoSeleccionadoParaEditar;
     private Reserva reservarEditar;
 
+    public Empleado getEmpleadoEditar() {
+        return recepcionistaEditar;
+    }
+    public void setEmpleadoEditar(Empleado recepcionistaEditar) {
+        this.recepcionistaEditar = recepcionistaEditar;
+    }
     public Huesped getHuespedEditar() {
         return huespedEditar;
     }
@@ -186,5 +204,14 @@ public class Navegacion {
 
     public void setApartamentoSeleccionadoParaEditar(Apartamento apartamento) {
         this.apartamentoSeleccionadoParaEditar = apartamento;
+    }
+    public static boolean validarCredencialEmpleado(String user, String contrasena){
+        boolean validar=false;
+        for (Empleado empleado : getInstance().getListaEmpleados()){
+            if (empleado.getUsuario().equals(user)&&empleado.getContrasena().equals(contrasena)){
+                validar=true;
+            }
+        }
+        return validar;
     }
 }

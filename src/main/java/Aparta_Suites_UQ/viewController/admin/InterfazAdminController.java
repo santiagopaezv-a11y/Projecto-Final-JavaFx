@@ -13,9 +13,7 @@ import javafx.event.ActionEvent;
 
 public class InterfazAdminController {
     @FXML
-    private Button buttom_guestUser;
-    @FXML
-    private Button buttom_accesRecepcion;
+    private Button buttom_login;
     @FXML
     private Button buttom_changeUsuario;
     @FXML
@@ -156,23 +154,7 @@ public class InterfazAdminController {
         }
     }
     @FXML
-    private void mostrarPanelInicioRecepcion(ActionEvent event){
-    }
-    @FXML
-    private void cambiarModuloRecepcion(ActionEvent event){
-        String nombreUsuarioRecepcion="recepcion123";
-        String contrasenaRecepcion="123";
-        if (Navegacion.validarCredencial(txtNombreUsuario,txtContrasenaUsuario,nombreUsuarioRecepcion,contrasenaRecepcion)){
-            Navegacion.cambiarEscena(event,Paths.RECEPCION_PANEL);
-        }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Advertencia del Sistema");
-            alert.setHeaderText("El usuario o contrasena esta incorrecto");
-            alert.showAndWait();
-        }
-    }
-    @FXML
-    private void cambiarModuloUser(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.USUARIO_PANEL);
+    private void mostrarPanelLogin(ActionEvent event){
+        Navegacion.cambiarEscena(event, Paths.LOGIN);
     }
 }

@@ -23,4 +23,6 @@ public class Paths {
     public static final String ADDRESERVADIRECTA="/view/comunes/addReservaDirecta.fxml";
     public static final String REGISTRAROCUPANTE="/view/comunes/registrarOcupantes.fxml";
     public static final String EDITAR_ESTADO_APART="/view/comunes/editarEstadoController.fxml";
+    public static final String LOGIN= "/view/comunes/login.fxml";
+    public static final String ADD_EMPLEADO= "/view/comunes/addEmpleado.fxml";
 }

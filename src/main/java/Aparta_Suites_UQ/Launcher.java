@@ -2,8 +2,10 @@ package Aparta_Suites_UQ;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
+import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
 import Aparta_Suites_UQ.model.huesped.Ocupante;
+import Aparta_Suites_UQ.model.huesped.Recepcionista;
 import Aparta_Suites_UQ.model.reserva.CanalReserva;
 import Aparta_Suites_UQ.model.reserva.EstadoReserva;
 import Aparta_Suites_UQ.model.reserva.Estancia;
@@ -19,8 +21,8 @@ import java.util.List;
 
 public class Launcher {
     public static void main(String[] args) {
-        cargarDatosPrueba();
-        Application.launch(ApplicationLaunch.class, args);
+            cargarDatosPrueba();
+            Application.launch(ApplicationLaunch.class, args);
     }
     public static void cargarDatosPrueba() {
 
