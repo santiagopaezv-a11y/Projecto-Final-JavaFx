@@ -126,7 +126,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <Label layoutX="335.0" layoutY="75.0" text="Inicio" />
+      <Label layoutX="297.0" layoutY="27.0" text="Portal" />
       <AnchorPane layoutX="711.0" prefHeight="348.0" prefWidth="431.0">
          <children>
             <AnchorPane fx:id="panelChangeUsuario" layoutX="127.0" layoutY="63.0" prefHeight="200.0" prefWidth="317.0" styleClass="changUsuario" stylesheets="@../../css/HojaEstilos.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="63.0">

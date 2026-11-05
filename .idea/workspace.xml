@@ -4,10 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="regla politica de cancelacion">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/ConflictoCanal.java" afterDir="false" />
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="Actualizacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Pago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Temporada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Temporada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/TipoTemporada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/TipoTemporada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazApartamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazCheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazFolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazFolioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazRecepcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazRecepcionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazReservaDirectaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazReservaDirectaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/apartamento_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/administrador/apartamento_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazApartamento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazApartamento.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazCheck.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazCheck.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazFolio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazFolio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazRecepcion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazRecepcion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazReservaDirecta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazReservaDirecta.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/usuario/interfazUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/usuario/interfazUsuario.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +45,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -36,8 +63,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/santiagopaezv-a11y/Projecto-Final-JavaFx.git&quot;,
-    &quot;accountId&quot;: &quot;12b47696-9efd-4da5-9950-40c4246599d6&quot;
+    &quot;url&quot;: &quot;https://github.com/santiagopaezv-a11y/Projecto-Final-JavaFx&quot;,
+    &quot;accountId&quot;: &quot;468091cd-aeff-4fa2-8244-62b3ef5d10a7&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -147,7 +174,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
       </set>
     </attachedChunks>
   </component>

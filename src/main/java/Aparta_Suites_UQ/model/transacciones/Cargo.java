@@ -3,23 +3,25 @@ package Aparta_Suites_UQ.model.transacciones;
 import java.time.LocalDateTime;
 
 public class Cargo {
-    private final String descripcion;
-    private final int valor;
+    private final String concepto;
+    private final double valor;
     private final LocalDateTime fecha;
 
-    public Cargo(String descripcion, int valor) {
-        if (descripcion == null ||  descripcion.trim().isEmpty()){
-            throw new IllegalArgumentException("La descripcion del cargo no puede estar vacia. ");
+    public Cargo(String concepto, double valor) {
+        if (concepto == null || concepto.trim().isEmpty()) {
+            throw new IllegalArgumentException("La descripción del cargo no puede estar vacía.");
         }
-        if (valor <= 0){
-            throw new IllegalArgumentException("El valor del cargo debe ser mayor a 0. ");
+        // Permitir valores distintos de cero (los positivos son cargos, los negativos correcciones)
+        if (valor == 0) {
+            throw new IllegalArgumentException("El valor del cargo no puede ser cero.");
         }
 
-        this.descripcion = descripcion;
+        this.concepto = concepto;
         this.valor = valor;
         this.fecha = LocalDateTime.now();
     }
-    public String getDescripcion() { return descripcion; }
-    public int getValor() { return valor; }
+
+    public String getConcepto() { return concepto; }
+    public double getValor() { return valor; }
     public LocalDateTime getFecha() { return fecha; }
 }

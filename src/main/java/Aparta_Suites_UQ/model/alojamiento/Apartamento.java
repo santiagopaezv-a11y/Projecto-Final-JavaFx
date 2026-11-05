@@ -1,12 +1,12 @@
 package Aparta_Suites_UQ.model.alojamiento;
 import Aparta_Suites_UQ.model.reserva.Reserva;
-import Aparta_Suites_UQ.model.transacciones.TipoTemporada;
 import Aparta_Suites_UQ.model.transacciones.Bloqueo;
-import Aparta_Suites_UQ.utils.Navegacion;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Apartamento {
@@ -23,6 +23,7 @@ public class Apartamento {
     static int numeroApartamentos=0;
     private List<Reserva> reservas;
     private List<Bloqueo> bloqueos;
+    private Map<TipoTemporada, Double> tarifasPorTemporada;
 
     public Apartamento(String nombre, int numeroDormitorios, int cantMaximaPersonas, String caracteristicas, double precioNoche, EstadoOperativo estadoOperativo ) {//String rutaImage
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -46,7 +47,7 @@ public class Apartamento {
         if (precioNoche <= 0){
             throw new IllegalArgumentException("El precio debe ser mayor a 0. ");
         }
-
+        this.tarifasPorTemporada = new HashMap<>();
         this.nombre = nombre;
         this.numeroDormitorios = numeroDormitorios;
         this.cantMaximaPersonas = cantMaximaPersonas;
@@ -61,11 +62,9 @@ public class Apartamento {
 //    public String getRutaImage() {
 //        return rutaImage;
 //    }
-
 //    public void setRutaImage(String rutaImage) {
 //        this.rutaImage = rutaImage;
 //    }
-
     public void agregarBloqueo(Bloqueo nuevoBloqueo){
         if (nuevoBloqueo == null){
             throw new IllegalArgumentException("El bloqueo no puede estar vacio. ");
@@ -79,7 +78,7 @@ public class Apartamento {
 
     public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
 
-        boolean tieneReservaSolapada = reservas.stream().anyMatch(reserva -> reserva.seSolapaCon(fechaEntrada, fechaSalida));
+        boolean tieneReservaSolapada = reservas.stream().anyMatch(reserva -> reserva.getEstancia().seSolapaCon(fechaEntrada, fechaSalida));
 
         if (tieneReservaSolapada) {
             return false;
@@ -93,7 +92,7 @@ public class Apartamento {
         if (nuevaReserva == null){
             throw new IllegalArgumentException("La reserva no puede ser nula. ");
         }
-        if (!estaDisponible(nuevaReserva.getFechaEntrada(), nuevaReserva.getFechaSalida())){
+        if (!estaDisponible(nuevaReserva.getEstancia().getFechaEntrada(), nuevaReserva.getEstancia().getFechaSalida())){
             throw  new IllegalStateException("El apartamento " + nombre + " ya tiene una reserva en el rango seleccionado. ");
         }
         this.reservas.add(nuevaReserva);
@@ -229,5 +228,13 @@ public class Apartamento {
 
     public List<Bloqueo> getBloqueos() {
         return new ArrayList<>(bloqueos);
+    }
+    public void setTarifa(TipoTemporada tipo, double precio) {
+        tarifasPorTemporada.put(tipo, precio);
+    }
+
+    public double getTarifa(TipoTemporada tipo) {
+        // Devuelve la tarifa del tipo o 0.0 por defecto
+        return tarifasPorTemporada.getOrDefault(tipo, 0.0);
     }
 }

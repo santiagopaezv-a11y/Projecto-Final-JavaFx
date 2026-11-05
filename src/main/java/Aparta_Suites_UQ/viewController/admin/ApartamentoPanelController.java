@@ -51,22 +51,6 @@ public class ApartamentoPanelController implements Initializable {
             }
         }
     }
-    //Base de datos de prueba
-    private List<Apartamento> obtenerApartamentosDePrueba() {
-        return List.of(
-                new Apartamento("ApartamentoPedro", 1, 2, "Balcon",150000,EstadoOperativo.EN_PREPARACION),
-                new Apartamento("Sanchez", 2, 4, "Balcon y Cocina",180000,EstadoOperativo.PREPARADO),
-                new Apartamento("Paez", 3, 5, "Piscina",200000,EstadoOperativo.FUERA_DE_SERVICIO),
-                new Apartamento("Casallas", 2, 4, "Aire acondicionado",160000,EstadoOperativo.OCUPADO),
-                new Apartamento("Samuel",3,6,"Balcon y aire acondicionado", 175000,EstadoOperativo.OCUPADO),
-                new Apartamento("Apartamento2", 2, 4, "Balcon",150000,EstadoOperativo.EN_PREPARACION),
-                new Apartamento("Sanchez3", 2, 4, "Balcon y Cocina",180000,EstadoOperativo.PENDIENTE),
-                new Apartamento("Paesihno", 5, 12, "Piscina",200000,EstadoOperativo.FUERA_DE_SERVICIO),
-                new Apartamento("Casañas", 1, 1, "Aire acondicionado",160000,EstadoOperativo.OCUPADO),
-                new Apartamento("Maria",3,6,"Balcon y aire acondicionado", 175000,EstadoOperativo.PENDIENTE)
-
-        );
-    }
     @FXML
     private Button buttom_addApart;
     @FXML

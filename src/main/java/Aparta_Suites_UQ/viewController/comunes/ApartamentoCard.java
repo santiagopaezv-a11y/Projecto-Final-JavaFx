@@ -46,14 +46,32 @@ public class ApartamentoCard {
 
     @FXML
     private Label lblPrecioNoche;
-
+    private Apartamento apartamentoActual;
+    private Runnable onEliminarListener;
+    private Runnable onActualizarListener;
+    public void setOnEliminarListener(Runnable listener) {
+        this.onEliminarListener = listener;
+    }
+    public void setOnActualizarListener(Runnable listener) {
+        this.onActualizarListener = listener;
+    }
     public void setApartamento(Apartamento apart){
-        apartamentoActual=apart;
-        lblCodigoCard.setText("Codigo: "+apart.getId());
-        lblDormidorios.setText("Dormitorios: "+apart.getNumeroDormitorios());
-        lblCapacidad.setText("Capacidad: "+apart.getCantMaximaPersonas());
+        apartamentoActual = apart;
+        lblCodigoCard.setText("Codigo: " + apart.getId());
+        lblDormidorios.setText("Dormitorios: " + apart.getNumeroDormitorios());
+        lblCapacidad.setText("Capacidad: " + apart.getCantMaximaPersonas());
         lblCaracteristicas.setText(apart.getCaracteristicas());
-        lblPrecioNoche.setText("$"+apart.getPrecioNoche());
+        lblPrecioNoche.setText("$" + apart.getPrecioNoche());
+
+        // Limpiar clases previas para evitar acumulación al refrescar
+        pane_estado.getStyleClass().removeAll(
+                "estadoOperativoPreparado",
+                "estadoOperativoPendiente",
+                "estadoOperativoEn_preparacion",
+                "estadoOperativoOcupado",
+                "estadoOperativoFuera_De_Servicio"
+        );
+
         switch (apart.getEstadoOperativo()){
             case PREPARADO :
                 lblEstado.setText("Preparado");
@@ -77,43 +95,57 @@ public class ApartamentoCard {
                 pane_estado.getStyleClass().add("estadoOperativoFuera_De_Servicio");
                 break;
         }
-        if (apart.getMotivoFueraServicio()!=null&&apart.getEstadoOperativo()==EstadoOperativo.FUERA_DE_SERVICIO){
+
+        if (apart.getMotivoFueraServicio() != null && apart.getEstadoOperativo() == EstadoOperativo.FUERA_DE_SERVICIO){
             lbl_motivoFueraServicio.setText(apart.getMotivoFueraServicio());
             lbl_motivoFueraServicio.setVisible(true);
             lbl_motivoFueraServicio1.setVisible(true);
-        }else {
+        } else {
             lbl_motivoFueraServicio1.setVisible(false);
             lbl_motivoFueraServicio.setVisible(false);
         }
     }
-    private Apartamento apartamentoActual;
-
-    private Runnable onEliminarListener;
-    public void setOnEliminarListener(Runnable listener) {
-        this.onEliminarListener = listener;}
     @FXML
     private void eliminarApartamento(ActionEvent event) {
         System.out.println("Se hizo click");
         if (apartamentoActual != null) {
-            System.out.println("Objeto que se elimina "+apartamentoActual.getNombre());
-            boolean eliminado =Navegacion.getInstance().getListaApartamentos().remove(apartamentoActual);
-            System.out.println("Se borro la lista?: "+eliminado);
+            System.out.println("Objeto que se elimina " + apartamentoActual.getNombre());
+            boolean eliminado = Navegacion.getInstance().getListaApartamentos().remove(apartamentoActual);
+            System.out.println("Se borro la lista?: " + eliminado);
             if (onEliminarListener != null) {
                 onEliminarListener.run();
                 System.out.println("Vista recargada correctamente.");
-            }else {
+            } else {
                 System.out.println("ADVERTENCIA: El listener de eliminación es nulo.");
-        }
-    }else {
+            }
+        } else {
             System.out.println("ERROR: apartamentoActual es null.");
         }
     }
+    private boolean modoSoloEstado = false;
+    public void setModoSoloEstado(boolean modoSoloEstado) {
+        this.modoSoloEstado = modoSoloEstado;
+        if (buttom_eliminar != null) {
+            buttom_eliminar.setVisible(!modoSoloEstado);
+        }
+    }
     @FXML
-    private void editarApartamento(ActionEvent event){
-        if (apartamentoActual != null){
+    private void editarApartamento(ActionEvent event) {
+        if (apartamentoActual != null) {
             Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(apartamentoActual);
-            Navegacion.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
-            if (onEliminarListener !=null ){
+
+            if (modoSoloEstado) {
+                // Abre el modal de estado
+                Navegacion.abrirModal(event, Paths.EDITAR_ESTADO_APART);
+            } else {
+                // Abre el modal completo
+                Navegacion.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
+            }
+
+            // Se ejecuta cuando el modal se cierra
+            if (onActualizarListener != null) {
+                onActualizarListener.run();
+            } else if (onEliminarListener != null) {
                 onEliminarListener.run();
             }
         }

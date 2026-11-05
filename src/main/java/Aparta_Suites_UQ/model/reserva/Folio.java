@@ -31,16 +31,16 @@ public class Folio {
 
     //Saldo es la diferencia del total menos los pagos actuales
 
-    public int getSaldo() {
-        int totalCargos = cargos.stream().mapToInt(Cargo::getValor).sum();
-        int totalPagos = pagos.stream().mapToInt(Pago::getValor).sum();
+    public double getSaldo() {
+        double totalCargos = cargos.stream().mapToDouble(Cargo::getValor).sum();
+        double totalPagos = pagos.stream().mapToDouble(Pago::getValor).sum();
         return totalCargos - totalPagos;
     }
-    public int getTotalCargos() {
-        return  cargos.stream().mapToInt(Cargo::getValor).sum();
+    public double getTotalCargos() {
+        return  cargos.stream().mapToDouble(Cargo::getValor).sum();
     }
-    public int getTotalPagos() {
-        return  pagos.stream().mapToInt(Pago::getValor).sum();
+    public double getTotalPagos() {
+        return  pagos.stream().mapToDouble(Pago::getValor).sum();
     }
 
     public void registrarCorreccionCargo(String motivo, int valorNegativo) {
@@ -52,7 +52,7 @@ public class Folio {
         }
         this.cargos.add(new Cargo("Corrección - " + motivo.trim(), valorNegativo));
     }
-    public void registrarCorreccionPago(int valorNegativo, MedioPago medio) {
+    public void registrarCorreccionPago(double valorNegativo, MedioPago medio) {
        if (medio == null) {
            throw new IllegalArgumentException("El medio de pago no puede ser nulo.");
        }

@@ -25,6 +25,7 @@ public class Huesped extends Persona {
     public void setImagenOpcional(String imagenOpcional) {
         this.imagenOpcional = imagenOpcional;
     }
+
 }
 
 

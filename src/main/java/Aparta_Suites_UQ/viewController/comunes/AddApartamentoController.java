@@ -125,5 +125,6 @@ public class AddApartamentoController implements Initializable {
             txtCaracteristica.setText(aptAEditar.getCaracteristicas());
             txtPrecioNoche.setText(String.valueOf(aptAEditar.getPrecioNoche()));
         }
+
     }
 }

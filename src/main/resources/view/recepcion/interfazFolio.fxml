@@ -2,17 +2,24 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazFolioController">
     <children>
-        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
+        <!-- BARRA LATERAL IZQUIERDA -->
+        <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
             <children>
                 <Pane layoutX="18.0" layoutY="21.0" prefHeight="81.0" prefWidth="200.0">
                     <children>
@@ -33,86 +40,8 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutY="360.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                    <children>
-                        <Button fx:id="buttom_reservaDirecta" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelReserva" onMouseEntered="#vistaMouseEncimaReserva" onMouseExited="#vistaMouseAfueraReserva" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
-                        <Rectangle fx:id="rect_reserva_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
-                        <ImageView disable="true" fitHeight="30.0" fitWidth="31.0" layoutX="25.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../image/reserva.png" />
-                            </image>
-                        </ImageView>
-                        <Label disable="true" layoutX="65.0" layoutY="6.0" prefHeight="40.0" prefWidth="151.0" stylesheets="@../../css/HojaEstilos.css" text="Reserva directa">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                            <styleClass>
-                                <String fx:value="roboto-texto" />
-                                <String fx:value="opacitylbl" />
-                            </styleClass>
-                        </Label>
-                    </children>
-                </Pane>
-                <Pane layoutX="1.0" layoutY="252.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0">
-                    <children>
-                        <Button fx:id="buttom_folio" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelFolio" onMouseEntered="#vistaMouseEncimaFolio" onMouseExited="#vistaMouseAfueraFolio" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
-                        <Rectangle fx:id="rect_folio_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
-                        <Label disable="true" layoutX="66.0" layoutY="12.0" stylesheets="@../../css/HojaEstilos.css" text="Folio">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                            <styleClass>
-                                <String fx:value="roboto-texto" />
-                                <String fx:value="opacitylbl" />
-                            </styleClass>
-                        </Label>
-                        <ImageView disable="true" fitHeight="23.0" fitWidth="33.0" layoutX="25.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../image/folio.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Pane layoutX="1.0" layoutY="306.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="291.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0">
-                    <children>
-                        <Button fx:id="buttom_apartamento" layoutX="16.0" layoutY="6.0" mnemonicParsing="false" onAction="#mostrarPanelApartamento" onMouseEntered="#vistaMouseEncimaApartamento" onMouseExited="#vistaMouseAfueraApartamento" prefHeight="40.0" prefWidth="220.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
-                        <Rectangle fx:id="rect_apartamento_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
-                        <Label disable="true" layoutX="67.0" layoutY="15.0" text="Apartamentos">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                            <styleClass>
-                                <String fx:value="roboto-texto" />
-                                <String fx:value="opacitylbl" />
-                            </styleClass>
-                        </Label>
-                        <ImageView disable="true" fitHeight="40.0" fitWidth="80.0" layoutX="23.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../image/apartamento.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Pane layoutX="2.0" layoutY="189.0" prefHeight="53.0" prefWidth="234.0" AnchorPane.bottomAnchor="408.0">
-                    <children>
-                        <Button fx:id="buttom_Check" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelCheck" onMouseEntered="#vistaMouseEncimaCheck" onMouseExited="#vistaMouseAfueraCheck" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
-                        <Rectangle fx:id="rect_check_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
-                        <Label disable="true" layoutX="65.0" layoutY="13.0" prefHeight="27.0" prefWidth="120.0" stylesheets="@../../css/HojaEstilos.css" text="Check in/out">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                            <styleClass>
-                                <String fx:value="opacitylbl" />
-                                <String fx:value="roboto-texto" />
-                            </styleClass>
-                        </Label>
-                        <ImageView disable="true" fitHeight="28.0" fitWidth="28.0" layoutX="25.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../image/Lupa.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
+
+                <!-- BOTÓN INICIO -->
                 <Pane layoutX="2.0" layoutY="136.0" prefHeight="53.0" prefWidth="234.0">
                     <children>
                         <Button fx:id="buttom_inicioRecepcion" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelInicioRecepcion" onMouseEntered="#vistaMouseEncimaInicio" onMouseExited="#vistaMouseAfueraInicio" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
@@ -133,8 +62,209 @@
                         </Label>
                     </children>
                 </Pane>
+
+                <!-- BOTÓN CHECK IN/OUT -->
+                <Pane layoutX="2.0" layoutY="189.0" prefHeight="53.0" prefWidth="234.0">
+                    <children>
+                        <Button fx:id="buttom_Check" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelCheck" onMouseEntered="#vistaMouseEncimaCheck" onMouseExited="#vistaMouseAfueraCheck" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
+                        <Rectangle fx:id="rect_check_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
+                        <Label disable="true" layoutX="65.0" layoutY="13.0" prefHeight="27.0" prefWidth="120.0" stylesheets="@../../css/HojaEstilos.css" text="Check in/out">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="opacitylbl" />
+                                <String fx:value="roboto-texto" />
+                            </styleClass>
+                        </Label>
+                        <ImageView disable="true" fitHeight="28.0" fitWidth="28.0" layoutX="25.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../image/Lupa.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+                <!-- BOTÓN FOLIO -->
+                <Pane layoutX="1.0" layoutY="252.0" prefHeight="53.0" prefWidth="234.0">
+                    <children>
+                        <Button fx:id="buttom_folio" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelFolio" onMouseEntered="#vistaMouseEncimaFolio" onMouseExited="#vistaMouseAfueraFolio" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
+                        <Rectangle fx:id="rect_folio_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="true" width="4.0" />
+                        <Label disable="true" layoutX="66.0" layoutY="12.0" stylesheets="@../../css/HojaEstilos.css" text="Folio">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="roboto-texto" />
+                                <String fx:value="opacitylbl" />
+                            </styleClass>
+                        </Label>
+                        <ImageView disable="true" fitHeight="23.0" fitWidth="33.0" layoutX="25.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../image/folio.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+                <!-- BOTÓN APARTAMENTOS -->
+                <Pane layoutX="1.0" layoutY="306.0" prefHeight="53.0" prefWidth="234.0">
+                    <children>
+                        <Button fx:id="buttom_apartamento" layoutX="16.0" layoutY="6.0" mnemonicParsing="false" onAction="#mostrarPanelApartamento" onMouseEntered="#vistaMouseEncimaApartamento" onMouseExited="#vistaMouseAfueraApartamento" prefHeight="40.0" prefWidth="220.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
+                        <Rectangle fx:id="rect_apartamento_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
+                        <Label disable="true" layoutX="67.0" layoutY="15.0" text="Apartamentos">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="roboto-texto" />
+                                <String fx:value="opacitylbl" />
+                            </styleClass>
+                        </Label>
+                        <ImageView disable="true" fitHeight="40.0" fitWidth="80.0" layoutX="23.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../image/apartamento.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+                <!-- BOTÓN RESERVA DIRECTA -->
+                <Pane layoutY="360.0" prefHeight="53.0" prefWidth="234.0">
+                    <children>
+                        <Button fx:id="buttom_reservaDirecta" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#mostrarPanelReserva" onMouseEntered="#vistaMouseEncimaReserva" onMouseExited="#vistaMouseAfueraReserva" prefHeight="40.0" prefWidth="221.0" styleClass="buttom-action" stylesheets="@../../css/HojaEstilos.css" />
+                        <Rectangle fx:id="rect_reserva_buttom" arcHeight="5.0" arcWidth="5.0" fill="#7279b5" height="39.0" layoutX="3.0" layoutY="8.0" stroke="#7279b5" strokeType="INSIDE" visible="false" width="4.0" />
+                        <ImageView disable="true" fitHeight="30.0" fitWidth="31.0" layoutX="25.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../image/reserva.png" />
+                            </image>
+                        </ImageView>
+                        <Label disable="true" layoutX="65.0" layoutY="6.0" prefHeight="40.0" prefWidth="151.0" stylesheets="@../../css/HojaEstilos.css" text="Reserva directa">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="roboto-texto" />
+                                <String fx:value="opacitylbl" />
+                            </styleClass>
+                        </Label>
+                    </children>
+                </Pane>
             </children>
         </AnchorPane>
-        <Label layoutX="335.0" layoutY="75.0" text="Folio" />
+
+        <!-- PANEL DE CONTENIDO PRINCIPAL (DERECHA) -->
+        <VBox layoutX="245.0" layoutY="10.0" prefHeight="630.0" prefWidth="945.0" spacing="12.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15;">
+            <children>
+                <!-- TÍTULO -->
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Gestión de Folios de Reserva" />
+
+                <!-- SELECCIONADOR DE RESERVA -->
+                <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #e0e0e0; -fx-border-radius: 6;">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Seleccionar Reserva:" />
+                        <ComboBox fx:id="cmbReservas" onAction="#onReservaSeleccionada" prefWidth="300.0" promptText="Elija una reserva..." styleClass="comboBox" stylesheets="@../../css/HojaEstilos.css" />
+                        <Label fx:id="lblInfoTitular" style="-fx-text-fill: #7f8c8d; -fx-font-style: italic;" text="Titular: -- | Apt: --" />
+                    </children>
+                </HBox>
+
+                <!-- TARJETAS DE MÚLTIPLES RESÚMENES FINANCIEROS -->
+                <HBox spacing="15.0">
+                    <children>
+                        <VBox style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #cbd5e1; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-text-fill: #64748b; -fx-font-size: 12px;" text="Total Cargos" />
+                                <Label fx:id="lblTotalCargos" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #0284c7;" text="\$ 0" />
+                            </children>
+                        </VBox>
+                        <VBox style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #cbd5e1; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-text-fill: #64748b; -fx-font-size: 12px;" text="Total Pagos / Abonos" />
+                                <Label fx:id="lblTotalPagos" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #16a34a;" text="\$ 0" />
+                            </children>
+                        </VBox>
+                        <VBox style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #cbd5e1; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-text-fill: #64748b; -fx-font-size: 12px;" text="Saldo Pendiente" />
+                                <Label fx:id="lblSaldo" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #dc2626;" text="\$ 0" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- TABLAS Y FORMULARIOS LADO A LADO -->
+                <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- SECCIÓN CARGOS (IZQUIERDA) -->
+                        <VBox spacing="8.0" style="-fx-background-color: white; -fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #e2e8f0; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #334155;" text="Cargos Registrados" />
+                                <TableView fx:id="tblCargos" stylesheets="@../../css/HojaEstilos.css" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colFechaCargo" prefWidth="130.0" text="Fecha / Hora" />
+                                        <TableColumn fx:id="colConceptoCargo" prefWidth="270.0" text="Concepto" />
+                                        <TableColumn fx:id="colValorCargo" prefWidth="160.0" text="Valor ($)" />
+                                    </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                                </TableView>
+
+                                <!-- FORMULARIO DE CARGOS -->
+                                <VBox spacing="6.0" style="-fx-background-color: #f8fafc; -fx-padding: 8; -fx-background-radius: 4; -fx-border-color: #cbd5e1; -fx-border-radius: 4;">
+                                    <children>
+                                        <HBox spacing="6.0">
+                                            <children>
+                                                <TextField fx:id="txtConceptoCargo" promptText="Concepto (ej. Minibar)" styleClass="textField2" stylesheets="@../../css/HojaEstilos.css" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="txtValorCargo" prefWidth="110.0" promptText="Valor ($)" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_RIGHT" spacing="6.0">
+                                            <children>
+                                                <Button onAction="#onAgregarCargo" style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-weight: bold;" text="Agregar Cargo" />
+                                                <Button onAction="#onCorreccionCargo" style="-fx-background-color: #d97706; -fx-text-fill: white;" text="Corrección (-)" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- SECCIÓN PAGOS (DERECHA) -->
+                        <VBox spacing="8.0" style="-fx-background-color: white; -fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #e2e8f0; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #334155;" text="Pagos y Abonos Recibidos" />
+                                <TableView fx:id="tblPagos" stylesheets="@../../css/HojaEstilos.css" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colFechaPago" prefWidth="130.0" text="Fecha / Hora" />
+                                        <TableColumn fx:id="colMedioPago" prefWidth="270.0" text="Medio de Pago" />
+                                        <TableColumn fx:id="colValorPago" prefWidth="160.0" text="Valor ($)" />
+                                    </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                                </TableView>
+                                <VBox spacing="6.0" style="-fx-background-color: #f8fafc; -fx-padding: 8; -fx-background-radius: 4; -fx-border-color: #cbd5e1; -fx-border-radius: 4;">
+                                    <children>
+                                        <HBox spacing="6.0">
+                                            <children>
+                                                <ComboBox fx:id="cmbMedioPago" promptText="Medio de Pago" styleClass="comboBox" stylesheets="@../../css/HojaEstilos.css" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="txtValorPago" prefWidth="110.0" promptText="Valor ($)" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_RIGHT" spacing="6.0">
+                                            <children>
+                                                <Button onAction="#onRegistrarPago" style="-fx-background-color: #16a34a; -fx-text-fill: white; -fx-font-weight: bold;" text="Registrar Pago" />
+                                                <Button onAction="#onCorreccionPago" style="-fx-background-color: #d97706; -fx-text-fill: white;" text="Corrección (-)" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>
