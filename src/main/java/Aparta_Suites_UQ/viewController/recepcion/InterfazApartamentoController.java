@@ -65,7 +65,6 @@ public class InterfazApartamentoController implements Initializable{
         // 2. Cargar las tarjetas al abrir la pantalla
         cargarTarjetasApartamentos();
     }
-
     private void cargarTarjetasApartamentos() {
         List<Apartamento> listaDeApartamentos = Navegacion.getInstance().getListaApartamentos();
         contenedorTarjetas.getChildren().clear();
@@ -91,7 +90,6 @@ public class InterfazApartamentoController implements Initializable{
             }
         }
     }
-
     @FXML
     void mostrarPanelCheck(ActionEvent event) {
         Navegacion.cambiarEscena(event, Paths.CHECK_PANEL);

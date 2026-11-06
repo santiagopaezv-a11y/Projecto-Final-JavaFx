@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class ApartamentoCard {
@@ -46,6 +45,7 @@ public class ApartamentoCard {
 
     @FXML
     private Label lblPrecioNoche;
+    private boolean modoSoloEstado = false;
     private Apartamento apartamentoActual;
     private Runnable onEliminarListener;
     private Runnable onActualizarListener;
@@ -55,6 +55,7 @@ public class ApartamentoCard {
     public void setOnActualizarListener(Runnable listener) {
         this.onActualizarListener = listener;
     }
+
     public void setApartamento(Apartamento apart){
         apartamentoActual = apart;
         lblCodigoCard.setText("Codigo: " + apart.getId());
@@ -122,11 +123,15 @@ public class ApartamentoCard {
             System.out.println("ERROR: apartamentoActual es null.");
         }
     }
-    private boolean modoSoloEstado = false;
     public void setModoSoloEstado(boolean modoSoloEstado) {
         this.modoSoloEstado = modoSoloEstado;
+
+        // Ocultar el botón de eliminar si estamos en modo solo estado
         if (buttom_eliminar != null) {
             buttom_eliminar.setVisible(!modoSoloEstado);
+
+            // Opcional: quita el espacio reservado del botón en el layout si es necesario
+            buttom_eliminar.setManaged(!modoSoloEstado);
         }
     }
     @FXML

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="280.0" prefWidth="400.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.RegistrarOcupanteController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <!-- Header -->
+                <VBox spacing="4.0">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Datos del Ocupante" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;" text="Ingrese el nombre completo y fecha de nacimiento del acompañante." />
+                    </children>
+                </VBox>
+
+                <Separator prefWidth="200.0" />
+
+                <!-- Formulario -->
+                <VBox spacing="12.0">
+                    <children>
+                        <!-- Nombre Completo -->
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nombre Completo *" />
+                                <TextField fx:id="txtNombre" prefHeight="35.0" promptText="Ej: Mateo Gómez" style="-fx-background-radius: 5;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Fecha de Nacimiento -->
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Fecha de Nacimiento *" />
+                                <DatePicker fx:id="dateFechaNacimiento" prefHeight="35.0" prefWidth="360.0" promptText="dd/mm/aaaa" style="-fx-background-radius: 5;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <Separator prefWidth="200.0" />
+
+                <!-- Botones de Acción -->
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#onCancelar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #BDC3C7; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-background-radius: 5;" text="Cancelar" />
+                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Agregar" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
