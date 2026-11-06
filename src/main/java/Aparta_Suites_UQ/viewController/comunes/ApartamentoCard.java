@@ -2,7 +2,7 @@ package Aparta_Suites_UQ.viewController.comunes;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -111,7 +111,7 @@ public class ApartamentoCard {
         System.out.println("Se hizo click");
         if (apartamentoActual != null) {
             System.out.println("Objeto que se elimina " + apartamentoActual.getNombre());
-            boolean eliminado = Navegacion.getInstance().getListaApartamentos().remove(apartamentoActual);
+            boolean eliminado = Empresa.getInstance().getListaApartamentos().remove(apartamentoActual);
             System.out.println("Se borro la lista?: " + eliminado);
             if (onEliminarListener != null) {
                 onEliminarListener.run();
@@ -137,14 +137,14 @@ public class ApartamentoCard {
     @FXML
     private void editarApartamento(ActionEvent event) {
         if (apartamentoActual != null) {
-            Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(apartamentoActual);
+            Empresa.getInstance().setApartamentoSeleccionadoParaEditar(apartamentoActual);
 
             if (modoSoloEstado) {
                 // Abre el modal de estado
-                Navegacion.abrirModal(event, Paths.EDITAR_ESTADO_APART);
+                Empresa.abrirModal(event, Paths.EDITAR_ESTADO_APART);
             } else {
                 // Abre el modal completo
-                Navegacion.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
+                Empresa.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
             }
 
             // Se ejecuta cuando el modal se cierra

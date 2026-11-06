@@ -1,6 +1,6 @@
 package Aparta_Suites_UQ.viewController.admin;
 
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -103,29 +103,29 @@ public class InterfazTemporadaController {
     }
     @FXML
     private void mostrarPanelApartamento(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.APARTAMENTO_PANEL);
+        Empresa.cambiarEscena(event, Paths.APARTAMENTO_PANEL);
     }
     @FXML
     private void mostrarPanelTemporadas(){
     }
     @FXML
     private void mostrarPanelEmpleados(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.EMPLEADO_PANEL);
+        Empresa.cambiarEscena(event, Paths.EMPLEADO_PANEL);
     }
     @FXML
     private void mostrarPanelInforme(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.INFORME_PANEL);
+        Empresa.cambiarEscena(event, Paths.INFORME_PANEL);
     }
     @FXML
     private void mostrarPanelConfiguracion(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.CONFIGURACION_PANEL);
+        Empresa.cambiarEscena(event,Paths.CONFIGURACION_PANEL);
     }
     @FXML
     private void mostrarPanelBloqueo(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.BLOQUEO_PANEL);
+        Empresa.cambiarEscena(event,Paths.BLOQUEO_PANEL);
     }
     @FXML
     private void mostrarPanelInicio(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.ADMINPANEL);
+        Empresa.cambiarEscena(event,Paths.ADMINPANEL);
     }
 }

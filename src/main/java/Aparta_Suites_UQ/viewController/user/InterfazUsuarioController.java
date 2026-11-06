@@ -1,5 +1,5 @@
 package Aparta_Suites_UQ.viewController.user;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +46,7 @@ public class InterfazUsuarioController {
 
     @FXML
     void mostrarPanelCotizacion(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.COTIZACION_PANEL);
+        Empresa.cambiarEscena(event, Paths.COTIZACION_PANEL);
     }
 
     @FXML
@@ -56,12 +56,12 @@ public class InterfazUsuarioController {
 
     @FXML
     void mostrarPanelPagos(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.PAGO_PANEL);
+        Empresa.cambiarEscena(event, Paths.PAGO_PANEL);
     }
 
     @FXML
     void mostrarPanelReserva(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RESERVA_PANEL);
+        Empresa.cambiarEscena(event, Paths.RESERVA_PANEL);
     }
 
     @FXML
@@ -119,11 +119,11 @@ public class InterfazUsuarioController {
         String contrasenaRecepcion="123";
         String nombreUsuarioAdmin="admin123";
         String contrasenaAdmin="1234";
-        if (Navegacion.validarCredencial(txtNombreUsuario,txtContrasenaUsuario,nombreUsuarioAdmin,contrasenaAdmin)){
-            Navegacion.cambiarEscena(event,Paths.ADMINPANEL);
+        if (Empresa.validarCredencial(txtNombreUsuario,txtContrasenaUsuario,nombreUsuarioAdmin,contrasenaAdmin)){
+            Empresa.cambiarEscena(event,Paths.ADMINPANEL);
             return;
-        }else if(Navegacion.validarCredencial(txtNombreUsuario,txtContrasenaUsuario,nombreUsuarioRecepcion,contrasenaRecepcion)){
-            Navegacion.cambiarEscena(event,Paths.RECEPCION_PANEL);
+        }else if(Empresa.validarCredencial(txtNombreUsuario,txtContrasenaUsuario,nombreUsuarioRecepcion,contrasenaRecepcion)){
+            Empresa.cambiarEscena(event,Paths.RECEPCION_PANEL);
         }else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Advertencia del Sistema");

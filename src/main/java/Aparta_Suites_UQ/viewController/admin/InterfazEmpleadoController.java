@@ -1,7 +1,7 @@
 package Aparta_Suites_UQ.viewController.admin;
 
 import Aparta_Suites_UQ.model.huesped.Empleado;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -95,7 +95,7 @@ public class InterfazEmpleadoController {
     }
 
     private void cargarDatosEmpleados() {
-        List<Empleado> guardados = Navegacion.getInstance().getListaEmpleados();
+        List<Empleado> guardados = Empresa.getInstance().getListaEmpleados();
         listaEmpleados.setAll(guardados);
 
         listaFiltrada = new FilteredList<>(listaEmpleados, p -> true);
@@ -133,8 +133,8 @@ public class InterfazEmpleadoController {
 
     @FXML
     void onNuevoEmpleado(ActionEvent event) {
-        Navegacion.getInstance().setEmpleadoEditar(null);
-        Navegacion.abrirModal(event, Paths.ADD_EMPLEADO);
+        Empresa.getInstance().setEmpleadoEditar(null);
+        Empresa.abrirModal(event, Paths.ADD_EMPLEADO);
         cargarDatosEmpleados();
     }
 
@@ -142,11 +142,11 @@ public class InterfazEmpleadoController {
     void onEditarEmpleado(ActionEvent event) {
         Empleado seleccionado = tblEmpleados.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            Navegacion.enviarAlertaWarning("Por favor seleccione un empleado de la tabla.");
+            Empresa.enviarAlertaWarning("Por favor seleccione un empleado de la tabla.");
             return;
         }
-        Navegacion.getInstance().setEmpleadoEditar(seleccionado);
-        Navegacion.abrirModal(event, Paths.ADD_EMPLEADO);
+        Empresa.getInstance().setEmpleadoEditar(seleccionado);
+        Empresa.abrirModal(event, Paths.ADD_EMPLEADO);
         cargarDatosEmpleados();
     }
 
@@ -154,16 +154,16 @@ public class InterfazEmpleadoController {
     void onEliminarEmpleado(ActionEvent event) {
         Empleado seleccionado = tblEmpleados.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            Navegacion.enviarAlertaWarning("Seleccione el empleado que desea eliminar.");
+            Empresa.enviarAlertaWarning("Seleccione el empleado que desea eliminar.");
             return;
         }
 
-        boolean confirmar = Navegacion.enviarAlertaConfirmacion(
+        boolean confirmar = Empresa.enviarAlertaConfirmacion(
                 "¿Está seguro de que desea eliminar a " + seleccionado.getNombre());
         if (confirmar) {
-            Navegacion.getInstance().getListaEmpleados().remove(seleccionado);
+            Empresa.getInstance().getListaEmpleados().remove(seleccionado);
             cargarDatosEmpleados();
-            Navegacion.enviarAlertaInfo("Empleado eliminado correctamente.");
+            Empresa.enviarAlertaInfo("Empleado eliminado correctamente.");
         }
     }
 
@@ -183,11 +183,11 @@ public class InterfazEmpleadoController {
     @FXML void vistaMouseEncimaBloqueo(MouseEvent event) { rect_bloqueo_buttom.setVisible(true); }
     @FXML private void vistaMouseAfueraBloqueo(MouseEvent event) { rect_bloqueo_buttom.setVisible(false); }
 
-    @FXML private void mostrarPanelApartamento(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.APARTAMENTO_PANEL); }
-    @FXML private void mostrarPanelTemporadas(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.TEMPORADAS_PANEL); }
+    @FXML private void mostrarPanelApartamento(ActionEvent event) { Empresa.cambiarEscena(event, Paths.APARTAMENTO_PANEL); }
+    @FXML private void mostrarPanelTemporadas(ActionEvent event) { Empresa.cambiarEscena(event, Paths.TEMPORADAS_PANEL); }
     @FXML private void mostrarPanelEmpleados() { }
-    @FXML private void mostrarPanelInforme(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.INFORME_PANEL); }
-    @FXML private void mostrarPanelConfiguracion(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.CONFIGURACION_PANEL); }
-    @FXML private void mostrarPanelBloqueo(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.BLOQUEO_PANEL); }
-    @FXML private void mostrarPanelInicio(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.ADMINPANEL); }
+    @FXML private void mostrarPanelInforme(ActionEvent event) { Empresa.cambiarEscena(event, Paths.INFORME_PANEL); }
+    @FXML private void mostrarPanelConfiguracion(ActionEvent event) { Empresa.cambiarEscena(event, Paths.CONFIGURACION_PANEL); }
+    @FXML private void mostrarPanelBloqueo(ActionEvent event) { Empresa.cambiarEscena(event, Paths.BLOQUEO_PANEL); }
+    @FXML private void mostrarPanelInicio(ActionEvent event) { Empresa.cambiarEscena(event, Paths.ADMINPANEL); }
 }

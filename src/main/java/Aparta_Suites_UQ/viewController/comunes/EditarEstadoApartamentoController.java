@@ -2,7 +2,7 @@ package Aparta_Suites_UQ.viewController.comunes;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ public class EditarEstadoApartamentoController {
     public void initialize() {
         cbEstadoOperativo.setItems(FXCollections.observableArrayList(EstadoOperativo.values()));
 
-        apartamentoSeleccionado = Navegacion.getInstance().getApartamentoSeleccionadoParaEditar();
+        apartamentoSeleccionado = Empresa.getInstance().getApartamentoSeleccionadoParaEditar();
         if (apartamentoSeleccionado != null) {
             txtApartamentoNombre.setText(apartamentoSeleccionado.getNombre());
             cbEstadoOperativo.setValue(apartamentoSeleccionado.getEstadoOperativo());
@@ -34,14 +34,14 @@ public class EditarEstadoApartamentoController {
     @FXML
     void onGuardarEstado(ActionEvent event) {
         if (cbEstadoOperativo.getValue() == null) {
-            Navegacion.enviarAlertaWarning("Por favor seleccione un estado operativo.");
+            Empresa.enviarAlertaWarning("Por favor seleccione un estado operativo.");
             return;
         }
 
         if (apartamentoSeleccionado != null) {
             apartamentoSeleccionado.setEstadoOperativo(cbEstadoOperativo.getValue());
-            Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(null);
-            Navegacion.enviarAlertaInfo("Estado operativo del apartamento actualizado con éxito.");
+            Empresa.getInstance().setApartamentoSeleccionadoParaEditar(null);
+            Empresa.enviarAlertaInfo("Estado operativo del apartamento actualizado con éxito.");
         }
 
         cerrarVentana();
@@ -49,7 +49,7 @@ public class EditarEstadoApartamentoController {
 
     @FXML
     void onCancelar(ActionEvent event) {
-        Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(null);
+        Empresa.getInstance().setApartamentoSeleccionadoParaEditar(null);
         cerrarVentana();
     }
 

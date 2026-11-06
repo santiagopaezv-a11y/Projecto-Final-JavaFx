@@ -5,7 +5,7 @@ import Aparta_Suites_UQ.model.reserva.EstadoReserva;
 import Aparta_Suites_UQ.model.reserva.Estancia;
 import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.utils.Mes;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,22 +58,22 @@ public class InterfazRecepcionController {
 
     @FXML
     void mostrarPanelCheck(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.CHECK_PANEL);
+        Empresa.cambiarEscena(event, Paths.CHECK_PANEL);
     }
 
     @FXML
     void mostrarPanelFolio(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.FOLIO_PANEL);
+        Empresa.cambiarEscena(event, Paths.FOLIO_PANEL);
     }
 
     @FXML
     void mostrarPanelApartamento(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
     }
 
     @FXML
     void mostrarPanelReserva(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
+        Empresa.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
     }
 
     @FXML
@@ -160,7 +160,7 @@ public class InterfazRecepcionController {
 
     @FXML
     private void cambiarModuloUser(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.USUARIO_PANEL);
+        Empresa.cambiarEscena(event, Paths.USUARIO_PANEL);
     }
 
     @FXML
@@ -171,8 +171,8 @@ public class InterfazRecepcionController {
     private void cambiarModuloAdmin(ActionEvent event) {
         String nombreUsuarioAdmin = "admin123";
         String contrasenaAdmin = "1234";
-        if (Navegacion.validarCredencial(txtNombreUsuario, txtContraseñaUsuario, nombreUsuarioAdmin, contrasenaAdmin)) {
-            Navegacion.cambiarEscena(event, Paths.ADMINPANEL);
+        if (Empresa.validarCredencial(txtNombreUsuario, txtContraseñaUsuario, nombreUsuarioAdmin, contrasenaAdmin)) {
+            Empresa.cambiarEscena(event, Paths.ADMINPANEL);
             return;
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -223,8 +223,8 @@ public class InterfazRecepcionController {
         }
 
         // FILAS DE APARTAMENTOS
-        List<Apartamento> listaAptos = Navegacion.getInstance().getListaApartamentos();
-        List<Reserva> listaReservas = Navegacion.getInstance().getListaReservas();
+        List<Apartamento> listaAptos = Empresa.getInstance().getListaApartamentos();
+        List<Reserva> listaReservas = Empresa.getInstance().getListaReservas();
 
         for (int i = 0; i < listaAptos.size(); i++) {
             Apartamento apto = listaAptos.get(i);

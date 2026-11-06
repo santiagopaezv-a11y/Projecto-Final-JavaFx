@@ -12,7 +12,7 @@ import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.Cargo;
 import Aparta_Suites_UQ.model.transacciones.MedioPago;
 import Aparta_Suites_UQ.model.transacciones.Pago;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +49,7 @@ public class AddReservaController {
         cargarComboEstado(opciones);
         cargarApartamentos();
 
-        Reserva reservaAEditar = Navegacion.getInstance().getReservarEditar();
+        Reserva reservaAEditar = Empresa.getInstance().getReservarEditar();
         if (reservaAEditar != null) {
             cbEstado.setVisible(true);
             actualizarReserva(reservaAEditar);
@@ -78,13 +78,13 @@ public class AddReservaController {
 
     private void cargarApartamentos() {
         ObservableList<Apartamento> apartamentosDisponibles = FXCollections.observableArrayList();
-        for (Apartamento apartamento : Navegacion.getInstance().getListaApartamentos()) {
+        for (Apartamento apartamento : Empresa.getInstance().getListaApartamentos()) {
             if (apartamento.getEstadoOperativo() != EstadoOperativo.FUERA_DE_SERVICIO) {
                 apartamentosDisponibles.add(apartamento);
             }
         }
 
-        Reserva reservaAEditar = Navegacion.getInstance().getReservarEditar();
+        Reserva reservaAEditar = Empresa.getInstance().getReservarEditar();
         if (reservaAEditar != null && reservaAEditar.getApartamento() != null) {
             if (!apartamentosDisponibles.contains(reservaAEditar.getApartamento())) {
                 apartamentosDisponibles.add(reservaAEditar.getApartamento());
@@ -110,7 +110,7 @@ public class AddReservaController {
     @FXML
     void crearReservaDirecta(ActionEvent event) {
         if (!validarTextField()) {
-            Navegacion.enviarAlertaWarning("Debes rellenar todos los campos requeridos.");
+            Empresa.enviarAlertaWarning("Debes rellenar todos los campos requeridos.");
             return;
         }
 
@@ -118,7 +118,7 @@ public class AddReservaController {
             return;
         }
 
-        Reserva reservaEdicion = Navegacion.getInstance().getReservarEditar();
+        Reserva reservaEdicion = Empresa.getInstance().getReservarEditar();
 
         if (reservaEdicion != null) {
             // --- MODO EDICIÓN ---
@@ -136,8 +136,8 @@ public class AddReservaController {
                 titular.setFechaNacimiento(dateFechaNacimiento.getValue());
             }
 
-            Navegacion.getInstance().setReservarEditar(null);
-            Navegacion.enviarAlertaInfo("¡Reserva actualizada exitosamente!");
+            Empresa.getInstance().setReservarEditar(null);
+            Empresa.enviarAlertaInfo("¡Reserva actualizada exitosamente!");
 
             Stage stageActual = (Stage) buttom_savedReserva.getScene().getWindow();
             stageActual.close();
@@ -158,18 +158,18 @@ public class AddReservaController {
         Apartamento aptoSeleccionado = registrarApartamento();
 
         if (fechaEntrada == null || fechaSalida == null || aptoSeleccionado == null) {
-            Navegacion.enviarAlertaWarning("Por favor seleccione las fechas de entrada/salida y el apartamento.");
+            Empresa.enviarAlertaWarning("Por favor seleccione las fechas de entrada/salida y el apartamento.");
             return false;
         }
 
-        Reserva reservaAEditar = Navegacion.getInstance().getReservarEditar();
+        Reserva reservaAEditar = Empresa.getInstance().getReservarEditar();
 
-        for (Reserva reserva : Navegacion.getInstance().getListaReservas()) {
+        for (Reserva reserva : Empresa.getInstance().getListaReservas()) {
             if (reserva.getEstado() != EstadoReserva.CANCELADA && !reserva.equals(reservaAEditar)) {
                 if (reserva.getApartamento() != null && reserva.getApartamento().getId().equals(aptoSeleccionado.getId()) &&
                         reserva.getEstancia().seSolapaCon(fechaEntrada, fechaSalida)) {
 
-                    Navegacion.enviarAlertaWarning("No se puede crear la reserva porque el apartamento ya está reservado entre el " +
+                    Empresa.enviarAlertaWarning("No se puede crear la reserva porque el apartamento ya está reservado entre el " +
                             fechaEntrada + " y el " + fechaSalida + ".");
                     return false;
                 }
@@ -190,7 +190,7 @@ public class AddReservaController {
 
             int cantidadOcupantes = Integer.parseInt(txtCantidadOcupantes.getText().trim());
             List<Ocupante> ocupantes = registrarOcupantes(event, cantidadOcupantes);
-            List<Temporada> temporadas = Navegacion.getInstance().getListaTemporadas();
+            List<Temporada> temporadas = Empresa.getInstance().getListaTemporadas();
             CanalReserva canalReserva = CanalReserva.DIRECTA;
             Huesped huesped = registrarTitular();
             Apartamento apartamento = registrarApartamento();
@@ -209,14 +209,14 @@ public class AddReservaController {
                 }
             }
 
-            Navegacion.getInstance().getListaReservas().add(reserva);
-            Navegacion.enviarAlertaInfo("¡Reserva creada exitosamente con el código: " + reserva.getCodigo() + "!");
+            Empresa.getInstance().getListaReservas().add(reserva);
+            Empresa.enviarAlertaInfo("¡Reserva creada exitosamente con el código: " + reserva.getCodigo() + "!");
             return true;
 
         } catch (NumberFormatException e) {
-            Navegacion.enviarAlertaWarning("Verifique que los campos numéricos tengan valores válidos.");
+            Empresa.enviarAlertaWarning("Verifique que los campos numéricos tengan valores válidos.");
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error al crear la reserva: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error al crear la reserva: " + e.getMessage());
         }
         return false;
     }
@@ -228,11 +228,11 @@ public class AddReservaController {
 
         List<Ocupante> listaOcupantes = new ArrayList<>();
         for (int i = 0; i < cantidad; i++) {
-            RegistrarOcupanteController controller = Navegacion.abrirModal(event, Paths.REGISTRAROCUPANTE);
+            RegistrarOcupanteController controller = Empresa.abrirModal(event, Paths.REGISTRAROCUPANTE);
             if (controller != null && controller.getOcupanteCreado() != null) {
                 listaOcupantes.add(controller.getOcupanteCreado());
             } else {
-                Navegacion.enviarAlertaWarning("Se canceló o faltaron datos en el registro del acompañante " + (i + 1));
+                Empresa.enviarAlertaWarning("Se canceló o faltaron datos en el registro del acompañante " + (i + 1));
                 break;
             }
         }
@@ -258,7 +258,7 @@ public class AddReservaController {
     private boolean validarFechas() {
         Period periodo = Period.between(dateFechaNacimiento.getValue(), LocalDate.now());
         if (periodo.getYears() < 18) {
-            Navegacion.enviarAlertaWarning("¡Se debe ser mayor de edad para realizar una reserva!");
+            Empresa.enviarAlertaWarning("¡Se debe ser mayor de edad para realizar una reserva!");
             return false;
         }
 
@@ -266,10 +266,10 @@ public class AddReservaController {
         LocalDate fechaSalida = dateFechaSalida.getValue();
         if (fechaEntrada != null && fechaSalida != null) {
             if (fechaEntrada.isAfter(fechaSalida)) {
-                Navegacion.enviarAlertaWarning("¡La fecha de entrada es después de la fecha de salida!");
+                Empresa.enviarAlertaWarning("¡La fecha de entrada es después de la fecha de salida!");
                 return false;
             } else if (fechaEntrada.isEqual(fechaSalida)) {
-                Navegacion.enviarAlertaWarning("¡La fecha de entrada y salida no pueden ser iguales!");
+                Empresa.enviarAlertaWarning("¡La fecha de entrada y salida no pueden ser iguales!");
                 return false;
             }
         }

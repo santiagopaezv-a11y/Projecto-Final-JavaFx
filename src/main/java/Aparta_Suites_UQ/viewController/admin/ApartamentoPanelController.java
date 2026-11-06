@@ -1,8 +1,7 @@
 package Aparta_Suites_UQ.viewController.admin;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
-import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import Aparta_Suites_UQ.viewController.comunes.ApartamentoCard;
 import javafx.event.ActionEvent;
@@ -33,7 +32,7 @@ public class ApartamentoPanelController implements Initializable {
         cargarTarjetasApartamentos();
     }
     private void cargarTarjetasApartamentos() {
-        List<Apartamento> listaDeApartamentos = Navegacion.getInstance().getListaApartamentos();/*obtenerApartamentosDePrueba();*/
+        List<Apartamento> listaDeApartamentos = Empresa.getInstance().getListaApartamentos();/*obtenerApartamentosDePrueba();*/
         contenedorTarjetas.getChildren().clear();
         for (Apartamento apt : listaDeApartamentos) {
             try {
@@ -150,31 +149,31 @@ public class ApartamentoPanelController implements Initializable {
     }
     @FXML
     private void mostrarPanelTemporadas(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.TEMPORADAS_PANEL);
+        Empresa.cambiarEscena(event, Paths.TEMPORADAS_PANEL);
     }
     @FXML
     private void mostrarPanelEmpleados(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.EMPLEADO_PANEL);
+        Empresa.cambiarEscena(event, Paths.EMPLEADO_PANEL);
     }
     @FXML
     private void mostrarPanelInforme(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.INFORME_PANEL);
+        Empresa.cambiarEscena(event, Paths.INFORME_PANEL);
     }
     @FXML
     private void mostrarPanelConfiguracion(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.CONFIGURACION_PANEL);
+        Empresa.cambiarEscena(event,Paths.CONFIGURACION_PANEL);
     }
     @FXML
     private void mostrarPanelBloqueo(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.BLOQUEO_PANEL);
+        Empresa.cambiarEscena(event,Paths.BLOQUEO_PANEL);
     }
     @FXML
     private void mostrarPanelInicio(ActionEvent event){
-        Navegacion.cambiarEscena(event,Paths.ADMINPANEL);
+        Empresa.cambiarEscena(event,Paths.ADMINPANEL);
     }
     @FXML
     private void pedirDatosApartamento(ActionEvent event) {
-        Navegacion.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
+        Empresa.abrirModal(event, Paths.ADDAPARTAMENTO_PANEL);
         cargarTarjetasApartamentos();
     }
 }

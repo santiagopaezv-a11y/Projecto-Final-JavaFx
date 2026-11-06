@@ -5,7 +5,7 @@ import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.Cargo;
 import Aparta_Suites_UQ.model.transacciones.MedioPago;
 import Aparta_Suites_UQ.model.transacciones.Pago;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -115,11 +115,11 @@ public class InterfazFolioController {
         });
 
         // 4. Cargar lista global de reservas
-        cmbReservas.setItems(FXCollections.observableArrayList(Navegacion.getInstance().getListaReservas()));
+        cmbReservas.setItems(FXCollections.observableArrayList(Empresa.getInstance().getListaReservas()));
 
         // Si ya había una reserva preseleccionada en Navegación, la cargamos automáticamente
-        if (Navegacion.getInstance().getReservarEditar() != null) {
-            cmbReservas.setValue(Navegacion.getInstance().getReservarEditar());
+        if (Empresa.getInstance().getReservarEditar() != null) {
+            cmbReservas.setValue(Empresa.getInstance().getReservarEditar());
             onReservaSeleccionada();
         }
     }
@@ -170,7 +170,7 @@ public class InterfazFolioController {
             double valor = Double.parseDouble(txtValorCargo.getText().trim());
 
             if (concepto.isEmpty() || valor <= 0) {
-                Navegacion.enviarAlertaWarning("Ingrese un concepto válido y un valor mayor a cero.");
+                Empresa.enviarAlertaWarning("Ingrese un concepto válido y un valor mayor a cero.");
                 return;
             }
 
@@ -180,7 +180,7 @@ public class InterfazFolioController {
             actualizarDatosFolio();
 
         } catch (NumberFormatException e) {
-            Navegacion.enviarAlertaWarning("El valor del cargo debe ser numérico.");
+            Empresa.enviarAlertaWarning("El valor del cargo debe ser numérico.");
         }
     }
 
@@ -192,7 +192,7 @@ public class InterfazFolioController {
             double valor = Double.parseDouble(txtValorPago.getText().trim());
 
             if (medio == null || valor <= 0) {
-                Navegacion.enviarAlertaWarning("Seleccione un medio de pago y un valor mayor a cero.");
+                Empresa.enviarAlertaWarning("Seleccione un medio de pago y un valor mayor a cero.");
                 return;
             }
 
@@ -202,7 +202,7 @@ public class InterfazFolioController {
             actualizarDatosFolio();
 
         } catch (NumberFormatException e) {
-            Navegacion.enviarAlertaWarning("El valor del pago debe ser numérico.");
+            Empresa.enviarAlertaWarning("El valor del pago debe ser numérico.");
         }
     }
 
@@ -221,7 +221,7 @@ public class InterfazFolioController {
             txtValorCargo.clear();
             actualizarDatosFolio();
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error al registrar corrección de cargo: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error al registrar corrección de cargo: " + e.getMessage());
         }
     }
 
@@ -233,7 +233,7 @@ public class InterfazFolioController {
             int valorInput = Integer.parseInt(txtValorPago.getText().trim());
 
             if (medio == null || valorInput <= 0) {
-                Navegacion.enviarAlertaWarning("Seleccione un medio de pago y digite un valor positivo para corregir.");
+                Empresa.enviarAlertaWarning("Seleccione un medio de pago y digite un valor positivo para corregir.");
                 return;
             }
 
@@ -246,15 +246,15 @@ public class InterfazFolioController {
             actualizarDatosFolio();
 
         } catch (NumberFormatException e) {
-            Navegacion.enviarAlertaWarning("El valor de la corrección debe ser un número entero.");
+            Empresa.enviarAlertaWarning("El valor de la corrección debe ser un número entero.");
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error al registrar corrección de pago: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error al registrar corrección de pago: " + e.getMessage());
         }
     }
 
     private boolean validarReservaSeleccionada() {
         if (folioActual == null) {
-            Navegacion.enviarAlertaWarning("Debe seleccionar una reserva en el desplegable primero.");
+            Empresa.enviarAlertaWarning("Debe seleccionar una reserva en el desplegable primero.");
             return true;
         }
         return false;
@@ -264,7 +264,7 @@ public class InterfazFolioController {
 
     @FXML
     void mostrarPanelCheck(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.CHECK_PANEL);
+        Empresa.cambiarEscena(event, Paths.CHECK_PANEL);
     }
 
     @FXML
@@ -274,17 +274,17 @@ public class InterfazFolioController {
 
     @FXML
     void mostrarPanelApartamento(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
     }
 
     @FXML
     void mostrarPanelReserva(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
+        Empresa.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
     }
 
     @FXML
     private void mostrarPanelInicioRecepcion(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.RECEPCION_PANEL);
     }
 
     // --- EFECTOS MOUSE (HOVER) MENÚ LATERAL ---

@@ -1,15 +1,11 @@
-package Aparta_Suites_UQ.utils;
+package Aparta_Suites_UQ;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.Temporada;
 import Aparta_Suites_UQ.model.alojamiento.TipoTemporada;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
-import Aparta_Suites_UQ.model.huesped.Recepcionista;
 import Aparta_Suites_UQ.model.reserva.Reserva;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,7 +16,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,22 +23,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Navegacion {
-    private static Navegacion instance;
+public class Empresa {
+    private String nombre;
+    private String nit;
+    private String direccion;
+    private static Empresa instance;
     private final List<Apartamento> listaApartamentos = new ArrayList<>();
     private final List<Reserva> listaReservas = new ArrayList<>();
     private final List<Huesped> listaHuespedes = new ArrayList<>();
     private final List<Temporada> listaTemporadas = new ArrayList<>();
     private final List<Empleado> listaEmpleados= new ArrayList<>();
-
-    private Navegacion() {
-        // Precargar temporadas por defecto al instanciar el Singleton
+    public  Empresa(String nombre, String nit, String direccion){
+        this.nombre=nombre;
+        this.nit=nit;
+        this.direccion=direccion;
+    }
+    private Empresa() {
         cargarTemporadasPorDefecto();
     }
-
-    /**
-     * Inicializa las temporadas por defecto del alojamiento.
-     */
     private void cargarTemporadasPorDefecto() {
         // 1. TEMPORADA ALTA (Diciembre - Enero)
         listaTemporadas.add(new Temporada(
@@ -76,7 +73,7 @@ public class Navegacion {
 
     public static void cambiarEscena(ActionEvent event, String rutaFxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(Navegacion.class.getResource(rutaFxml));
+            FXMLLoader loader = new FXMLLoader(Empresa.class.getResource(rutaFxml));
             Parent root = loader.load();
             Node source = (Node) event.getSource();
             Stage stagePrincipal = (Stage) source.getScene().getWindow();
@@ -93,7 +90,7 @@ public class Navegacion {
 
     public static <T> T abrirModal(ActionEvent event, String rutaFxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(Navegacion.class.getResource(rutaFxml));
+            FXMLLoader loader = new FXMLLoader(Empresa.class.getResource(rutaFxml));
             Parent root = loader.load();
             Node source = (Node) event.getSource();
             Stage stagePadre = (Stage) source.getScene().getWindow();
@@ -139,9 +136,9 @@ public class Navegacion {
         return usuario.equals(userIngresado)&&contrasena.equals(contrasenaIngresada);
     }
 
-    public static Navegacion getInstance() {
+    public static Empresa getInstance() {
         if (instance == null) {
-            instance = new Navegacion();
+            instance = new Empresa();
         }
         return instance;
     }

@@ -1,6 +1,6 @@
 package Aparta_Suites_UQ.viewController.user;
 
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,17 +39,17 @@ public class InterfazCotizacionController {
 
     @FXML
     void mostrarPanelInicioUsuario(ActionEvent event) {
-        Navegacion.cambiarEscena(event,Paths.USUARIO_PANEL);
+        Empresa.cambiarEscena(event,Paths.USUARIO_PANEL);
     }
 
     @FXML
     void mostrarPanelPagos(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.PAGO_PANEL);
+        Empresa.cambiarEscena(event, Paths.PAGO_PANEL);
     }
 
     @FXML
     void mostrarPanelReserva(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RESERVA_PANEL);
+        Empresa.cambiarEscena(event, Paths.RESERVA_PANEL);
     }
 
     @FXML

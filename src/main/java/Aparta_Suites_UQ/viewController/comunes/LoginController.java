@@ -1,5 +1,5 @@
 package Aparta_Suites_UQ.viewController.comunes;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,9 +96,9 @@ public class LoginController {
         String password = txtPassword.getText();
 
         if ("sanglie".equals(usuario) && "123".equals(password)) {
-            Navegacion.cambiarEscena(event, Paths.ADMINPANEL);
-        } else if (Navegacion.validarCredencialEmpleado(usuario,password)){
-            Navegacion.cambiarEscena(event, Paths.RECEPCION_PANEL);
+            Empresa.cambiarEscena(event, Paths.ADMINPANEL);
+        } else if (Empresa.validarCredencialEmpleado(usuario,password)){
+            Empresa.cambiarEscena(event, Paths.RECEPCION_PANEL);
         }  else {
             lblMensaje.setStyle("-fx-text-fill: #e74c3c;");
             lblMensaje.setText("Credenciales incorrectas.");

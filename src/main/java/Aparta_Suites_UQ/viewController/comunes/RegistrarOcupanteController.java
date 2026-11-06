@@ -1,7 +1,7 @@
 package Aparta_Suites_UQ.viewController.comunes;
 
 import Aparta_Suites_UQ.model.huesped.Ocupante;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,12 +31,12 @@ public class RegistrarOcupanteController {
         LocalDate fechaNacimiento = dateFechaNacimiento.getValue();
 
         if (nombre.isEmpty() || fechaNacimiento == null) {
-            Navegacion.enviarAlertaWarning("Por favor ingrese el nombre y la fecha de nacimiento del ocupante.");
+            Empresa.enviarAlertaWarning("Por favor ingrese el nombre y la fecha de nacimiento del ocupante.");
             return;
         }
 
         if (fechaNacimiento.isAfter(LocalDate.now())) {
-            Navegacion.enviarAlertaWarning("La fecha de nacimiento no puede ser posterior a la fecha actual.");
+            Empresa.enviarAlertaWarning("La fecha de nacimiento no puede ser posterior a la fecha actual.");
             return;
         }
 

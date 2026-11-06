@@ -2,8 +2,7 @@ package Aparta_Suites_UQ.viewController.comunes;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
-import Aparta_Suites_UQ.utils.Navegacion;
-import Aparta_Suites_UQ.utils.Paths;
+import Aparta_Suites_UQ.Empresa;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,14 +51,14 @@ public class AddApartamentoController implements Initializable {
         if (Integer.parseInt(txtDormitorio.getText().trim())>=0){
             dormitorios=Integer.parseInt(txtDormitorio.getText().trim());
         }else {
-            Navegacion.enviarAlertaWarning("Se debe enviar valores positivos");
+            Empresa.enviarAlertaWarning("Se debe enviar valores positivos");
             return;
         }
         int capacidad=0;
         if (Integer.parseInt(txtCapacidad.getText().trim())>=0){
             capacidad=Integer.parseInt(txtCapacidad.getText().trim());
         }else {
-            Navegacion.enviarAlertaWarning("Se debe enviar valores positivos");
+            Empresa.enviarAlertaWarning("Se debe enviar valores positivos");
             return;
         }
         String caracteristicas=txtCaracteristica.getText().trim();
@@ -68,7 +66,7 @@ public class AddApartamentoController implements Initializable {
         if (Double.parseDouble(txtPrecioNoche.getText().trim())>=0.0){
             precioNoche=Double.parseDouble(txtPrecioNoche.getText().trim());
         }else {
-            Navegacion.enviarAlertaWarning("Se debe enviar valores positivos");
+            Empresa.enviarAlertaWarning("Se debe enviar valores positivos");
         }
         String valor = cbEstado.getValue();
         EstadoOperativo estadoOperativo = switch (valor) {
@@ -80,7 +78,7 @@ public class AddApartamentoController implements Initializable {
             case null-> EstadoOperativo.PENDIENTE;
             default -> throw new IllegalArgumentException("Estado no válido o no seleccionado");
         };
-        Apartamento aptEdicion = Navegacion.getInstance().getApartamentoSeleccionadoParaEditar();
+        Apartamento aptEdicion = Empresa.getInstance().getApartamentoSeleccionadoParaEditar();
         if (aptEdicion != null) {
             // Modo edicion
             aptEdicion.setNumeroDormitorios(dormitorios);
@@ -91,20 +89,20 @@ public class AddApartamentoController implements Initializable {
             try {
                 if (cbEstado.getValue().equals("Fuera de Servicio")) {
                     if (txtMotivo.getText().isEmpty()){
-                        Navegacion.enviarAlertaWarning("Escribe el motivo del fuera de servicio");
+                        Empresa.enviarAlertaWarning("Escribe el motivo del fuera de servicio");
                         return;
                     }
                     aptEdicion.setMotivoFueraServicio(txtMotivo.getText().trim());
                 }else {aptEdicion.setMotivoFueraServicio(null);}
             }catch (NullPointerException e){
             }
-            Navegacion.getInstance().setApartamentoSeleccionadoParaEditar(null);
+            Empresa.getInstance().setApartamentoSeleccionadoParaEditar(null);
 
         } else {
             this.apartamentoActual= new Apartamento(nombre, dormitorios, capacidad, caracteristicas, precioNoche, estadoOperativo);
             if (txtMotivo!=null) {apartamentoActual.setMotivoFueraServicio(txtMotivo.getText().trim());
             }
-            Navegacion.getInstance().getListaApartamentos().add(apartamentoActual);
+            Empresa.getInstance().getListaApartamentos().add(apartamentoActual);
         }
         Stage stageActual = (Stage) buttom_savedApart.getScene().getWindow();
         stageActual.close();
@@ -116,7 +114,7 @@ public class AddApartamentoController implements Initializable {
                 "Pendiente", "Preparado", "Ocupado", "Fuera de Servicio", "En preparacion"
         );
         cbEstado.setItems(opciones);
-        Apartamento aptAEditar = Navegacion.getInstance().getApartamentoSeleccionadoParaEditar();
+        Apartamento aptAEditar = Empresa.getInstance().getApartamentoSeleccionadoParaEditar();
 
         if (aptAEditar != null) {
             txtNombre.setText(aptAEditar.getNombre());

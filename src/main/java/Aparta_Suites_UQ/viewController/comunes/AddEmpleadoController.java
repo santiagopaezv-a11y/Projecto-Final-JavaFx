@@ -3,7 +3,7 @@ package Aparta_Suites_UQ.viewController.comunes;
 import Aparta_Suites_UQ.model.huesped.Administrador;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Recepcionista;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public class AddEmpleadoController {
     public void initialize() {
         cargarRoles();
 
-        empleadoEdicion = Navegacion.getInstance().getEmpleadoEditar();
+        empleadoEdicion = Empresa.getInstance().getEmpleadoEditar();
 
         if (empleadoEdicion != null) {
             lblTitulo.setText("Editar Empleado");
@@ -91,14 +91,14 @@ public class AddEmpleadoController {
                 // empleadoEdicion.setRol(RolEmpleado.valueOf(rolSeleccionado));
             }
 
-            Navegacion.getInstance().setEmpleadoEditar(null);
-            Navegacion.enviarAlertaInfo("¡Empleado actualizado correctamente!");
+            Empresa.getInstance().setEmpleadoEditar(null);
+            Empresa.enviarAlertaInfo("¡Empleado actualizado correctamente!");
 
         } else {
             // --- MODO CREACIÓN ---
-            for (Empleado emp : Navegacion.getInstance().getListaEmpleados()) {
+            for (Empleado emp : Empresa.getInstance().getListaEmpleados()) {
                 if (emp.getDocumento().equalsIgnoreCase(documento)) {
-                    Navegacion.enviarAlertaWarning("Ya existe un empleado registrado con el número de documento: " + documento);
+                    Empresa.enviarAlertaWarning("Ya existe un empleado registrado con el número de documento: " + documento);
                     return;
                 }
             }
@@ -111,8 +111,8 @@ public class AddEmpleadoController {
                 nuevoEmpleado = new Recepcionista(nombre, documento, fechaNacimiento, telefono, correo, password);
             }
 
-            Navegacion.getInstance().getListaEmpleados().add(nuevoEmpleado);
-            Navegacion.enviarAlertaInfo("¡Empleado registrado exitosamente!");
+            Empresa.getInstance().getListaEmpleados().add(nuevoEmpleado);
+            Empresa.enviarAlertaInfo("¡Empleado registrado exitosamente!");
         }
 
         cerrarVentana();
@@ -127,13 +127,13 @@ public class AddEmpleadoController {
                 txtCorreo.getText().trim().isEmpty() ||
                 txtPassword.getText().trim().isEmpty()) {
 
-            Navegacion.enviarAlertaWarning("Por favor complete todos los campos obligatorios (*).");
+            Empresa.enviarAlertaWarning("Por favor complete todos los campos obligatorios (*).");
             return false;
         }
 
         Period edad = Period.between(dateFechaNacimiento.getValue(), LocalDate.now());
         if (edad.getYears() < 18) {
-            Navegacion.enviarAlertaWarning("El empleado debe ser mayor de edad (18 años o más).");
+            Empresa.enviarAlertaWarning("El empleado debe ser mayor de edad (18 años o más).");
             return false;
         }
 
@@ -142,7 +142,7 @@ public class AddEmpleadoController {
 
     @FXML
     void onCancelar(ActionEvent event) {
-        Navegacion.getInstance().setEmpleadoEditar(null);
+        Empresa.getInstance().setEmpleadoEditar(null);
         cerrarVentana();
     }
 

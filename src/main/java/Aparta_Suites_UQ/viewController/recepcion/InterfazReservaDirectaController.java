@@ -1,25 +1,21 @@
 package Aparta_Suites_UQ.viewController.recepcion;
 
-import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.huesped.Ocupante;
 import Aparta_Suites_UQ.model.reserva.EstadoReserva;
 import Aparta_Suites_UQ.model.reserva.Reserva;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
-import javafx.util.Callback;
 
 import java.time.LocalDate;
 
@@ -123,17 +119,17 @@ public class InterfazReservaDirectaController {
 
     @FXML
     private void mostrarPanelCheck(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.CHECK_PANEL);
+        Empresa.cambiarEscena(event, Paths.CHECK_PANEL);
     }
 
     @FXML
     private void mostrarPanelFolio(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.FOLIO_PANEL);
+        Empresa.cambiarEscena(event, Paths.FOLIO_PANEL);
     }
 
     @FXML
     void mostrarPanelApartamento(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL);
     }
 
     @FXML
@@ -189,17 +185,17 @@ public class InterfazReservaDirectaController {
     }
     @FXML
     private void mostrarPanelInicioRecepcion(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.RECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.RECEPCION_PANEL);
     }
     @FXML
     void crearReserva(ActionEvent event){
-        Navegacion.abrirModal(event, Paths.ADDRESERVADIRECTA);
+        Empresa.abrirModal(event, Paths.ADDRESERVADIRECTA);
         listarReservas();
     }
     @FXML
     public void initialize(){
         if (lblFechaEntrada.getText().equals("Label")){scrollPanePrincipal.setVisible(false);}
-        listaReservas=FXCollections.observableArrayList(Navegacion.getInstance().getListaReservas());
+        listaReservas=FXCollections.observableArrayList(Empresa.getInstance().getListaReservas());
         listarReservas();
         tableReservas.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         configurarColumnas();
@@ -208,7 +204,7 @@ public class InterfazReservaDirectaController {
     }
     private void listarReservas(){
         listaReservas.clear();
-        listaReservas.addAll(Navegacion.getInstance().getListaReservas());
+        listaReservas.addAll(Empresa.getInstance().getListaReservas());
         tableReservas.setItems(listaReservas);
     }
     private void configurarColumnas(){
@@ -290,9 +286,9 @@ public class InterfazReservaDirectaController {
         });
     }
     private void modificarReserva(Reserva reserva, ActionEvent event) {
-        Navegacion.getInstance().setReservarEditar(reserva);
-        Navegacion.abrirModal(event, Paths.ADDRESERVADIRECTA);
-        Navegacion.getInstance().setReservarEditar(null);
+        Empresa.getInstance().setReservarEditar(reserva);
+        Empresa.abrirModal(event, Paths.ADDRESERVADIRECTA);
+        Empresa.getInstance().setReservarEditar(null);
         tableReservas.refresh();
     }
 
@@ -306,10 +302,10 @@ public class InterfazReservaDirectaController {
         alerta.setContentText("¿Deseas eliminar la reserva a nombre de " + reserva.getTitular().getNombre() + "?");
         alerta.showAndWait().ifPresent(respuesta -> {
             if (respuesta == ButtonType.OK) {
-                Navegacion.getInstance().getListaReservas().remove(reserva);
+                Empresa.getInstance().getListaReservas().remove(reserva);
                 tableReservas.getItems().remove(reserva);
                 scrollPanePrincipal.setVisible(false);
-                Navegacion.enviarAlertaInfo("¡Reserva eliminada con éxito!");
+                Empresa.enviarAlertaInfo("¡Reserva eliminada con éxito!");
             }
         });
     }

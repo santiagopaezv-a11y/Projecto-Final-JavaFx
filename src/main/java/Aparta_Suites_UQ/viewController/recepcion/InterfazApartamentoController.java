@@ -1,7 +1,7 @@
 package Aparta_Suites_UQ.viewController.recepcion;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import Aparta_Suites_UQ.viewController.comunes.ApartamentoCard;
 import javafx.event.ActionEvent;
@@ -66,7 +66,7 @@ public class InterfazApartamentoController implements Initializable{
         cargarTarjetasApartamentos();
     }
     private void cargarTarjetasApartamentos() {
-        List<Apartamento> listaDeApartamentos = Navegacion.getInstance().getListaApartamentos();
+        List<Apartamento> listaDeApartamentos = Empresa.getInstance().getListaApartamentos();
         contenedorTarjetas.getChildren().clear();
 
         for (Apartamento apt : listaDeApartamentos) {
@@ -92,12 +92,12 @@ public class InterfazApartamentoController implements Initializable{
     }
     @FXML
     void mostrarPanelCheck(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.CHECK_PANEL);
+        Empresa.cambiarEscena(event, Paths.CHECK_PANEL);
     }
 
     @FXML
     void mostrarPanelFolio(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.FOLIO_PANEL);
+        Empresa.cambiarEscena(event, Paths.FOLIO_PANEL);
     }
 
     @FXML
@@ -106,7 +106,7 @@ public class InterfazApartamentoController implements Initializable{
 
     @FXML
     void mostrarPanelReserva(ActionEvent event) {
-        Navegacion.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
+        Empresa.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL);
     }
 
     @FXML
@@ -158,6 +158,6 @@ public class InterfazApartamentoController implements Initializable{
     }
     @FXML
     private void mostrarPanelInicioRecepcion(ActionEvent event){
-        Navegacion.cambiarEscena(event, Paths.RECEPCION_PANEL);
+        Empresa.cambiarEscena(event, Paths.RECEPCION_PANEL);
     }
 }

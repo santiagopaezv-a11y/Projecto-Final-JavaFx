@@ -3,11 +3,10 @@ package Aparta_Suites_UQ.viewController.recepcion;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
 import Aparta_Suites_UQ.model.reserva.EstadoReserva;
 import Aparta_Suites_UQ.model.reserva.Reserva;
-import Aparta_Suites_UQ.utils.Navegacion;
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -89,7 +88,7 @@ public class InterfazCheckController {
 
     @FXML
     void onRefrescarLista() {
-        List<Reserva> listaGlobal = Navegacion.getInstance().getListaReservas();
+        List<Reserva> listaGlobal = Empresa.getInstance().getListaReservas();
 
         // Ejecutar validaciones automáticas de estado en cada reserva
         for (Reserva r : listaGlobal) {
@@ -105,7 +104,7 @@ public class InterfazCheckController {
         String texto = txtBuscarReserva.getText().trim().toLowerCase();
         String filtroEstado = cmbFiltroEstado.getValue();
 
-        List<Reserva> filtrada = Navegacion.getInstance().getListaReservas().stream()
+        List<Reserva> filtrada = Empresa.getInstance().getListaReservas().stream()
                 .filter(r -> {
                     boolean coincideTexto = texto.isEmpty() ||
                             r.getCodigo().toLowerCase().contains(texto) ||
@@ -164,13 +163,13 @@ public class InterfazCheckController {
             if (reservaSeleccionada.hacerCheckIn()) {
                 reservaSeleccionada.setEstado(EstadoReserva.EN_CURSO);
                 reservaSeleccionada.getApartamento().setEstadoOperativo(EstadoOperativo.OCUPADO);
-                Navegacion.enviarAlertaInfo("Check-In realizado exitosamente para la Reserva #" + reservaSeleccionada.getCodigo());
+                Empresa.enviarAlertaInfo("Check-In realizado exitosamente para la Reserva #" + reservaSeleccionada.getCodigo());
                 onRefrescarLista();
             } else {
-                Navegacion.enviarAlertaWarning("No se puede realizar el Check-In. Verifique la hora de entrada y el estado de la reserva.");
+                Empresa.enviarAlertaWarning("No se puede realizar el Check-In. Verifique la hora de entrada y el estado de la reserva.");
             }
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error en Check-In: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error en Check-In: " + e.getMessage());
         }
     }
 
@@ -181,13 +180,13 @@ public class InterfazCheckController {
         try {
             // El método hacerCheckOut() de Reserva valida que saldo del Folio == 0
             reservaSeleccionada.hacerCheckOut();
-            Navegacion.enviarAlertaInfo("Check-Out exitoso. El apartamento pasa a estado EN_PREPARACIÓN.");
+            Empresa.enviarAlertaInfo("Check-Out exitoso. El apartamento pasa a estado EN_PREPARACIÓN.");
             onRefrescarLista();
         } catch (IllegalStateException e) {
             // Disparado si el Folio tiene saldo pendiente
-            Navegacion.enviarAlertaWarning(e.getMessage());
+            Empresa.enviarAlertaWarning(e.getMessage());
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error en Check-Out: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error en Check-Out: " + e.getMessage());
         }
     }
 
@@ -197,20 +196,20 @@ public class InterfazCheckController {
 
         try {
             reservaSeleccionada.declararNoShow();
-            Navegacion.enviarAlertaInfo("Reserva declarada como NO-SHOW correctamente.");
+            Empresa.enviarAlertaInfo("Reserva declarada como NO-SHOW correctamente.");
             onRefrescarLista();
         } catch (Exception e) {
-            Navegacion.enviarAlertaWarning("Error al declarar No-Show: " + e.getMessage());
+            Empresa.enviarAlertaWarning("Error al declarar No-Show: " + e.getMessage());
         }
     }
 
     @FXML
     void onIrAFolio(ActionEvent event) {
         if (reservaSeleccionada != null) {
-            Navegacion.getInstance().setReservarEditar(reservaSeleccionada);
-            Navegacion.cambiarEscena(event, Paths.FOLIO_PANEL);
+            Empresa.getInstance().setReservarEditar(reservaSeleccionada);
+            Empresa.cambiarEscena(event, Paths.FOLIO_PANEL);
         } else {
-            Navegacion.enviarAlertaWarning("Seleccione una reserva de la tabla primero.");
+            Empresa.enviarAlertaWarning("Seleccione una reserva de la tabla primero.");
         }
     }
 
@@ -218,10 +217,10 @@ public class InterfazCheckController {
 
     @FXML void mostrarPanelCheck() {}
 
-    @FXML void mostrarPanelFolio(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.FOLIO_PANEL); }
-    @FXML void mostrarPanelApartamento(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL); }
-    @FXML void mostrarPanelReserva(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL); }
-    @FXML void mostrarPanelInicioRecepcion(ActionEvent event) { Navegacion.cambiarEscena(event, Paths.RECEPCION_PANEL); }
+    @FXML void mostrarPanelFolio(ActionEvent event) { Empresa.cambiarEscena(event, Paths.FOLIO_PANEL); }
+    @FXML void mostrarPanelApartamento(ActionEvent event) { Empresa.cambiarEscena(event, Paths.APARTAMENTORECEPCION_PANEL); }
+    @FXML void mostrarPanelReserva(ActionEvent event) { Empresa.cambiarEscena(event, Paths.RESERVADIRECTA_PANEL); }
+    @FXML void mostrarPanelInicioRecepcion(ActionEvent event) { Empresa.cambiarEscena(event, Paths.RECEPCION_PANEL); }
 
     // --- MOUSE HOVER ---
 
