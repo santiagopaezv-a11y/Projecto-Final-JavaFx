@@ -19,4 +19,10 @@ public class Paths {
     public static final String APARTAMENTORECEPCION_PANEL="/view/recepcion/interfazApartamento.fxml";
     public static final String RESERVADIRECTA_PANEL="/view/recepcion/interfazReservaDirecta.fxml";
     public static final String APARTAMENTO_CARD="/view/comunes/apartamentoCard.fxml";
+    public static final String FUERASERVICIO="/view/comunes/apartamentoFueraServicio.fxml";
+    public static final String ADDRESERVADIRECTA="/view/comunes/addReserva.fxml";
+    public static final String REGISTRAROCUPANTE="/view/comunes/registrarOcupanteController.fxml";
+    public static final String EDITAR_ESTADO_APART="/view/comunes/editarEstadoApartamento.fxml";
+    public static final String LOGIN= "/view/comunes/login.fxml";
+    public static final String ADD_EMPLEADO= "/view/comunes/addEmpleado.fxml";
 }

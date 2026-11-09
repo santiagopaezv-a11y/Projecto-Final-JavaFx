@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane onMouseClicked="#ocultarPanelAlClickearFuera" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.admin.InterfazAdminController">
+<BorderPane onMouseClicked="#ocultarPanelAlClickearFuera" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.admin.InterfazAdminViewController">
    <left>
       <AnchorPane prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css" BorderPane.alignment="CENTER">
          <children>
@@ -184,27 +183,22 @@
             <Label layoutX="98.0" layoutY="64.0" text="Administrador" />
             <AnchorPane layoutX="476.0" prefHeight="348.0" prefWidth="431.0">
                <children>
-                  <AnchorPane fx:id="panelChangeUsuario" layoutX="127.0" layoutY="63.0" prefHeight="200.0" prefWidth="317.0" styleClass="changUsuario" stylesheets="@../../css/HojaEstilos.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="63.0">
+                  <AnchorPane fx:id="panelChangeUsuario" layoutX="259.0" layoutY="63.0" prefHeight="200.0" prefWidth="173.0" stylesheets="@../../css/HojaEstilos.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="63.0">
+                     <styleClass>
+                        <String fx:value="changUsuario" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                      <children>
-                        <Label layoutX="34.0" layoutY="25.0" text="Nombre Usuario">
-                           <font>
-                              <Font name="Microsoft Sans Serif" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="34.0" layoutY="85.0" text="Contraseña">
-                           <font>
-                              <Font name="Microsoft Sans Serif" size="12.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="buttom_guestUser" layoutX="170.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloUser" style="-fx-cursor: hand;" styleClass="buttomInvitado" stylesheets="@../../css/HojaEstilos.css" text="Entrar como invitado" />
-                        <Button fx:id="buttom_accesRecepcion" layoutX="29.0" layoutY="152.0" mnemonicParsing="false" onAction="#cambiarModuloRecepcion" styleClass="buttom_addObject" stylesheets="@../../css/HojaEstilos.css" text="Acceder" />
-                        <TextField fx:id="txtNombreUsuario" layoutX="48.0" layoutY="51.0" promptText="Agregar usuario" styleClass="textField" stylesheets="@../../css/HojaEstilos.css" />
-                        <TextField fx:id="txtContrasenaUsuario" layoutX="48.0" layoutY="108.0" promptText="Agregar contraseña" styleClass="textField" stylesheets="@../../css/HojaEstilos.css" />
+                        <Button fx:id="buttom_login" layoutX="22.0" layoutY="23.0" mnemonicParsing="false" onAction="#mostrarPanelLogin" style="-fx-background-color: #fff;" styleClass="buttom_edition" stylesheets="@../../css/HojaEstilos.css" text="Cambiar Cuenta" />
                      </children>
                   </AnchorPane>
                   <Pane layoutX="409.0" prefHeight="81.0" prefWidth="80.0">
                      <children>
-                        <Button fx:id="buttom_changeUsuario" layoutX="19.0" layoutY="22.0" mnemonicParsing="false" onAction="#mostrarPanelGestionUser" prefHeight="40.0" prefWidth="40.0" styleClass="perfilChange" stylesheets="@../../css/HojaEstilos.css" />
+                        <Button fx:id="buttom_changeUsuario" layoutX="19.0" layoutY="22.0" mnemonicParsing="false" onAction="#mostrarPanelGestionUser" prefHeight="40.0" prefWidth="40.0" stylesheets="@../../css/HojaEstilos.css">
+                           <styleClass>
+                              <String fx:value="perfilChange" />
+                              <String fx:value="shadow" />
+                           </styleClass></Button>
                         <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" layoutX="22.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../image/gestionUsuario.png" />

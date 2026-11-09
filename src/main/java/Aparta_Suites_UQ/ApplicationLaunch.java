@@ -1,5 +1,7 @@
 package Aparta_Suites_UQ;
 
+import Aparta_Suites_UQ.controller.servicio.DatosPruebaServicio;
+import Aparta_Suites_UQ.model.Empresa;
 import Aparta_Suites_UQ.utils.Paths;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +11,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ApplicationLaunch extends Application {
+    private final Empresa empresa=new Empresa("Aparta-Suits-UQ","8318318231","Direccion cualquiera");
+
+    public static void main(String[] args) {
+        DatosPruebaServicio.cargar();
+        launch(args);
+    }
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(Paths.APARTAMENTO_PANEL));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(Paths.LOGIN));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+    }
+    public Empresa getEmpresa(){
+        return empresa;
     }
 }
