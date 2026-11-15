@@ -3,44 +3,53 @@ package Aparta_Suites_UQ;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.alojamiento.Temporada;
 import Aparta_Suites_UQ.model.alojamiento.TipoTemporada;
+import Aparta_Suites_UQ.model.huesped.Administrador;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
+import Aparta_Suites_UQ.model.reserva.ConflictoCanal;
+import Aparta_Suites_UQ.model.reserva.PoliticaCancelacion;
 import Aparta_Suites_UQ.model.reserva.Reserva;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import Aparta_Suites_UQ.model.transacciones.Novedad;
 
-import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class Empresa {
+public class Empresa implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String nombre;
     private String nit;
     private String direccion;
+
     private static Empresa instance;
-    private final List<Apartamento> listaApartamentos = new ArrayList<>();
-    private final List<Reserva> listaReservas = new ArrayList<>();
-    private final List<Huesped> listaHuespedes = new ArrayList<>();
-    private final List<Temporada> listaTemporadas = new ArrayList<>();
-    private final List<Empleado> listaEmpleados= new ArrayList<>();
-    public  Empresa(String nombre, String nit, String direccion){
-        this.nombre=nombre;
-        this.nit=nit;
-        this.direccion=direccion;
-    }
-    private Empresa() {
+
+    private PoliticaCancelacion politicaCancelacion = PoliticaCancelacion.porDefecto();
+    private List<Novedad> listaNovedades = new ArrayList<>();
+    private List<ConflictoCanal> listaConflictos = new ArrayList<>();
+    private Empleado empleadoSistema;
+    private List<Apartamento> listaApartamentos = new ArrayList<>();
+    private List<Reserva> listaReservas = new ArrayList<>();
+    private List<Huesped> listaHuespedes = new ArrayList<>();
+    private List<Temporada> listaTemporadas = new ArrayList<>();
+    private List<Empleado> listaEmpleados = new ArrayList<>();
+
+    public Empresa(String nombre, String nit, String direccion) {
+        this.nombre = nombre;
+        this.nit = nit;
+        this.direccion = direccion;
         cargarTemporadasPorDefecto();
     }
+
+    protected Empresa() {
+        this.nombre = "Aparta-Suites UQ";
+        this.nit = "-";
+        this.direccion = "Salento, Quindío";
+        cargarTemporadasPorDefecto();
+    }
+
     private void cargarTemporadasPorDefecto() {
         // 1. TEMPORADA ALTA (Diciembre - Enero)
         listaTemporadas.add(new Temporada(
@@ -71,76 +80,20 @@ public class Empresa {
         ));
     }
 
-    public static void cambiarEscena(ActionEvent event, String rutaFxml) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Empresa.class.getResource(rutaFxml));
-            Parent root = loader.load();
-            Node source = (Node) event.getSource();
-            Stage stagePrincipal = (Stage) source.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stagePrincipal.setScene(scene);
-            stagePrincipal.setTitle("Aparta Suites UQ");
-            stagePrincipal.centerOnScreen();
-            stagePrincipal.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static <T> T abrirModal(ActionEvent event, String rutaFxml) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Empresa.class.getResource(rutaFxml));
-            Parent root = loader.load();
-            Node source = (Node) event.getSource();
-            Stage stagePadre = (Stage) source.getScene().getWindow();
-            Stage stageModal = new Stage();
-            stageModal.initOwner(stagePadre);
-            stageModal.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(root);
-            stageModal.setScene(scene);
-            stageModal.showAndWait();
-            return loader.getController();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static void enviarAlertaWarning(String mensaje){
-        Alert alert=new Alert(Alert.AlertType.WARNING);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-    public static void enviarAlertaInfo(String mensaje){
-        Alert alert=new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-    public static boolean enviarAlertaConfirmacion(String mensaje){
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.isPresent() && result.get() == ButtonType.OK;
-    }
-
-    public static boolean validarCredencial(TextField textUser,TextField textContraseña,String usuario, String contrasena){
-        if (textUser==null||textContraseña==null) return false;
-        String userIngresado=textUser.getText().trim();
-        String contrasenaIngresada=textContraseña.getText().trim();
-        return usuario.equals(userIngresado)&&contrasena.equals(contrasenaIngresada);
-    }
-
     public static Empresa getInstance() {
         if (instance == null) {
             instance = new Empresa();
         }
         return instance;
+    }
+
+    /**
+     * Reemplaza la instancia estática cuando los datos son cargados desde la persistencia.
+     */
+    public static void setInstance(Empresa nuevaEmpresa) {
+        if (nuevaEmpresa != null) {
+            instance = nuevaEmpresa;
+        }
     }
 
     public List<Apartamento> getListaApartamentos() {
@@ -151,7 +104,7 @@ public class Empresa {
         return listaReservas;
     }
 
-    public List<Huesped> getListaHuespedes(){
+    public List<Huesped> getListaHuespedes() {
         return listaHuespedes;
     }
 
@@ -168,47 +121,76 @@ public class Empresa {
             this.listaTemporadas.add(temporada);
         }
     }
-    private Empleado recepcionistaEditar;
-    private Huesped huespedEditar;
-    private Apartamento apartamentoSeleccionadoParaEditar;
-    private Reserva reservarEditar;
 
-    public Empleado getEmpleadoEditar() {
-        return recepcionistaEditar;
-    }
-    public void setEmpleadoEditar(Empleado recepcionistaEditar) {
-        this.recepcionistaEditar = recepcionistaEditar;
-    }
-    public Huesped getHuespedEditar() {
-        return huespedEditar;
+    public static boolean validarCredencialEmpleado(String user, String contrasena) {
+        return getInstance().buscarEmpleado(user, contrasena) != null;
     }
 
-    public void setHuespedEditar(Huesped huespedEditar) {
-        this.huespedEditar = huespedEditar;
-    }
-
-    public Reserva getReservarEditar() {
-        return reservarEditar;
-    }
-
-    public void setReservarEditar(Reserva reservarEditar) {
-        this.reservarEditar = reservarEditar;
-    }
-
-    public Apartamento getApartamentoSeleccionadoParaEditar() {
-        return apartamentoSeleccionadoParaEditar;
-    }
-
-    public void setApartamentoSeleccionadoParaEditar(Apartamento apartamento) {
-        this.apartamentoSeleccionadoParaEditar = apartamento;
-    }
-    public static boolean validarCredencialEmpleado(String user, String contrasena){
-        boolean validar=false;
-        for (Empleado empleado : getInstance().getListaEmpleados()){
-            if (empleado.getUsuario().equals(user)&&empleado.getContrasena().equals(contrasena)){
-                validar=true;
+    public Empleado buscarEmpleado(String usuario, String contrasena) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.validarCredenciales(usuario, contrasena)) {
+                return empleado;
             }
         }
-        return validar;
+        return null;
     }
+
+    /** Administrador interno que se usa como autor cuando quien opera entró con la cuenta fija del sistema. */
+    public Empleado getEmpleadoSistema() {
+        if (empleadoSistema == null) {
+            empleadoSistema = new Administrador("Administrador del sistema", "0", LocalDate.of(1990, 1, 1),
+                    "0", "admin@apartasuites.uq", "1234");
+        }
+        return empleadoSistema;
+    }
+
+    public Huesped buscarHuesped(String documento) {
+        if (documento == null) {
+            return null;
+        }
+        String doc = documento.trim();
+        for (Huesped huesped : listaHuespedes) {
+            if (huesped.getDocumento().equalsIgnoreCase(doc)) {
+                return huesped;
+            }
+        }
+        return null;
+    }
+
+    /** Un mismo código externo no puede crear dos reservas. */
+    public boolean existeCodigoExterno(String codigoExterno) {
+        if (codigoExterno == null || codigoExterno.trim().isEmpty()) {
+            return false;
+        }
+        String codigo = codigoExterno.trim();
+        return listaReservas.stream()
+                .anyMatch(r -> r.getCodigoExterno() != null && r.getCodigoExterno().equalsIgnoreCase(codigo));
+    }
+
+    public PoliticaCancelacion getPoliticaCancelacion() {
+        return politicaCancelacion;
+    }
+
+    /** Solo afecta a las reservas que se creen después: las existentes conservan la suya. */
+    public void setPoliticaCancelacion(PoliticaCancelacion politicaCancelacion) {
+        if (politicaCancelacion == null) {
+            throw new IllegalArgumentException("La política de cancelación no puede ser nula.");
+        }
+        this.politicaCancelacion = politicaCancelacion;
+    }
+
+    public List<Novedad> getListaNovedades() {
+        return listaNovedades;
+    }
+
+    public List<ConflictoCanal> getListaConflictos() {
+        return listaConflictos;
+    }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNit() { return nit; }
+    public void setNit(String nit) { this.nit = nit; }
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
 }

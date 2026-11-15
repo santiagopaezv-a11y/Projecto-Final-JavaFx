@@ -4,35 +4,99 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="RECUPERACION DE EDIT_APART, y ADD_RESERVADIRECTA;">
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="REFACTORIZACION PROYECTO : add.controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Launcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Navegacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazBloqueoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazBloqueoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazConfiguracionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazConfiguracionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazEmpleadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazInformeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazInformeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazTemporadaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazTemporadaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddEmpleadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddEmpleadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddReservaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddReservaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/EditarEstadoApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/EditarEstadoApartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/RegistrarOcupanteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/RegistrarOcupanteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazApartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazApartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazCheckController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazFolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazFolioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazRecepcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazRecepcionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazReservaDirectaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazReservaDirectaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazCotizacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazCotizacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazPagoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazPagoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazReservaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazReservaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/ApplicationLaunch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Apartamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/EstadoOperativo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/Temporada.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/alojamiento/TipoTemporada.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Empleado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Huesped.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Ocupante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Persona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/huesped/Recepcionista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/CanalReserva.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/ConflictoCanal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/EstadoReserva.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Estancia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Folio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/Reserva.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/reserva/ResultadoCancelacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Bloqueo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Cargo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/MedioPago.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Novedad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/model/transacciones/Pago.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Mes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/utils/Paths.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/ApartamentoPanelController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazAdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazBloqueoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazConfiguracionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazEmpleadoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazInformeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/admin/InterfazTemporadaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddEmpleadoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/AddReservaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/ApartamentoFueraServicioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/EditarEstadoApartamentoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/comunes/RegistrarOcupanteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazApartamentoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazCheckController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazFolioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazRecepcionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/recepcion/InterfazReservaDirectaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazCotizacionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazPagoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazReservaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/viewController/user/InterfazUsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/HojaEstilos.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/Apartamento.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/Apartamento3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/Lupa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/apartamento.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/casita.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/configuracion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/folio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/gestionUsuario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/huesped.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/informe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/modificar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/reserva.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/visualizar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/apartamento_panel.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazBloqueo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazConfiguracion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazEmpleado.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazInforme.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/administrador/interfazTemporadas.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/addApartamento_panel.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/addEmpleado.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/addReserva.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoCard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamentoFueraServicio.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/apartamento_panel.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/editarEstadoApartamento.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/comunes/registrarOcupanteController.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazApartamento.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazCheck.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazFolio.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazRecepcion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/recepcion/interfazReservaDirecta.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/usuario/InterfazReserva.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/usuario/interfazCotizacion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/usuario/interfazPago.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/usuario/interfazUsuario.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +108,9 @@
       <list>
         <option value="CSS File" />
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -99,7 +163,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/SANTIAGO PAEZ/OneDrive/Desktop/ProjectoFinal",
+    "last_opened_file_path": "C:/Users/SANTIAGO PAEZ/OneDrive/Desktop/Projecto-Final-JavaFx/src/main",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
@@ -116,6 +180,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\Projecto-Final-JavaFx\src\main" />
+      <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\Projecto-Final-JavaFx\src\main\java" />
       <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\ProjectoFinal\src\main\resources\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -309,7 +375,8 @@
     <MESSAGE value="regla politica de cancelacion" />
     <MESSAGE value="LOGIN, EMPLEADO CRUD" />
     <MESSAGE value="RECUPERACION DE EDIT_APART, y ADD_RESERVADIRECTA;" />
-    <option name="LAST_COMMIT_MESSAGE" value="RECUPERACION DE EDIT_APART, y ADD_RESERVADIRECTA;" />
+    <MESSAGE value="REFACTORIZACION : NAVEGACION-&gt;EMPRESA" />
+    <option name="LAST_COMMIT_MESSAGE" value="REFACTORIZACION : NAVEGACION-&gt;EMPRESA" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

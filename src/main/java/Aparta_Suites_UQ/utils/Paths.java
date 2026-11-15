@@ -25,4 +25,7 @@ public class Paths {
     public static final String EDITAR_ESTADO_APART="/view/comunes/editarEstadoApartamento.fxml";
     public static final String LOGIN= "/view/comunes/login.fxml";
     public static final String ADD_EMPLEADO= "/view/comunes/addEmpleado.fxml";
+    public static final String RESERVA_EXTERNA= "/view/comunes/addReservaExterna.fxml";
+    public static final String CONFLICTOS_CANAL= "/view/comunes/conflictosCanal.fxml";
+    public static final String NOVEDADES= "/view/comunes/novedades.fxml";
 }

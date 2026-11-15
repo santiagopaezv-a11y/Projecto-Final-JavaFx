@@ -298,3 +298,78 @@ scrollPane .scroll-bar .decrement-arrow{
     -fx-font-weight:bold;
     -fx-cursor:hand;
 }
+
+
+/* ===== Estilos movidos desde los controladores ===== */
+.btn-limpiar-login {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 0 5 0 0;
+    -fx-text-fill: #95a5a6;
+}
+.btn-ojo-login {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 0 5 0 0;
+}
+.mensaje-error {
+    -fx-text-fill: #e74c3c;
+}
+.saldo-positivo {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16a34a;
+}
+.saldo-deuda {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #dc2626;
+}
+.saldo-folio-positivo {
+    -fx-font-weight: bold;
+    -fx-text-fill: green;
+}
+.saldo-folio-deuda {
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+.estadoTextoClaro {
+    -fx-text-fill: #fff;
+}
+
+/* Calendario de reservas */
+.calendario-grid {
+    -fx-background-color: #ffffff;
+}
+.calendario-encabezado {
+    -fx-font-weight: bold;
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0.5px;
+}
+.calendario-dia {
+    -fx-text-fill: #555555;
+}
+.calendario-apto {
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0.5px;
+}
+.calendario-celda {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0.5px;
+}
+.reserva-bloque {
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+.reserva-pendiente   { -fx-background-color: #a4c2f4; -fx-text-fill: #1c3d5a; }
+.reserva-en-curso    { -fx-background-color: #fce5cd; -fx-text-fill: #783f04; }
+.reserva-finalizada  { -fx-background-color: #b6d7a8; -fx-text-fill: #274e13; }
+.reserva-confirmada  { -fx-background-color: #A9F193FF; -fx-text-fill: #000; }
+.reserva-cancelada   { -fx-background-color: #B83838FF; -fx-text-fill: #fff; }
+.reserva-no-show     { -fx-background-color: #000; -fx-text-fill: #fff; }

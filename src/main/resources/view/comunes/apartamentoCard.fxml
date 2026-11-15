@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="204.0" stylesheets="@../../css/HojaEstilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoCard">
+<AnchorPane prefWidth="204.0" stylesheets="@../../css/HojaEstilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoCardViewController">
    <children>
       <AnchorPane layoutX="2.0" layoutY="98.0" maxWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="97.0">
          <children>

@@ -1,8 +1,11 @@
 package Aparta_Suites_UQ.model.huesped;
 
+import Aparta_Suites_UQ.model.interfaces.Autenticable;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Empleado extends Persona{
+public abstract class Empleado extends Persona implements Autenticable, Serializable {
     private String usuario;
     private String contrasena;
     private static int cantidadEmpleado;
@@ -14,12 +17,14 @@ public abstract class Empleado extends Persona{
         this.contrasena=contrasena;
     }
     public abstract String getRol();
+    @Override
     public String getUsuario() {
         return usuario;
     }
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+    @Override
     public String getContrasena() {
         return contrasena;
     }

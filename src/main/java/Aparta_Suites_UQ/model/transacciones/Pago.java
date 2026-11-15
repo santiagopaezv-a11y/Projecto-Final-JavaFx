@@ -1,8 +1,9 @@
 package Aparta_Suites_UQ.model.transacciones;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Pago {
+public class Pago implements Serializable {
     private final double valor;
     private final MedioPago medioPago;
     private final LocalDateTime fecha;

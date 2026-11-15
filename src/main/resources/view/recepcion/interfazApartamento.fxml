@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazApartamentoController">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazApartamentoViewController">
     <children>
         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
             <children>
@@ -137,6 +137,7 @@
                 </Pane>
             </children>
         </AnchorPane>
+      <Button layoutX="262.0" layoutY="15.0" mnemonicParsing="false" onAction="#onNovedades" prefHeight="30.0" prefWidth="160.0" style="-fx-cursor: hand;" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" text="Novedades" />
       <ScrollPane fx:id="scrollPanePrincipal" fitToWidth="true" hbarPolicy="NEVER" layoutX="262.0" layoutY="57.0" prefHeight="582.0" prefWidth="924.0" styleClass="scrollPane" stylesheets="@../../css/HojaEstilos.css">
          <content>
             <FlowPane fx:id="contenedorTarjetas" hgap="20.0" style="-fx-padding: 10px;" vgap="20.0" />

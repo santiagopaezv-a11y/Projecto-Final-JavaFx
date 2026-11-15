@@ -10,7 +10,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.user.InterfazReservaController">
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.TextArea?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.user.InterfazReservaViewController">
     <children>
         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
             <children>
@@ -125,6 +138,123 @@
                 </Pane>
             </children>
         </AnchorPane>
-      <Label layoutX="363.0" layoutY="81.0" text="Reserva" />
+<VBox layoutX="250.0" layoutY="10.0" prefHeight="630.0" prefWidth="940.0" spacing="12.0" style="-fx-background-color: #F8F9FA; -fx-padding: 15;">
+<children>
+<VBox>
+    <children>
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Reserva por el portal" />
+        <Label style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;" text="Identifíquese con su documento (o registre su perfil) y reserve. La reserva queda Pendiente hasta pagar el anticipo del 30 %." wrapText="true" />
+    </children>
+</VBox>
+<HBox alignment="TOP_LEFT" spacing="12.0" VBox.vgrow="ALWAYS">
+<children>
+<VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;" prefWidth="320.0">
+<children>
+<Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Mi perfil" />
+<HBox alignment="BOTTOM_LEFT" spacing="8.0" >
+<children>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Documento" />
+        <TextField fx:id="txtDocumento" prefHeight="35.0" prefWidth="170.0" promptText="Su número de documento" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<Button fx:id="btnBuscarPerfil" mnemonicParsing="false" onAction="#onBuscarPerfil" prefHeight="36.0" prefWidth="80.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Buscar" />
+</children>
+</HBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nombre completo" />
+        <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Fecha de nacimiento" />
+        <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Teléfono" />
+        <TextField fx:id="txtTelefono" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Correo" />
+        <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<HBox alignment="CENTER_LEFT" spacing="8.0" >
+<children>
+<Button fx:id="btnGuardarPerfil" mnemonicParsing="false" onAction="#onGuardarPerfil" prefHeight="36.0" prefWidth="130.0" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Guardar perfil" />
+<Button fx:id="btnCerrarPerfil" mnemonicParsing="false" onAction="#onCerrarPerfil" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #E0E0E0; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Cerrar" />
+</children>
+</HBox>
+<Label fx:id="lblPerfil" style="-fx-font-size: 12px; -fx-text-fill: #27AE60;" text="" wrapText="true" />
+</children>
+</VBox>
+<VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;" prefWidth="560.0" HBox.hgrow="ALWAYS">
+<children>
+<Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Nueva reserva (canal Portal)" />
+<HBox alignment="CENTER_LEFT" spacing="12.0" >
+<children>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Entrada" />
+        <DatePicker fx:id="dpEntrada" prefHeight="35.0" prefWidth="150.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Salida" />
+        <DatePicker fx:id="dpSalida" prefHeight="35.0" prefWidth="150.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+</children>
+</HBox>
+<Label style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;" text="Ocupantes (además de usted). Todos cuentan para la capacidad; los menores de 6 años no pagan." wrapText="true" />
+<HBox alignment="BOTTOM_LEFT" spacing="8.0" >
+<children>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nombre" />
+        <TextField fx:id="txtOcNombre" prefHeight="35.0" prefWidth="170.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<VBox spacing="4.0">
+    <children>
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nacimiento" />
+        <DatePicker fx:id="dpOcNacimiento" prefHeight="35.0" prefWidth="140.0" promptText="" style="-fx-background-radius: 5;" />
+    </children>
+</VBox>
+<Button fx:id="btnAgregarOcupante" mnemonicParsing="false" onAction="#onAgregarOcupante" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="+ Agregar" />
+</children>
+</HBox>
+<TableView fx:id="tblOcupantes" prefHeight="110.0" stylesheets="@../../css/HojaEstilos.css">
+    <columnResizePolicy>
+        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+    </columnResizePolicy>
+</TableView>
+<HBox alignment="CENTER_LEFT" spacing="12.0" >
+<children>
+<Button fx:id="btnQuitarOcupante" mnemonicParsing="false" onAction="#onQuitarOcupante" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #E0E0E0; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Quitar seleccionado" />
+</children>
+</HBox>
+<HBox alignment="CENTER_LEFT" spacing="8.0" >
+<children>
+<Button fx:id="btnVerDisponibles" mnemonicParsing="false" onAction="#onVerDisponibles" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Ver disponibles" />
+<ComboBox fx:id="cbApartamento" prefHeight="35.0" prefWidth="220.0" promptText="Apartamento disponible" style="-fx-background-radius: 5;" />
+</children>
+</HBox>
+<Label fx:id="lblResumen" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" text="" wrapText="true" />
+<Button fx:id="btnCrearReserva" mnemonicParsing="false" onAction="#onCrearReserva" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Crear reserva" />
+</children>
+</VBox>
+</children>
+</HBox>
+</children>
+</VBox>
     </children>
 </AnchorPane>

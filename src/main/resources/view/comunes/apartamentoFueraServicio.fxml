@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="172.0" prefWidth="293.0" style="-fx-background-color: E6E6E6;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoFueraServicioController">
+<AnchorPane prefHeight="172.0" prefWidth="293.0" style="-fx-background-color: E6E6E6;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.ApartamentoFueraServicioViewController">
    <children>
       <Label layoutX="20.0" layoutY="28.0" text="Motivo por el cual la habitacion">
          <font>

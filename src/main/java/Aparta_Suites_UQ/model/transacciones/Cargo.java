@@ -1,8 +1,9 @@
 package Aparta_Suites_UQ.model.transacciones;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Cargo {
+public class Cargo implements Serializable {
     private final String concepto;
     private final double valor;
     private final LocalDateTime fecha;

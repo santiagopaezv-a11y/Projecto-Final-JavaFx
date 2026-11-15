@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazReservaDirectaController">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazReservaDirectaViewController">
     <children>
         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
             <children>
@@ -153,6 +153,9 @@
          </columnResizePolicy>
       </TableView>
       <Button fx:id="buttom_addReserva" layoutX="279.0" layoutY="34.0" mnemonicParsing="false" onAction="#crearReserva" prefHeight="30.0" prefWidth="112.0" style="-fx-cursor: hand;" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" text="Crear Reserva" />
+      <Button layoutX="405.0" layoutY="34.0" mnemonicParsing="false" onAction="#onReservaExterna" prefHeight="30.0" prefWidth="130.0" style="-fx-cursor: hand;" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" text="Reserva Externa" />
+      <Button layoutX="545.0" layoutY="34.0" mnemonicParsing="false" onAction="#onConflictos" prefHeight="30.0" prefWidth="110.0" style="-fx-cursor: hand;" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" text="Conflictos" />
+      <Button layoutX="665.0" layoutY="34.0" mnemonicParsing="false" onAction="#onSimularExterna" prefHeight="30.0" prefWidth="170.0" style="-fx-cursor: hand;" styleClass="addApart_Panel" stylesheets="@../../css/HojaEstilos.css" text="Simular canal externo" />
       <ScrollPane fx:id="scrollPanePrincipal" fitToHeight="true" fitToWidth="true" layoutX="918.0" layoutY="131.0" prefHeight="476.0" prefWidth="268.0" stylesheets="@../../css/HojaEstilos.css" vbarPolicy="ALWAYS">
          <content>
             <AnchorPane prefHeight="800.0" prefWidth="253.0">

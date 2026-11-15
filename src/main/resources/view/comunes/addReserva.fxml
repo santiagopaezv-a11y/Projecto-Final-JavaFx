@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="580.0" prefWidth="560.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.AddReservaController">
+<AnchorPane prefHeight="580.0" prefWidth="560.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.comunes.AddReservaViewController">
     <children>
         <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
             <children>

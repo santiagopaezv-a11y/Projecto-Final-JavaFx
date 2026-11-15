@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane onMouseClicked="#ocultarPanelAlClickearFuera" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.admin.InterfazAdminController">
+<BorderPane onMouseClicked="#ocultarPanelAlClickearFuera" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.admin.InterfazAdminViewController">
    <left>
       <AnchorPane prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css" BorderPane.alignment="CENTER">
          <children>
@@ -198,7 +198,8 @@
                            <styleClass>
                               <String fx:value="perfilChange" />
                               <String fx:value="shadow" />
-                           </styleClass></Button>
+                           </styleClass>
+                        </Button>
                         <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" layoutX="22.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../image/gestionUsuario.png" />
@@ -208,6 +209,7 @@
                   </Pane>
                </children>
             </AnchorPane>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

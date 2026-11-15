@@ -1,18 +1,20 @@
 package Aparta_Suites_UQ.model.reserva;
 
+import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
+import Aparta_Suites_UQ.model.interfaces.Cancelable;
 import Aparta_Suites_UQ.model.alojamiento.EstadoOperativo;
 import Aparta_Suites_UQ.model.huesped.Huesped;
 import Aparta_Suites_UQ.model.huesped.Ocupante;
-import Aparta_Suites_UQ.model.alojamiento.Temporada;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements Cancelable, Serializable {
     // CONSTANTES
     public static final java.time.LocalTime HORA_CHECK_OUT = java.time.LocalTime.of(11, 0);
     public static final java.time.LocalTime HORA_CHECK_IN = java.time.LocalTime.of(15, 0);
@@ -33,6 +35,8 @@ public class Reserva {
     // Valores congelados al momento de crear la reserva
     private double valorAlojamientoCongelado;
     private String politicaCancelacionAplicada;
+    private PoliticaCancelacion politica;
+    private ResultadoCancelacion resultadoCancelacion;
 
     public Reserva(Estancia estancia, CanalReserva canal, Huesped titular, Apartamento apartamento, List<Ocupante> ocupantes, double valorAlojamientoCongelado) {
         if (estancia == null) {
@@ -49,6 +53,8 @@ public class Reserva {
         this.folio = new Folio();
         this.cantidadOcupantes = this.ocupantes.size() + 1;
         this.valorAlojamientoCongelado = valorAlojamientoCongelado;
+        this.politica = Empresa.getInstance().getPoliticaCancelacion();
+        this.politicaCancelacionAplicada = this.politica.descripcion();
     }
 
     public Reserva(String codigoExterno, Estancia estancia, CanalReserva canal, Huesped titular, Apartamento apartamento, List<Ocupante> ocupantes,double valorAlojamientoCongelado) {
@@ -63,58 +69,41 @@ public class Reserva {
         return this.canal.calcularAnticipoRequerido((int) this.valorAlojamientoCongelado);
     }
 
+    @Override
     public ResultadoCancelacion calcularResultadoCancelacion() {
-        double totalPagado = (double) this.folio.getTotalPagos();
+        double totalPagado = this.folio.getTotalPagos();
         double valorTotalEstancia = this.valorAlojamientoCongelado;
         long diasAntelacion = ChronoUnit.DAYS.between(LocalDate.now(), this.estancia.getFechaEntrada());
-        double porcentajeRetencion;
         double montoRetenido;
         double montoADevolver;
-
-        if (this.estado == EstadoReserva.NO_SHOW || diasAntelacion < 2) {
-            porcentajeRetencion = 1.0;
+        if (this.estado == EstadoReserva.NO_SHOW || diasAntelacion < politica.getDiasRetencionParcial()) {
             montoRetenido = Math.min(totalPagado, valorTotalEstancia);
-            montoADevolver = 0;
-        } else if (diasAntelacion <= 7) {
-            porcentajeRetencion = 0.5;
-            montoRetenido = valorTotalEstancia * porcentajeRetencion;
+            montoADevolver = Math.max(0, totalPagado - montoRetenido);
+        } else if (diasAntelacion <= politica.getDiasDevolucionTotal()) {
+            montoRetenido = valorTotalEstancia * politica.getPorcentajeRetencionParcial();
             montoADevolver = Math.max(0, totalPagado - montoRetenido);
         } else {
-            porcentajeRetencion = 0.0;
             montoRetenido = 0;
             montoADevolver = totalPagado;
         }
         return new ResultadoCancelacion(totalPagado, valorTotalEstancia, diasAntelacion, montoRetenido, montoADevolver);
     }
-    // OCUPANTES
-//    public void agregarOcupante(Ocupante ocupante) {
-//        if (ocupante == null) {
-//            throw new IllegalArgumentException("El ocupante no puede ser nulo.");
-//        }
-//        int totalPersonasFuturo = 1 + this.ocupantes.size() + 1;
-//        if (totalPersonasFuturo > apartamento.getCantMaximaPersonas()) {
-//            throw new IllegalStateException("Se supera la capacidad máxima del apartamento ("
-//                    + apartamento.getCantMaximaPersonas() + " personas incluyendo al titular).");
-//        }
-//        this.ocupantes.add(ocupante);
-//        this.cantidadOcupantes = this.ocupantes.size() + 1;
-//    }
-    //ValidarEstados
-    public void validarEstadosDirectos(){
-        if (getEstado()==EstadoReserva.PENDIENTE){
+
+    /**
+     * Cambios de estado que ocurren solos por el paso del tiempo (nunca confirma ni hace check-in):
+     * una Pendiente sin confirmar en 24 horas pasa a Cancelada, y una Confirmada cuyo titular no llegó
+     * antes de las 10:00 p. m. del día de entrada pasa a No-show.
+     */
+    public void actualizarEstadosAutomaticos() {
+        if (getEstado() == EstadoReserva.PENDIENTE) {
             verificarVencimiento24Horas();
         }
-        if (getEstado()==EstadoReserva.PENDIENTE){
-            setEstado(EstadoReserva.CONFIRMADA);
-        }
-        if (hacerCheckIn()){
-            setEstado(EstadoReserva.EN_CURSO);
-            getApartamento().setEstadoOperativo(EstadoOperativo.OCUPADO);
-        }
-        if (getEstado()==EstadoReserva.CONFIRMADA&&LocalDateTime.now().isAfter(getEstancia().getFechaEntrada().atTime(22,0))){
-            setEstado(EstadoReserva.NO_SHOW);
+        if (getEstado() == EstadoReserva.CONFIRMADA
+                && LocalDateTime.now().isAfter(getEstancia().getFechaEntrada().atTime(22, 0))) {
+            declararNoShow();
         }
     }
+
     public void verificarVencimiento24Horas() {
         if (getEstado() == EstadoReserva.PENDIENTE &&
                 LocalDateTime.now().isAfter(fechaCreacion.plusHours(24))) {
@@ -122,23 +111,80 @@ public class Reserva {
         }
     }
 
+    /** Pendiente -> Confirmada, siempre que se haya pagado el anticipo si el canal lo exige. */
     public void confirmar() {
         if (this.estado != EstadoReserva.PENDIENTE){
             throw new IllegalStateException("Solo una reserva Pendiente puede pasar a Confirmada.");
         }
+        int anticipo = calcularAnticipoRequerido();
+        if (folio.getTotalPagos() < anticipo) {
+            throw new IllegalStateException("Para confirmar la reserva se requiere un anticipo de $" + anticipo
+                    + " (pagado: $" + (long) folio.getTotalPagos() + ").");
+        }
         this.estado = EstadoReserva.CONFIRMADA;
     }
-    public boolean hacerCheckIn() {
-        boolean verificarEstadoApartamento=true;
-        boolean verificarEstadoReserva=true;
+    /**
+     * Check-in: solo si la reserva está Confirmada, ya llegó la hora de entrada (3:00 p. m. del día de entrada)
+     * y el apartamento está Preparado.
+     *
+     * @return null si se puede hacer, o el motivo por el que se rechaza
+     */
+    public String motivoRechazoCheckIn() {
         if (getEstado() != EstadoReserva.CONFIRMADA) {
-            verificarEstadoReserva=false;
-        } else if (apartamento.getEstadoOperativo() != EstadoOperativo.PREPARADO){
-            verificarEstadoApartamento=false;
+            return "Solo se puede hacer check-in a una reserva Confirmada (estado actual: " + getEstado() + ").";
         }
-        boolean validarHora=LocalDateTime.now().isAfter(getEstancia().getFechaHoraEntrada());
-        return validarHora&&verificarEstadoApartamento&&verificarEstadoReserva;
+        if (!LocalDateTime.now().isAfter(getEstancia().getFechaHoraEntrada())) {
+            return "Aún no llega la hora de entrada: el check-in se habilita el "
+                    + getEstancia().getFechaEntrada() + " desde las " + HORA_CHECK_IN + ".";
+        }
+        if (apartamento.getEstadoOperativo() != EstadoOperativo.PREPARADO) {
+            return "El apartamento debe estar en estado Preparado (estado actual: "
+                    + apartamento.getEstadoOperativo() + ").";
+        }
+        return null;
     }
+
+    public boolean hacerCheckIn() {
+        return motivoRechazoCheckIn() == null;
+    }
+
+    /** Confirmada -> En curso; el apartamento pasa a Ocupado. Lanza IllegalStateException con el motivo si no procede. */
+    public void registrarLlegada() {
+        String motivo = motivoRechazoCheckIn();
+        if (motivo != null) {
+            throw new IllegalStateException(motivo);
+        }
+        this.estado = EstadoReserva.EN_CURSO;
+        apartamento.setEstadoOperativo(EstadoOperativo.OCUPADO);
+    }
+
+    /**
+     * Cambia de estado respetando el ciclo de vida; cualquier otro cambio se rechaza.
+     * Pendiente -> Confirmada | Cancelada; Confirmada -> En curso | Cancelada | No-show; En curso -> Finalizada.
+     */
+    public void cambiarEstado(EstadoReserva nuevo) {
+        if (nuevo == null || nuevo == this.estado) {
+            return;
+        }
+        switch (this.estado) {
+            case PENDIENTE:
+                if (nuevo == EstadoReserva.CONFIRMADA) { confirmar(); return; }
+                if (nuevo == EstadoReserva.CANCELADA) { cancelar(); return; }
+                break;
+            case CONFIRMADA:
+                if (nuevo == EstadoReserva.EN_CURSO) { registrarLlegada(); return; }
+                if (nuevo == EstadoReserva.CANCELADA) { cancelar(); return; }
+                if (nuevo == EstadoReserva.NO_SHOW) { declararNoShow(); return; }
+                break;
+            case EN_CURSO:
+                if (nuevo == EstadoReserva.FINALIZADA) { hacerCheckOut(); return; }
+                break;
+            default:
+                break;
+        }
+        throw new IllegalStateException("Cambio de estado no permitido: " + this.estado + " -> " + nuevo + ".");
+    }
+
     public void hacerCheckOut() {
         if (this.estado != EstadoReserva.EN_CURSO) {
             throw new IllegalStateException("Solo se puede hacer check-out a una reserva en curso.");
@@ -147,14 +193,21 @@ public class Reserva {
             throw new IllegalStateException("No se puede hacer check-out. El folio tiene un saldo pendiente de $" + folio.getSaldo());
         }
         this.estado = EstadoReserva.FINALIZADA;
-        apartamento.setEstadoOperativo(EstadoOperativo.EN_PREPARACION);
+        apartamento.setEstadoOperativo(EstadoOperativo.PENDIENTE);
     }
 
+    @Override
+    public boolean puedeCancelarse() {
+        return getEstado() == EstadoReserva.PENDIENTE || getEstado() == EstadoReserva.CONFIRMADA;
+    }
+
+    @Override
     public void cancelar() {
-        if (getEstado() != EstadoReserva.PENDIENTE && getEstado() != EstadoReserva.CONFIRMADA) {
+        if (!puedeCancelarse()) {
             throw new IllegalStateException("No se puede cancelar una reserva que no esté Pendiente o Confirmada.");
         }
-         setEstado(EstadoReserva.CANCELADA);
+        this.resultadoCancelacion = calcularResultadoCancelacion();
+        setEstado(EstadoReserva.CANCELADA);
     }
 
     public void declararNoShow() {
@@ -162,19 +215,32 @@ public class Reserva {
             throw new IllegalStateException("Solo se puede declarar no-show a reservas Confirmadas.");
         }
         this.estado = EstadoReserva.NO_SHOW;
+        this.resultadoCancelacion = calcularResultadoCancelacion();
     }
 
-    public boolean cumpleTiempoPreparacion(Reserva reserva) {
-        if (!this.apartamento.equals(reserva.getApartamento())) {
+    /**
+     * Entre una salida (11:00 a. m.) y la siguiente entrada (3:00 p. m.) del mismo apartamento
+     * deben pasar al menos {@link #HORAS_MINIMAS_PREPARACION} horas.
+     */
+    public boolean cumpleTiempoPreparacion(Reserva otra) {
+        if (otra == null || this.apartamento == null || !this.apartamento.equals(otra.getApartamento())) {
             return true;
         }
-        if (this.estancia.getFechaSalida().isEqual(reserva.getEstancia().getFechaEntrada())) {
-            long horasDiferencia = ChronoUnit.HOURS.between(getEstancia().getFechaHoraSalida(), getEstancia().getFechaEntrada());
-            return horasDiferencia >= HORAS_MINIMAS_PREPARACION;
+        if (this.estancia.getFechaSalida().isEqual(otra.getEstancia().getFechaEntrada())) {
+            return ChronoUnit.HOURS.between(this.estancia.getFechaHoraSalida(), otra.getEstancia().getFechaHoraEntrada())
+                    >= HORAS_MINIMAS_PREPARACION;
+        }
+        if (otra.getEstancia().getFechaSalida().isEqual(this.estancia.getFechaEntrada())) {
+            return ChronoUnit.HOURS.between(otra.getEstancia().getFechaHoraSalida(), this.estancia.getFechaHoraEntrada())
+                    >= HORAS_MINIMAS_PREPARACION;
         }
         return true;
     }
-    // GETTERS Y SETTERS
+
+    /** Resultado de la devolución registrado al cancelar o declarar no-show (null si no ha ocurrido). */
+    public ResultadoCancelacion getResultadoCancelacion() { return resultadoCancelacion; }
+
+    public PoliticaCancelacion getPolitica() { return politica; }
 
     public Estancia getEstancia() { return estancia; }
     public void setEstancia(Estancia estancia) { this.estancia = estancia; }

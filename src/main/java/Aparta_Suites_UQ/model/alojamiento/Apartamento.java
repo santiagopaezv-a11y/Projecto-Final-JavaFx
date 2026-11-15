@@ -1,7 +1,11 @@
 package Aparta_Suites_UQ.model.alojamiento;
+
+import Aparta_Suites_UQ.Empresa;
+import Aparta_Suites_UQ.model.interfaces.Reservable;
 import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.Bloqueo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Apartamento {
+public class Apartamento implements Reservable, Serializable {
 
     private final String id;
     private String nombre;
@@ -21,7 +25,7 @@ public class Apartamento {
     private String motivoFueraServicio;
     //private String rutaImage;
     static int numeroApartamentos=0;
-    private List<Reserva> reservas;
+    private boolean activo = true;
     private List<Bloqueo> bloqueos;
     private Map<TipoTemporada, Double> tarifasPorTemporada;
 
@@ -54,7 +58,6 @@ public class Apartamento {
         this.caracteristicas = caracteristicas;
         this.precioNoche = precioNoche;
         this.estadoOperativo = estadoOperativo;
-        this.reservas = new ArrayList<>();
         this.bloqueos = new ArrayList<>();
         this.id="Apart_"+(++numeroApartamentos);
         //this.rutaImage=rutaImage;
@@ -76,26 +79,49 @@ public class Apartamento {
     }
 
 
+    @Override
     public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
-
-        boolean tieneReservaSolapada = reservas.stream().anyMatch(reserva -> reserva.getEstancia().seSolapaCon(fechaEntrada, fechaSalida));
-
-        if (tieneReservaSolapada) {
-            return false;
-        }
-
-        boolean tieneBloqueoSolapado = bloqueos.stream().anyMatch(bloqueo -> bloqueo.seSolapaCon(fechaEntrada, fechaSalida));
-        return !tieneBloqueoSolapado;
+        return estaDisponible(fechaEntrada, fechaSalida, null);
     }
 
+    /**
+     * Sin doble venta: el apartamento no puede tener dos reservas ACTIVAS (Pendiente, Confirmada o En curso)
+     * que compartan al menos una noche, ni una noche bloqueada. La noche de la fecha de salida no cuenta.
+     *
+     * @param reservaExcluida reserva que se ignora (la que se está editando), o null
+     */
+    public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida, Reserva reservaExcluida) {
+        return !tieneReservaActivaEn(fechaEntrada, fechaSalida, reservaExcluida)
+                && !tieneBloqueoEn(fechaEntrada, fechaSalida);
+    }
+
+    public boolean tieneReservaActivaEn(LocalDate fechaEntrada, LocalDate fechaSalida, Reserva reservaExcluida) {
+        return Empresa.getInstance().getListaReservas().stream()
+                .filter(r -> r != reservaExcluida)
+                .filter(r -> r.getApartamento() == this)
+                .filter(r -> r.getEstado().esActiva())
+                .anyMatch(r -> r.getEstancia().seSolapaCon(fechaEntrada, fechaSalida));
+    }
+
+    public boolean tieneBloqueoEn(LocalDate fechaEntrada, LocalDate fechaSalida) {
+        return bloqueos.stream().anyMatch(bloqueo -> bloqueo.seSolapaCon(fechaEntrada, fechaSalida));
+    }
+
+    public void eliminarBloqueo(Bloqueo bloqueo) {
+        this.bloqueos.remove(bloqueo);
+    }
+
+    /** Registra la reserva (en la lista de la empresa) solo si el apartamento está libre en ese rango. */
     public void agregarReserva(Reserva nuevaReserva){
         if (nuevaReserva == null){
             throw new IllegalArgumentException("La reserva no puede ser nula. ");
         }
-        if (!estaDisponible(nuevaReserva.getEstancia().getFechaEntrada(), nuevaReserva.getEstancia().getFechaSalida())){
+        if (!estaDisponible(nuevaReserva.getEstancia().getFechaEntrada(), nuevaReserva.getEstancia().getFechaSalida(), nuevaReserva)){
             throw  new IllegalStateException("El apartamento " + nombre + " ya tiene una reserva en el rango seleccionado. ");
         }
-        this.reservas.add(nuevaReserva);
+        if (!Empresa.getInstance().getListaReservas().contains(nuevaReserva)) {
+            Empresa.getInstance().getListaReservas().add(nuevaReserva);
+        }
     }
 
     public void ponerFueraDeServicio(String motivoFueraServicio) {
@@ -106,15 +132,16 @@ public class Apartamento {
         this.motivoFueraServicio = motivoFueraServicio;
     }
 
+    @Override
     public boolean estaHabilitadoParaReservar(){
-        return this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
+        return this.activo && this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
 
     public boolean existeCodigoExterno(String codigoExterno){
         if (codigoExterno == null || codigoExterno.trim().isEmpty()){
             return false;
         }
-        return reservas.stream().filter(reserva -> reserva.getCodigoExterno() != null).anyMatch(reserva -> reserva.getCodigoExterno().equalsIgnoreCase(codigoExterno.trim()));
+        return getReservas().stream().filter(reserva -> reserva.getCodigoExterno() != null).anyMatch(reserva -> reserva.getCodigoExterno().equalsIgnoreCase(codigoExterno.trim()));
     }
 
     //GETTERS Y SETTERS
@@ -122,6 +149,11 @@ public class Apartamento {
     public int getTarifaSegunTemporada(TipoTemporada tipoTemporada){
         if (tipoTemporada == null) {
             return (int) Math.round(this.precioNoche);
+        }
+        // Tarifa propia de este apartamento para la temporada, definida por el administrador
+        Double tarifaPropia = tarifasPorTemporada.get(tipoTemporada);
+        if (tarifaPropia != null && tarifaPropia > 0) {
+            return (int) Math.round(tarifaPropia);
         }
 
         switch (tipoTemporada){
@@ -223,7 +255,18 @@ public class Apartamento {
     }
 
     public List<Reserva> getReservas() {
-        return new ArrayList<>(reservas);
+        return Empresa.getInstance().getListaReservas().stream()
+                .filter(r -> r.getApartamento() == this)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    /** Eliminación lógica: el apartamento deja de mostrarse y de reservarse, pero su historial se conserva. */
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public List<Bloqueo> getBloqueos() {
@@ -233,8 +276,8 @@ public class Apartamento {
         tarifasPorTemporada.put(tipo, precio);
     }
 
+    /** Tarifa efectiva por persona por noche en esa temporada (propia o la derivada de la tarifa base). */
     public double getTarifa(TipoTemporada tipo) {
-        // Devuelve la tarifa del tipo o 0.0 por defecto
-        return tarifasPorTemporada.getOrDefault(tipo, 0.0);
+        return getTarifaSegunTemporada(tipo);
     }
 }

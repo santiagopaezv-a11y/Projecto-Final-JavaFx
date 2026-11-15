@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazCheckController">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazCheckViewController">
     <children>
         <!-- BARRA LATERAL IZQUIERDA -->
         <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
@@ -193,7 +193,7 @@
                                     <children>
                                         <Label fx:id="lblCodigoReserva" style="-fx-font-weight: bold;" text="Reserva: --" />
                                         <Label fx:id="lblEstadoApto" text="Estado Apt: --" />
-                                        <Label fx:id="lblSaldoFolio" style="-fx-font-weight: bold;" text="Saldo Folio: --" />
+                                        <Label fx:id="lblSaldoFolio" style="-fx-font-weight: bold;" stylesheets="@../../css/HojaEstilos.css" text="Saldo Folio: --" />
                                     </children>
                                 </VBox>
 
@@ -202,9 +202,11 @@
                                 <!-- ACCIONES PRINCIPALES -->
                                 <VBox alignment="CENTER" prefHeight="304.0" prefWidth="197.0" spacing="10.0" VBox.vgrow="ALWAYS">
                                     <children>
+                                        <Button fx:id="btnConfirmar" onAction="#onConfirmarReserva" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="CONFIRMAR reserva" />
                                         <Button fx:id="btnCheckIn" onAction="#onRealizarCheckIn" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #16a34a; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="Registrar CHECK-IN" />
                                         <Button fx:id="btnCheckOut" onAction="#onRealizarCheckOut" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0284c7; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="Registrar CHECK-OUT" />
                                         <Button fx:id="btnNoShow" onAction="#onDeclararNoShow" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #dc2626; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="Declarar NO-SHOW" />
+                                        <Button fx:id="btnCancelar" onAction="#onCancelarReserva" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #9f1239; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="CANCELAR reserva" />
                                         <Separator />
                                         <Button onAction="#onIrAFolio" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #d97706; -fx-text-fill: white; -fx-font-weight: bold;" styleClass="buttom_check" stylesheets="@../../css/HojaEstilos.css" text="Ver / Saldar Folio" />
                                     </children>

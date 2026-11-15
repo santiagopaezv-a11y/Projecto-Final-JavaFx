@@ -5,12 +5,13 @@ import Aparta_Suites_UQ.model.huesped.Ocupante;
 import Aparta_Suites_UQ.model.alojamiento.Temporada;
 import Aparta_Suites_UQ.model.alojamiento.TipoTemporada;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class Estancia {
+public class Estancia implements Serializable {
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
 
@@ -54,31 +55,39 @@ public class Estancia {
     }
 
     public int calcularValorTotal(Apartamento apartamento, List<Ocupante> ocupantes, List<Temporada> temporadas) {
-        if (apartamento == null) {
-            throw new IllegalArgumentException("El apartamento no puede ser nulo.");
-        }
-
-        int personasQuePagan = calcularPersonasQuePagan(ocupantes);
         int valorTotal = 0;
-
-        LocalDate fechaNoche = this.fechaEntrada;
-        while (fechaNoche.isBefore(fechaSalida)) {
-            int tarifaNoche = obtenerTarifaPorNoche(apartamento, fechaNoche, temporadas);
-            valorTotal += (tarifaNoche * personasQuePagan);
-            fechaNoche = fechaNoche.plusDays(1);
+        for (NocheLiquidada noche : desglosarNoches(apartamento, ocupantes, temporadas)) {
+            valorTotal += noche.subtotal();
         }
         return valorTotal;
     }
 
-    private int obtenerTarifaPorNoche(Apartamento apartamento, LocalDate fechaNoche, List<Temporada> temporadas) {
+    /** Liquida la estancia noche por noche con la tarifa de la temporada de cada noche. */
+    public List<NocheLiquidada> desglosarNoches(Apartamento apartamento, List<Ocupante> ocupantes, List<Temporada> temporadas) {
+        if (apartamento == null) {
+            throw new IllegalArgumentException("El apartamento no puede ser nulo.");
+        }
+        int personasQuePagan = calcularPersonasQuePagan(ocupantes);
+        List<NocheLiquidada> noches = new java.util.ArrayList<>();
+        LocalDate fechaNoche = this.fechaEntrada;
+        while (fechaNoche.isBefore(fechaSalida)) {
+            TipoTemporada tipo = obtenerTipoTemporada(fechaNoche, temporadas);
+            int tarifaNoche = apartamento.getTarifaSegunTemporada(tipo);
+            noches.add(new NocheLiquidada(fechaNoche, tipo, tarifaNoche, personasQuePagan, tarifaNoche * personasQuePagan));
+            fechaNoche = fechaNoche.plusDays(1);
+        }
+        return noches;
+    }
+
+    private TipoTemporada obtenerTipoTemporada(LocalDate fechaNoche, List<Temporada> temporadas) {
         if (temporadas != null) {
             for (Temporada temporada : temporadas) {
                 if (temporada.aplicaEnFecha(fechaNoche)) {
-                    return apartamento.getTarifaSegunTemporada(temporada.getTipo());
+                    return temporada.getTipo();
                 }
             }
         }
-        return apartamento.getTarifaSegunTemporada(TipoTemporada.BAJA);
+        return TipoTemporada.BAJA;
     }
 
     public boolean seSolapaCon(LocalDate inicio, LocalDate fin) {

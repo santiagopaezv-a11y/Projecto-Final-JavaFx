@@ -1,8 +1,9 @@
 package Aparta_Suites_UQ.model.reserva;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ConflictoCanal {
+public class ConflictoCanal implements Serializable {
     private String codigoExterno;
     private String canalOrigen;
     private String motivo;

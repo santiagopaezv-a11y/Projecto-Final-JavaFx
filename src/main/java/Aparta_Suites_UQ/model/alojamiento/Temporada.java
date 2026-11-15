@@ -1,8 +1,9 @@
 package Aparta_Suites_UQ.model.alojamiento;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Temporada {
+public class Temporada implements Serializable {
     private TipoTemporada tipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;

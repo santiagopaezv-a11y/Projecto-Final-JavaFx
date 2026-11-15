@@ -2,9 +2,10 @@ package Aparta_Suites_UQ.model.transacciones;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Bloqueo {
+public class Bloqueo implements Serializable {
     private Apartamento apartamento;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -37,6 +38,16 @@ public class Bloqueo {
             return false;
         }
         return fechaInicio.isBefore(this.fechaFin) && fechaFin.isAfter(this.fechaInicio);
+    }
+    public boolean coincideConFecha(LocalDate fecha) {
+        if (fechaInicio == null || fechaFin == null || fecha == null) {
+            return false;
+        }
+        // Verifica si la fecha está entre fechaInicio y fechaFin (incluyéndolas)
+        return !fecha.isBefore(fechaInicio) && !fecha.isAfter(fechaFin);
+    }
+    public boolean coincideConFechaActual() {
+        return coincideConFecha(LocalDate.now());
     }
 
     public Apartamento getApartamento() { return apartamento; }

@@ -1,9 +1,10 @@
 package Aparta_Suites_UQ.model.huesped;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable {
     private String nombre;
     private String documento;
     private LocalDate fechaNacimiento;

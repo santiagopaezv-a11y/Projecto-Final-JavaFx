@@ -3,9 +3,10 @@ package Aparta_Suites_UQ.model.transacciones;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Novedad {
+public class Novedad implements Serializable {
     private Apartamento apartamento;
     private String descripcion; // Daños, faltantes o situaciones reportadas[cite: 5]
     private LocalDateTime fecha;

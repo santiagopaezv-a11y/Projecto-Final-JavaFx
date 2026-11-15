@@ -1,6 +1,8 @@
 package Aparta_Suites_UQ.model.reserva;
 
-public class ResultadoCancelacion {
+import java.io.Serializable;
+
+public class ResultadoCancelacion implements Serializable {
     private double totalPagado;
     private double valorTotalEstancia;
     private long diasAntelacion;

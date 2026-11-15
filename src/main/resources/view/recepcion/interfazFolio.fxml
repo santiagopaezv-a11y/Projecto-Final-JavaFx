@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazFolioController">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.recepcion.InterfazFolioViewController">
     <children>
         <!-- BARRA LATERAL IZQUIERDA -->
         <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="650.0" prefWidth="235.0" styleClass="barra_lateral" stylesheets="@../../css/HojaEstilos.css">
@@ -186,7 +186,7 @@
                         <VBox style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #cbd5e1; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label style="-fx-text-fill: #64748b; -fx-font-size: 12px;" text="Saldo Pendiente" />
-                                <Label fx:id="lblSaldo" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #dc2626;" text="\$ 0" />
+                                <Label fx:id="lblSaldo" styleClass="saldo-deuda" stylesheets="@../../css/HojaEstilos.css" text="\$ 0" />
                             </children>
                         </VBox>
                     </children>

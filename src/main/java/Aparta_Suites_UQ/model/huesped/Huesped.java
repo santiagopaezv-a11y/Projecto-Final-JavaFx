@@ -1,8 +1,9 @@
 package Aparta_Suites_UQ.model.huesped;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Huesped extends Persona {
+public class Huesped extends Persona implements Serializable {
 
     private String imagenOpcional;
 

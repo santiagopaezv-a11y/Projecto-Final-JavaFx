@@ -1,13 +1,16 @@
 package Aparta_Suites_UQ.model.reserva;
 
+import Aparta_Suites_UQ.model.interfaces.Cobrable;
+
 import Aparta_Suites_UQ.model.transacciones.Cargo;
 import Aparta_Suites_UQ.model.transacciones.MedioPago;
 import Aparta_Suites_UQ.model.transacciones.Pago;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Folio {
+public class Folio implements Cobrable, Serializable {
     private List<Cargo> cargos;
     private List<Pago> pagos;
 
@@ -31,14 +34,17 @@ public class Folio {
 
     //Saldo es la diferencia del total menos los pagos actuales
 
+    @Override
     public double getSaldo() {
         double totalCargos = cargos.stream().mapToDouble(Cargo::getValor).sum();
         double totalPagos = pagos.stream().mapToDouble(Pago::getValor).sum();
         return totalCargos - totalPagos;
     }
+    @Override
     public double getTotalCargos() {
         return  cargos.stream().mapToDouble(Cargo::getValor).sum();
     }
+    @Override
     public double getTotalPagos() {
         return  pagos.stream().mapToDouble(Pago::getValor).sum();
     }
