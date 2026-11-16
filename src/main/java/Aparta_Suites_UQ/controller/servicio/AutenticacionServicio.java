@@ -23,7 +23,6 @@ public class AutenticacionServicio {
     }
 
     public Acceso autenticarLogin(String usuario, String password) {
-        // Busca directamente en la lista de Empresa (donde ya están ambos creados)
         Empleado empleado = Empresa.getInstance().buscarEmpleado(usuario, password);
 
         if (empleado != null) {

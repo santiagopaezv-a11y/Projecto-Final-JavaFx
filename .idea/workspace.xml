@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="PROYECTO ACTUALIZADO - VERSION PRELIMINAR">
+    <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="VERSION 1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/controller/servicio/AutenticacionServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/controller/servicio/AutenticacionServicio.java" afterDir="false" />
@@ -349,7 +349,8 @@
     <MESSAGE value="RECUPERACION DE EDIT_APART, y ADD_RESERVADIRECTA;" />
     <MESSAGE value="REFACTORIZACION : NAVEGACION-&gt;EMPRESA" />
     <MESSAGE value="PROYECTO ACTUALIZADO - VERSION PRELIMINAR" />
-    <option name="LAST_COMMIT_MESSAGE" value="PROYECTO ACTUALIZADO - VERSION PRELIMINAR" />
+    <MESSAGE value="VERSION 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="VERSION 1.0" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

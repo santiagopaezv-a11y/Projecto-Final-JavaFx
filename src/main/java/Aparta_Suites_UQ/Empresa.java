@@ -257,11 +257,9 @@ public class Empresa implements Serializable {
     public List<Novedad> getListaNovedades() {
         return listaNovedades;
     }
-
     public List<ConflictoCanal> getListaConflictos() {
         return listaConflictos;
     }
-
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getNit() { return nit; }

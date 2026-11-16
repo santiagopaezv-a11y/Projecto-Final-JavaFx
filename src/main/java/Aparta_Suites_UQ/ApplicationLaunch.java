@@ -19,6 +19,8 @@ public class ApplicationLaunch extends Application {
         } else {
             System.out.println("[App] Iniciando con una nueva instancia de Empresa.");
         }
+        //Datos de prueba si se desea revisar:
+        //DatosPruebaServicio.cargar();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/comunes/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
