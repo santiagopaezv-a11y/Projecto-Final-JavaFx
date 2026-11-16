@@ -27,38 +27,21 @@ public class ReservaServicio {
 
     private ReservaServicio() {
     }
-
     public static ReservaServicio getInstance() {
         if (instance == null) {
             instance = new ReservaServicio();
         }
         return instance;
     }
-
-    // ==========================================
-    // GETTERS & SETTERS
-    // ==========================================
-
     public Reserva getReservaEditar() {
         return reservaEditar;
     }
-
     public void setReservaEditar(Reserva reserva) {
         this.reservaEditar = reserva;
     }
-
-    // ==========================================
-    // CONSULTAS Y REGLAS DE TIEMPO AUTOMÁTICAS
-    // ==========================================
-
     public List<Reserva> listarReservas() {
         return Empresa.getInstance().getListaReservas();
     }
-
-    /**
-     * Refresca el estado de todas las reservas ejecutando las reglas automáticas de tiempo
-     * (Vencimiento de 24h sin abono y No-Show a las 10:00 PM) y persiste los cambios.
-     */
     public List<Reserva> refrescarEstados() {
         List<Reserva> lista = listarReservas();
         for (Reserva reserva : lista) {
@@ -67,7 +50,6 @@ public class ReservaServicio {
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
         return lista;
     }
-
     public List<Reserva> filtrarReservas(String texto, String filtroEstado) {
         String busqueda = texto == null ? "" : texto.trim().toLowerCase();
         return refrescarEstados().stream()
@@ -86,11 +68,6 @@ public class ReservaServicio {
         listarReservas().remove(reserva);
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
     }
-
-    // ==========================================
-    // VALIDACIONES Y CREACIÓN / EDICIÓN
-    // ==========================================
-
     public void validarDatos(DatosReserva d) {
         if (estaVacio(d.cantidadOcupantes()) || estaVacio(d.correo()) || estaVacio(d.documento())
                 || estaVacio(d.nombre()) || estaVacio(d.telefono()) || d.fechaEntrada() == null
@@ -111,7 +88,6 @@ public class ReservaServicio {
             throw new IllegalArgumentException("No se pueden crear reservas con fecha de entrada anterior a hoy.");
         }
     }
-
     public void validarDisponibilidad(DatosReserva d) {
         if (d.fechaEntrada() == null || d.fechaSalida() == null || d.apartamento() == null) {
             throw new IllegalArgumentException("Por favor seleccione las fechas de entrada/salida y el apartamento.");
@@ -137,7 +113,6 @@ public class ReservaServicio {
                     + " tiene un bloqueo registrado en esas fechas y no está disponible.");
         }
     }
-
     public void actualizarReserva(DatosReserva d) {
         Reserva reserva = reservaEditar;
         if (reserva == null) {
@@ -163,11 +138,9 @@ public class ReservaServicio {
         }
         reservaEditar = null;
     }
-
     public Reserva crearReservaDirecta(DatosReserva d, List<Ocupante> ocupantes) {
         return crearReserva(CanalReserva.DIRECTA, null, d, ocupantes);
     }
-
     public Reserva crearReserva(CanalReserva canal, String codigoExterno, DatosReserva d, List<Ocupante> ocupantes) {
         double anticipo = 0;
         String textoAnticipo = d.anticipo() == null ? "" : d.anticipo().trim();
@@ -207,7 +180,6 @@ public class ReservaServicio {
             throw new IllegalArgumentException("Error al crear la reserva: " + e.getMessage());
         }
     }
-
     private Huesped obtenerOCrearHuesped(DatosReserva d) {
         Huesped existente = Empresa.getInstance().buscarHuesped(d.documento());
         if (existente != null) {
@@ -220,15 +192,9 @@ public class ReservaServicio {
         Empresa.getInstance().getListaHuespedes().add(nuevo);
         return nuevo;
     }
-
-    // ==========================================
-    // OPERACIONES DE CICLO DE VIDA (CHECK-IN / OUT / CANCELAR)
-    // ==========================================
-
     public boolean puedeConfirmar(Reserva reserva) {
         return reserva != null && reserva.getEstado() == EstadoReserva.PENDIENTE;
     }
-
     public void confirmarReserva(Reserva reserva) {
         try {
             reserva.confirmar();
@@ -237,7 +203,6 @@ public class ReservaServicio {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
-
     public ResultadoCancelacion cancelarReserva(Reserva reserva) {
         try {
             reserva.cancelar();
@@ -247,44 +212,32 @@ public class ReservaServicio {
         }
         return reserva.getResultadoCancelacion();
     }
-
     public String describirResultado(ResultadoCancelacion r) {
         return String.format(java.util.Locale.of("es", "CO"),
                 "Días de antelación: %d%nTotal pagado: $%,.0f%nSe retiene: $%,.0f%nSe devuelve: $%,.0f%n(El sistema registra la devolución; no mueve dinero real.)",
                 r.getDiasAntelacion(), r.getTotalPagado(), r.getMontoRetenido(), r.getMontoADevolver());
     }
-
     public boolean puedeCheckIn(Reserva reserva) {
         return reserva != null && reserva.getEstado() == EstadoReserva.CONFIRMADA;
     }
-
     public boolean puedeCheckOut(Reserva reserva) {
         return reserva != null && reserva.getEstado() == EstadoReserva.EN_CURSO;
     }
-
     public boolean puedeDeclararNoShow(Reserva reserva) {
         return reserva != null && reserva.getEstado() == EstadoReserva.CONFIRMADA;
     }
-
     public void realizarCheckIn(Reserva reserva) {
         reserva.registrarLlegada();
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
     }
-
     public void realizarCheckOut(Reserva reserva) {
         reserva.hacerCheckOut();
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
     }
-
     public void declararNoShow(Reserva reserva) {
         reserva.declararNoShow();
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
     }
-
-    // ==========================================
-    // MÉTODOS AUXILIARES
-    // ==========================================
-
     public int parseCantidadOcupantes(String texto) {
         try {
             int cantidad = Integer.parseInt(texto.trim());
@@ -296,7 +249,6 @@ public class ReservaServicio {
             throw new IllegalArgumentException("Verifique que los campos numéricos tengan valores válidos.");
         }
     }
-
     private boolean estaVacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }

@@ -4,23 +4,18 @@ import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.model.reserva.PoliticaCancelacion;
 
 public class ConfiguracionServicio {
-
     private static ConfiguracionServicio instance;
-
     private ConfiguracionServicio() {
     }
-
     public static ConfiguracionServicio getInstance() {
         if (instance == null) {
             instance = new ConfiguracionServicio();
         }
         return instance;
     }
-
     public PoliticaCancelacion getPolitica() {
         return Empresa.getInstance().getPoliticaCancelacion();
     }
-
     public void guardarPolitica(String diasDevolucionTotal, String diasRetencionParcial, String porcentajeRetencion) {
         int diasTotal;
         int diasParcial;
@@ -34,11 +29,9 @@ public class ConfiguracionServicio {
         }
         Empresa.getInstance().setPoliticaCancelacion(new PoliticaCancelacion(diasTotal, diasParcial, porcentaje));
     }
-
     public Empresa getDatosAlojamiento() {
         return Empresa.getInstance();
     }
-
     public void guardarDatosAlojamiento(String nombre, String nit, String direccion) {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre del alojamiento no puede estar vacío.");

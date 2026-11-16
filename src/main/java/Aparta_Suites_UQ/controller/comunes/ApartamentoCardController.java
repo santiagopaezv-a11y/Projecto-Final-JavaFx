@@ -4,7 +4,6 @@ import Aparta_Suites_UQ.controller.servicio.ApartamentoServicio;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 
 public class ApartamentoCardController {
-
     private final ApartamentoServicio apartamentoServicio = ApartamentoServicio.getInstance();
     public boolean eliminarApartamento(Apartamento apartamento) {
         return apartamentoServicio.eliminarApartamento(apartamento);

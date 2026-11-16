@@ -1,6 +1,6 @@
 package Aparta_Suites_UQ.model.reserva;
 
-public enum EstadoReserva {
+public enum EstadoReserva{
     PENDIENTE,
     CONFIRMADA,
     EN_CURSO,

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class AddReservaExternaController {
-
     public List<String> plataformas() {
         return List.of("Booking (simulada)", "Airbnb (simulada)", "Expedia (simulada)", "Otra plataforma");
     }

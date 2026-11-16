@@ -7,17 +7,13 @@ import Aparta_Suites_UQ.model.huesped.Empleado;
 public class AutenticacionServicio {
     private static final String LOGIN_ADMIN_USUARIO = "sanglie";
     private static final String LOGIN_ADMIN_CLAVE = "123";
-
     private static final String PORTAL_ADMIN_USUARIO = "admin123";
     private static final String PORTAL_ADMIN_CLAVE = "1234";
     private static final String PORTAL_RECEPCION_USUARIO = "recepcion123";
     private static final String PORTAL_RECEPCION_CLAVE = "123";
-
     private static AutenticacionServicio instance;
-
     private AutenticacionServicio() {
     }
-
     public static AutenticacionServicio getInstance() {
         if (instance == null) {
             instance = new AutenticacionServicio();

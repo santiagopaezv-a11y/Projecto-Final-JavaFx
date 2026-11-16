@@ -10,7 +10,6 @@ public abstract class Persona implements Serializable {
     private LocalDate fechaNacimiento;
     private String telefono;
     private String correo;
-
     public Persona(String nombre, String documento, LocalDate fechaNacimiento, String telefono, String correo) {
        if (nombre == null || documento == null || fechaNacimiento == null || telefono == null || correo == null) {
            throw  new IllegalArgumentException("Los datos de la persona no pueden estar vacios. ");
@@ -36,28 +35,24 @@ public abstract class Persona implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public String getDocumento() {
         return documento;
     }
     public void setDocumento(String documento) {
         this.documento = documento;
     }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
     public String getTelefono() {
         return telefono;
     }
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
     public String getCorreo() {
         return correo;
     }

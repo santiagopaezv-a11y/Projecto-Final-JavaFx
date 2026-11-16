@@ -3,11 +3,10 @@ package Aparta_Suites_UQ.model.alojamiento;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Temporada implements Serializable {
+public class Temporada implements Serializable{
     private TipoTemporada tipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-
     public Temporada(TipoTemporada tipo, LocalDate fechaInicio, LocalDate fechaFin) {
         if (tipo == null) {
             throw new IllegalArgumentException("Tipo de temporada no puede ser nulo");
@@ -18,7 +17,6 @@ public class Temporada implements Serializable {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
-
     public void validarFechas(LocalDate fechaInicio, LocalDate fechaFin) {
         if (fechaInicio == null || fechaFin == null) {
             throw new IllegalArgumentException("Fechas no pueden ser nulas");
@@ -27,16 +25,11 @@ public class Temporada implements Serializable {
             throw new IllegalArgumentException("La fecha fin no puede ser anterior a la fecha de inicio");
         }
     }
-
     public boolean aplicaEnFecha(LocalDate fecha){
         if (fecha == null) return false;
 
         return !fecha.isBefore(fechaInicio) && !fecha.isAfter(fechaFin);
     }
-
-
-    //GETTERS Y SETTERS
-
     public TipoTemporada getTipo() { return tipo; }
     public void setTipo(TipoTemporada tipo) {
         if (tipo == null) {
@@ -46,7 +39,6 @@ public class Temporada implements Serializable {
     }
     public LocalDate getFechaInicio() { return fechaInicio; }
     public LocalDate getFechaFin() { return fechaFin; }
-
     public void setRangoFechas(LocalDate fechaInicio, LocalDate fechaFin) {
         validarFechas(fechaInicio, fechaFin);
         this.fechaInicio = fechaInicio;

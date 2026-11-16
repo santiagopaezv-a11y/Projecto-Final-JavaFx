@@ -7,7 +7,6 @@ import java.time.Period;
 public class Ocupante implements Serializable {
    private String nombre;
    private LocalDate fechaNacimiento;
-
     public Ocupante(String nombre, LocalDate fechaNacimiento) {
         if (nombre == null || nombre.trim().isEmpty()) {
            throw new IllegalArgumentException("Nombre no puede estar vacio. ");
@@ -22,7 +21,6 @@ public class Ocupante implements Serializable {
         this.nombre = nombre.trim();
         this.fechaNacimiento = fechaNacimiento;
     }
-
     public int calcularEdad(LocalDate fecha) {
         if (fecha == null || fechaNacimiento == null) {
             return 0;
@@ -35,8 +33,6 @@ public class Ocupante implements Serializable {
     public boolean pagaTarifa(LocalDate fecha) {
         return calcularEdad(fecha) >= 6;
     }
-    // GETTERS Y SETTERS
-
     public String getNombre() {
         return nombre;
     }
@@ -46,7 +42,6 @@ public class Ocupante implements Serializable {
         }
         this.nombre = nombre.trim();
     }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }

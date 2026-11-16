@@ -6,19 +6,15 @@ import Aparta_Suites_UQ.model.transacciones.MedioPago;
 import Aparta_Suites_UQ.model.transacciones.Pago;
 
 public class FolioServicio {
-
     private static FolioServicio instance;
-
     private FolioServicio() {
     }
-
     public static FolioServicio getInstance() {
         if (instance == null) {
             instance = new FolioServicio();
         }
         return instance;
     }
-
     public void agregarCargo(Folio folio, String concepto, String valorTxt) {
         double valor;
         try {
@@ -32,7 +28,6 @@ public class FolioServicio {
         }
         folio.agregarCargo(new Cargo(conceptoLimpio, valor));
     }
-
     public void registrarPago(Folio folio, MedioPago medio, String valorTxt) {
         double valor;
         try {
@@ -45,7 +40,6 @@ public class FolioServicio {
         }
         folio.registrarPago(new Pago(valor, medio));
     }
-
     public void registrarCorreccionCargo(Folio folio, String motivo, String valorTxt) {
         try {
             int valorNegativo = Integer.parseInt(valorTxt.trim());
@@ -57,7 +51,6 @@ public class FolioServicio {
             throw new IllegalArgumentException("Error al registrar corrección de cargo: " + e.getMessage());
         }
     }
-
     public void registrarCorreccionPago(Folio folio, MedioPago medio, String valorTxt) {
         int valorInput;
         try {

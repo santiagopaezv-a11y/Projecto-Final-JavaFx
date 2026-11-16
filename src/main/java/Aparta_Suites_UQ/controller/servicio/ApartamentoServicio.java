@@ -18,20 +18,17 @@ public class ApartamentoServicio {
 
     private ApartamentoServicio() {
     }
-
     public static ApartamentoServicio getInstance() {
         if (instance == null) {
             instance = new ApartamentoServicio();
         }
         return instance;
     }
-
     public List<Apartamento> listarApartamentos() {
         return Empresa.getInstance().getListaApartamentos().stream()
                 .filter(Apartamento::isActivo)
                 .collect(Collectors.toList());
     }
-
     public List<Apartamento> buscarDisponibles(LocalDate entrada, LocalDate salida, int personas) {
         if (entrada == null || salida == null) {
             throw new IllegalArgumentException("Seleccione la fecha de entrada y la de salida.");
@@ -51,7 +48,6 @@ public class ApartamentoServicio {
                 .filter(a -> a.estaDisponible(entrada, salida))
                 .collect(Collectors.toList());
     }
-
     public List<Apartamento> listarDisponibles(Reserva reservaEnEdicion) {
         List<Apartamento> disponibles = new ArrayList<>();
         for (Apartamento apartamento : listarApartamentos()) {
@@ -65,15 +61,12 @@ public class ApartamentoServicio {
         }
         return disponibles;
     }
-
     public Apartamento getApartamentoSeleccionado() {
         return apartamentoSeleccionado;
     }
-
     public void setApartamentoSeleccionado(Apartamento apartamento) {
         this.apartamentoSeleccionado = apartamento;
     }
-
     public boolean eliminarApartamento(Apartamento apartamento) {
         if (apartamento == null) {
             return false;
@@ -84,12 +77,10 @@ public class ApartamentoServicio {
                     + " porque tiene reservas activas (Pendiente, Confirmada o En curso).");
         }
         apartamento.setActivo(false);
-
         // PERSISTENCIA: Guardar cambio de estado activo
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
         return true;
     }
-
     public EstadoOperativo estadoDesdeTexto(String texto) {
         if (texto == null) {
             return EstadoOperativo.PENDIENTE;
@@ -126,11 +117,9 @@ public class ApartamentoServicio {
         if (dormitorios < 0 || capacidad < 0 || precioNoche < 0.0) {
             throw new IllegalArgumentException("Se debe enviar valores positivos");
         }
-
         EstadoOperativo estado = estadoDesdeTexto(estadoTxt);
         String nombreLimpio = nombre == null ? "" : nombre.trim();
         String caracteristicasLimpias = caracteristicas == null ? "" : caracteristicas.trim();
-
         if (apartamentoSeleccionado != null) {
             // Modo edición
             apartamentoSeleccionado.setNumeroDormitorios(dormitorios);
@@ -145,11 +134,9 @@ public class ApartamentoServicio {
                     caracteristicasLimpias, precioNoche, estado);
             Empresa.getInstance().getListaApartamentos().add(nuevo);
         }
-
         // PERSISTENCIA: Guardar estado actualizado en el archivo
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
     }
-
     public void actualizarEstadoOperativo(EstadoOperativo estado) {
         if (estado == null) {
             throw new IllegalArgumentException("Por favor seleccione un estado operativo.");

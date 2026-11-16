@@ -12,16 +12,12 @@ import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.Cargo;
 import Aparta_Suites_UQ.model.transacciones.MedioPago;
 import Aparta_Suites_UQ.model.transacciones.Pago;
-
 import java.time.LocalDate;
 import java.util.List;
 public class DatosPruebaServicio {
-
     public static void cargar() {
-
         try {
             LocalDate hoy = LocalDate.now();
-
             // --- APARTAMENTOS ---
             Apartamento apto101 = new Apartamento("Apto 101 - Suite Presidencial", 2, 4, "Vista al jardín, Balcón, Jacuzzi", 150000.0, EstadoOperativo.PREPARADO);
             Apartamento apto102 = new Apartamento("Apto 102 - Junior Suite", 1, 2, "Cocina equipada, Aire acondicionado", 100000.0, EstadoOperativo.OCUPADO);
@@ -29,7 +25,6 @@ public class DatosPruebaServicio {
             Apartamento apto202 = new Apartamento("Apto 202 - Estándar Sencilla", 1, 2, "Smart TV, Escritorio", 90000.0, EstadoOperativo.OCUPADO);
             Apartamento apto301 = new Apartamento("Apto 301 - Penthouse Suite", 3, 6, "Terraza privada, Asador, Vista panorámica", 250000.0, EstadoOperativo.EN_PREPARACION);
             Empresa.getInstance().getListaApartamentos().addAll(List.of(apto101,apto102,apto201,apto202,apto301));
-
             // --- HUÉSPEDES TITULARES ---
             Huesped h1 = new Huesped("Carlos Mendoza", "1094123456", LocalDate.of(1990, 5, 12), "3101234567", "carlos@email.com", null);
             Huesped h2 = new Huesped("Ana María Gómez", "1094987654", LocalDate.of(1988, 11, 23), "3159876543", "ana@email.com", null);
@@ -42,30 +37,25 @@ public class DatosPruebaServicio {
             Huesped h9 = new Huesped("Camilo Torres", "1094444555", LocalDate.of(1991, 9, 8), "3174445566", "camilo@email.com", null);
             Huesped h10 = new Huesped("Daniela Castaño", "1094666777", LocalDate.of(1996, 6, 14), "3196667788", "daniela@email.com", null);
             Empresa.getInstance().getListaHuespedes().addAll(List.of(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10));
-
             // --- OCUPANTES SECUNDARIOS ---
             List<Ocupante> ocu1 = List.of(new Ocupante("Sonia Mendoza", LocalDate.of(1992, 3, 10)));
             List<Ocupante> ocu2 = List.of(new Ocupante("Mateo Gómez", LocalDate.of(2015, 8, 20)));
             List<Ocupante> ocu5 = List.of(new Ocupante("Felipe Osorio", LocalDate.of(2010, 11, 4)), new Ocupante("Lucía Osorio", LocalDate.of(1987, 2, 18)));
-
             // 1. CONFIRMADA (Lista para Check-In | Saldo pendiente)
             Reserva res1 = new Reserva(new Estancia(hoy, hoy.plusDays(3)), CanalReserva.DIRECTA, h1, apto101, ocu1, 450000.0);
             res1.setEstado(EstadoReserva.CONFIRMADA);
             res1.getFolio().agregarCargo(new Cargo("Alojamiento 3 Noches (Apto 101)", 450000.0));
             res1.getFolio().registrarPago(new Pago(150000.0, MedioPago.EFECTIVO));
-
             // 2. EN CURSO (Check-In hecho | Folio Saldado $0 | Lista para Check-Out)
             Reserva res2 = new Reserva(new Estancia(hoy.plusDays(5), hoy.plusDays(7)), CanalReserva.DIRECTA, h2, apto102, ocu2, 300000.0);
             res2.setEstado(EstadoReserva.EN_CURSO);
             res2.getFolio().agregarCargo(new Cargo("Alojamiento 3 Noches (Apto 102)", 300000.0));
             res2.getFolio().agregarCargo(new Cargo("Servicio Restaurante - Cena", 80000.0));
             res2.getFolio().registrarPago(new Pago(380000.0, MedioPago.TARJETA));
-
             // 3. PENDIENTE (Sin abonos)
             Reserva res3 = new Reserva(new Estancia(hoy.plusDays(2), hoy.plusDays(5)), CanalReserva.DIRECTA, h3, apto201, ocu5, 360000.0);
             res3.setEstado(EstadoReserva.PENDIENTE);
             res3.getFolio().agregarCargo(new Cargo("Alojamiento 3 Noches (Apto 201)", 360000.0));
-
             // 4. EN CURSO (Huésped en habitación | Con consumos adicionales y deuda)
             Reserva res4 = new Reserva(new Estancia(hoy.minusDays(1), hoy.plusDays(2)), CanalReserva.DIRECTA, h4, apto202, ocu1, 270000.0);
             res4.setEstado(EstadoReserva.EN_CURSO);
@@ -73,24 +63,20 @@ public class DatosPruebaServicio {
             res4.getFolio().agregarCargo(new Cargo("Minibar - Bebidas", 45000.0));
             res4.getFolio().agregarCargo(new Cargo("Servicio Lavandería", 25000.0));
             res4.getFolio().registrarPago(new Pago(100000.0, MedioPago.TRANSFERENCIA));
-
             // 5. CONFIRMADA (Penthouse | Pagada al 100% lista para entrar)
             Reserva res5 = new Reserva(new Estancia(hoy, hoy.plusDays(4)), CanalReserva.DIRECTA, h5, apto301, ocu2, 1000000.0);
             res5.setEstado(EstadoReserva.CONFIRMADA);
             res5.getFolio().agregarCargo(new Cargo("Alojamiento 4 Noches (Penthouse)", 1000000.0));
             res5.getFolio().registrarPago(new Pago(1000000.0, MedioPago.TARJETA));
-
             // 6. FINALIZADA (Check-Out realizado)
             Reserva res6 = new Reserva(new Estancia(hoy.minusDays(5), hoy.minusDays(1)), CanalReserva.DIRECTA, h6, apto101, ocu5, 600000.0);
             res6.setEstado(EstadoReserva.FINALIZADA);
             res6.getFolio().agregarCargo(new Cargo("Alojamiento 4 Noches (Apto 101)", 600000.0));
             res6.getFolio().registrarPago(new Pago(600000.0, MedioPago.EFECTIVO));
-
             // 7. NO_SHOW (No se presentó)
             Reserva res7 = new Reserva(new Estancia(hoy.minusDays(1), hoy.plusDays(1)), CanalReserva.DIRECTA, h7, apto201, ocu1, 240000.0);
             res7.setEstado(EstadoReserva.NO_SHOW);
             res7.getFolio().agregarCargo(new Cargo("Penalidad No-Show (Alojamiento)", 240000.0));
-
             // 8. CONFIRMADA (Con corrección probada)
             Reserva res8 = new Reserva(new Estancia(hoy.plusDays(9), hoy.plusDays(11)), CanalReserva.DIRECTA, h8, apto102, ocu1, 200000.0);
             res8.setEstado(EstadoReserva.CONFIRMADA);
@@ -98,23 +84,19 @@ public class DatosPruebaServicio {
             res8.getFolio().agregarCargo(new Cargo("Cargo Erróneo Parqueadero", 30000.0));
             res8.getFolio().agregarCargo(new Cargo("Corrección - Parqueadero", -30000.0));
             res8.getFolio().registrarPago(new Pago(100000.0, MedioPago.TRANSFERENCIA));
-
             // 9. CANCELADA
             Reserva res9 = new Reserva(new Estancia(hoy.plusDays(10), hoy.plusDays(12)), CanalReserva.DIRECTA, h9, apto202, ocu1, 180000.0);
             res9.setEstado(EstadoReserva.CANCELADA);
             res9.getFolio().agregarCargo(new Cargo("Alojamiento 2 Noches (Apto 202)", 180000.0));
             res9.getFolio().agregarCargo(new Cargo("Anulación por cancelación de reserva", -180000.0));
-
             // 10. CONFIRMADA (Múltiples abonos)
             Reserva res10 = new Reserva(new Estancia(hoy.plusDays(6),hoy.plusDays(10)), CanalReserva.DIRECTA, h10, apto301, ocu5, 500000.0);
             res10.setEstado(EstadoReserva.CONFIRMADA);
             res10.getFolio().agregarCargo(new Cargo("Alojamiento 2 Noches (Penthouse)", 500000.0));
             res10.getFolio().registrarPago(new Pago(200000.0, MedioPago.TARJETA));
             res10.getFolio().registrarPago(new Pago(150000.0, MedioPago.EFECTIVO));
-
             // --- AGREGAR A LA LISTA GLOBAL ---
             Empresa.getInstance().getListaReservas().addAll(List.of(res1, res2, res3, res4, res5, res6, res7, res8, res9, res10));
-
         } catch (Exception e) {
             System.err.println("Error al cargar datos de prueba: " + e.getMessage());
         }

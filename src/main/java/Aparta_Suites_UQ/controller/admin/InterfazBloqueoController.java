@@ -6,27 +6,17 @@ import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.transacciones.Bloqueo;
 import java.time.LocalDate;
 import java.util.List;
-
-/**
- * Controller de la pantalla «Bloqueos» (administrador). Su vista es InterfazBloqueoViewController.
- */
 public class InterfazBloqueoController {
-
     private final BloqueoServicio bloqueoServicio = BloqueoServicio.getInstance();
-
     public List<Bloqueo> listarBloqueos() {
         return bloqueoServicio.listarBloqueos();
     }
-
     public List<Apartamento> listarApartamentos() {
         return ApartamentoServicio.getInstance().listarApartamentos();
     }
-
-    /** Lanza IllegalArgumentException si hay reservas activas o bloqueos en ese rango. */
     public void crearBloqueo(Apartamento apartamento, LocalDate inicio, LocalDate fin, String motivo) {
         bloqueoServicio.crearBloqueo(apartamento, inicio, fin, motivo);
     }
-
     public void eliminarBloqueo(Bloqueo bloqueo) {
         bloqueoServicio.eliminarBloqueo(bloqueo);
     }

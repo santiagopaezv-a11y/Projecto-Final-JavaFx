@@ -13,34 +13,25 @@ import java.util.List;
  * Lógica de negocio de los empleados.
  */
 public class EmpleadoServicio {
-
     private static EmpleadoServicio instance;
-
-    /** Empleado que se está editando (null = modo creación). */
     private Empleado empleadoEditar;
-
     private EmpleadoServicio() {
     }
-
     public static EmpleadoServicio getInstance() {
         if (instance == null) {
             instance = new EmpleadoServicio();
         }
         return instance;
     }
-
     public List<Empleado> listarEmpleados() {
         return Empresa.getInstance().getListaEmpleados();
     }
-
     public Empleado getEmpleadoEditar() {
         return empleadoEditar;
     }
-
     public void setEmpleadoEditar(Empleado empleado) {
         this.empleadoEditar = empleado;
     }
-
     public void eliminarEmpleado(Empleado empleado) {
         listarEmpleados().remove(empleado);
     }
@@ -57,13 +48,11 @@ public class EmpleadoServicio {
     public boolean guardarEmpleado(String documento, String nombre, String rol, LocalDate fechaNacimiento,
                                    String telefono, String correo, String password) {
         validarDatos(documento, nombre, rol, fechaNacimiento, telefono, correo, password);
-
         String doc = documento.trim();
         String nom = nombre.trim();
         String tel = telefono.trim();
         String mail = correo.trim();
         String clave = password.trim();
-
         if (empleadoEditar != null) {
             empleadoEditar.setDocumento(doc);
             empleadoEditar.setNombre(nom);
@@ -74,14 +63,12 @@ public class EmpleadoServicio {
             empleadoEditar = null;
             return true;
         }
-
         for (Empleado existente : listarEmpleados()) {
             if (existente.getDocumento().equalsIgnoreCase(doc)) {
                 throw new IllegalArgumentException(
                         "Ya existe un empleado registrado con el número de documento: " + doc);
             }
         }
-
         Empleado nuevo;
         if ("ADMINISTRADOR".equalsIgnoreCase(rol)) {
             nuevo = new Administrador(nom, doc, fechaNacimiento, tel, mail, clave);
@@ -91,7 +78,6 @@ public class EmpleadoServicio {
         listarEmpleados().add(nuevo);
         return false;
     }
-
     private void validarDatos(String documento, String nombre, String rol, LocalDate fechaNacimiento,
                               String telefono, String correo, String password) {
         if (estaVacio(documento) || estaVacio(nombre) || rol == null || fechaNacimiento == null
@@ -103,7 +89,6 @@ public class EmpleadoServicio {
             throw new IllegalArgumentException("El empleado debe ser mayor de edad (18 años o más).");
         }
     }
-
     private boolean estaVacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }

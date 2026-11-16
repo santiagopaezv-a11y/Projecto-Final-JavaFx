@@ -1,6 +1,6 @@
 package Aparta_Suites_UQ.model.interfaces;
 
-public interface Autenticable {
+public interface Autenticable{
     String getUsuario();
     String getContrasena();
     default boolean validarCredenciales(String usuario, String contrasena) {

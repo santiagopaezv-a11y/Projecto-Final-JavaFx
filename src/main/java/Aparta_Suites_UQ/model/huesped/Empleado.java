@@ -9,7 +9,6 @@ public abstract class Empleado extends Persona implements Autenticable, Serializ
     private String usuario;
     private String contrasena;
     private static int cantidadEmpleado;
-
     public Empleado(String nombre, String documento, LocalDate fechaNacimiento, String telefono, String correo, String contrasena) {
         super(nombre, documento, fechaNacimiento, telefono, correo);
         ++cantidadEmpleado;
@@ -37,11 +36,9 @@ public abstract class Empleado extends Persona implements Autenticable, Serializ
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
     public static int getCantidadEmpleado() {
         return cantidadEmpleado;
     }
-
     public static void setCantidadEmpleado(int cantidadEmpleado) {
         Empleado.cantidadEmpleado = cantidadEmpleado;
     }

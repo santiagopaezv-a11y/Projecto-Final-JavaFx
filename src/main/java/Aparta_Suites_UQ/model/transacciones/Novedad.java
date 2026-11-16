@@ -2,16 +2,13 @@ package Aparta_Suites_UQ.model.transacciones;
 
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 import Aparta_Suites_UQ.model.huesped.Empleado;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 public class Novedad implements Serializable {
     private Apartamento apartamento;
     private String descripcion; // Daños, faltantes o situaciones reportadas[cite: 5]
     private LocalDateTime fecha;
     private Empleado reportado;
-
     public Novedad(Apartamento apartamento, String descripcion, Empleado reportado) {
         if (apartamento == null) {
             throw new IllegalArgumentException("El apartamento no puede estar vacio. ");
@@ -27,7 +24,6 @@ public class Novedad implements Serializable {
         this.fecha = LocalDateTime.now();
         this.reportado = reportado;
     }
-
     public Apartamento getApartamento() { return apartamento; }
     public String getDescripcion() { return descripcion; }
     public LocalDateTime getFecha() { return fecha; }

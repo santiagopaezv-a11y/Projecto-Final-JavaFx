@@ -13,12 +13,10 @@ import java.util.List;
 public class Folio implements Cobrable, Serializable {
     private List<Cargo> cargos;
     private List<Pago> pagos;
-
     public Folio() {
         this.cargos = new ArrayList<>();
         this.pagos = new ArrayList<>();
     }
-
     public void agregarCargo(Cargo cargo) {
        if (cargo == null) {
        throw  new IllegalArgumentException("El cargo no puede ser nulo.");
@@ -31,9 +29,6 @@ public class Folio implements Cobrable, Serializable {
         }
         this.pagos.add(pago);
     }
-
-    //Saldo es la diferencia del total menos los pagos actuales
-
     @Override
     public double getSaldo() {
         double totalCargos = cargos.stream().mapToDouble(Cargo::getValor).sum();
@@ -48,7 +43,6 @@ public class Folio implements Cobrable, Serializable {
     public double getTotalPagos() {
         return  pagos.stream().mapToDouble(Pago::getValor).sum();
     }
-
     public void registrarCorreccionCargo(String motivo, int valorNegativo) {
         if (motivo == null || motivo.trim().isEmpty()) {
             throw new IllegalArgumentException("El motivo no puede ser nulo.");
@@ -69,5 +63,4 @@ public class Folio implements Cobrable, Serializable {
     }
     public List<Cargo> getCargos() { return new ArrayList<>(cargos); }
     public List<Pago> getPagos() { return new ArrayList<>(pagos); }
-
 }

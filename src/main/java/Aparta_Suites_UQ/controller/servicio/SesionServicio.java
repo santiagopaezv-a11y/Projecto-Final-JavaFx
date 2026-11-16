@@ -1,9 +1,7 @@
 package Aparta_Suites_UQ.controller.servicio;
-
 import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
-
 public class SesionServicio {
     private static SesionServicio instance;
     private Empleado empleadoActual;

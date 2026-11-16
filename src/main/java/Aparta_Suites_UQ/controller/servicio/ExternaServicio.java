@@ -19,20 +19,16 @@ public class ExternaServicio {
     private static final String[] PLATAFORMAS = {"Booking (simulada)", "Airbnb (simulada)", "Expedia (simulada)"};
     private static final String[] NOMBRES = {"Laura Giraldo", "Pedro Salazar", "Marta Osorio", "Camilo Rincón",
             "Sofía Henao", "Julián Bedoya", "Natalia Cardona", "Esteban Londoño"};
-
     private static ExternaServicio instance;
     private final Random azar = new Random();
-
     private ExternaServicio() {
     }
-
     public static ExternaServicio getInstance() {
         if (instance == null) {
             instance = new ExternaServicio();
         }
         return instance;
     }
-
     public List<ConflictoCanal> listarConflictos() {
         List<ConflictoCanal> lista = new ArrayList<>(Empresa.getInstance().getListaConflictos());
         Collections.reverse(lista);
@@ -71,7 +67,6 @@ public class ExternaServicio {
             reservas.setReservaEditar(enEdicion);
         }
     }
-
     private void registrarConflicto(String codigo, String origen, String motivo) {
         Empresa.getInstance().getListaConflictos().add(new ConflictoCanal(codigo, origen, motivo, LocalDateTime.now()));
     }

@@ -10,7 +10,6 @@ public class Bloqueo implements Serializable {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String motivo;
-
     public Bloqueo(Apartamento apartamento, LocalDate fechaInicio, LocalDate fechaFin, String motivo) {
         if (apartamento == null) {
             throw new IllegalArgumentException("El apartamento no puede estar vacio.");
@@ -24,7 +23,6 @@ public class Bloqueo implements Serializable {
         this.fechaFin = fechaFin;
         this.motivo = motivo;
     }
-
     public void validarFechas(LocalDate fechaInicio, LocalDate fechaFin){
         if (fechaInicio == null||fechaFin == null){
             throw new IllegalArgumentException("Las fechas de bloqueo no pueden ser nulas.");
@@ -43,7 +41,6 @@ public class Bloqueo implements Serializable {
         if (fechaInicio == null || fechaFin == null || fecha == null) {
             return false;
         }
-        // Verifica si la fecha está entre fechaInicio y fechaFin (incluyéndolas)
         return !fecha.isBefore(fechaInicio) && !fecha.isAfter(fechaFin);
     }
     public boolean coincideConFechaActual() {

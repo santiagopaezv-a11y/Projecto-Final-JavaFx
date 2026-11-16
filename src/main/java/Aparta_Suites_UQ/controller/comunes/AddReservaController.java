@@ -9,13 +9,11 @@ import Aparta_Suites_UQ.model.reserva.Reserva;
 import java.util.List;
 
 public class AddReservaController {
-
     private final ReservaServicio reservaServicio = ReservaServicio.getInstance();
     private final ApartamentoServicio apartamentoServicio = ApartamentoServicio.getInstance();
     public Reserva getReservaEnEdicion() {
         return reservaServicio.getReservaEditar();
     }
-
     public boolean esEdicion() {
         return getReservaEnEdicion() != null;
     }
@@ -25,7 +23,6 @@ public class AddReservaController {
     public void validarDatos(DatosReserva datos) {
         reservaServicio.validarDatos(datos);
     }
-
     public void actualizarReserva(DatosReserva datos) {
         reservaServicio.actualizarReserva(datos);
     }

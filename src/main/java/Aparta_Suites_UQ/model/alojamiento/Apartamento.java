@@ -77,8 +77,6 @@ public class Apartamento implements Reservable, Serializable {
         }
         this.bloqueos.add(nuevoBloqueo);
     }
-
-
     @Override
     public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
         return estaDisponible(fechaEntrada, fechaSalida, null);
@@ -87,11 +85,9 @@ public class Apartamento implements Reservable, Serializable {
         return !tieneReservaActivaEn(fechaEntrada, fechaSalida, reservaExcluida)
                 && !tieneBloqueoEn(fechaEntrada, fechaSalida);
     }
-
     public static void setNumeroApartamentos(int numeroApartamentos) {
         Apartamento.numeroApartamentos = numeroApartamentos;
     }
-
     public boolean tieneReservaActivaEn(LocalDate fechaEntrada, LocalDate fechaSalida, Reserva reservaExcluida) {
         return Empresa.getInstance().getListaReservas().stream()
                 .filter(r -> r != reservaExcluida)
@@ -99,16 +95,12 @@ public class Apartamento implements Reservable, Serializable {
                 .filter(r -> r.getEstado().esActiva())
                 .anyMatch(r -> r.getEstancia().seSolapaCon(fechaEntrada, fechaSalida));
     }
-
     public boolean tieneBloqueoEn(LocalDate fechaEntrada, LocalDate fechaSalida) {
         return bloqueos.stream().anyMatch(bloqueo -> bloqueo.seSolapaCon(fechaEntrada, fechaSalida));
     }
-
     public void eliminarBloqueo(Bloqueo bloqueo) {
         this.bloqueos.remove(bloqueo);
     }
-
-    /** Registra la reserva (en la lista de la empresa) solo si el apartamento está libre en ese rango. */
     public void agregarReserva(Reserva nuevaReserva){
         if (nuevaReserva == null){
             throw new IllegalArgumentException("La reserva no puede ser nula. ");
@@ -120,7 +112,6 @@ public class Apartamento implements Reservable, Serializable {
             Empresa.getInstance().getListaReservas().add(nuevaReserva);
         }
     }
-
     public void ponerFueraDeServicio(String motivoFueraServicio) {
         if (motivoFueraServicio == null || motivoFueraServicio.trim().isEmpty()) {
             throw new IllegalArgumentException("Debe especificar un motivo para poner el apartamento fuera de servicio. ");
@@ -128,31 +119,24 @@ public class Apartamento implements Reservable, Serializable {
         this.estadoOperativo = EstadoOperativo.FUERA_DE_SERVICIO;
         this.motivoFueraServicio = motivoFueraServicio;
     }
-
     @Override
     public boolean estaHabilitadoParaReservar(){
         return this.activo && this.estadoOperativo != EstadoOperativo.FUERA_DE_SERVICIO;
     }
-
     public boolean existeCodigoExterno(String codigoExterno){
         if (codigoExterno == null || codigoExterno.trim().isEmpty()){
             return false;
         }
         return getReservas().stream().filter(reserva -> reserva.getCodigoExterno() != null).anyMatch(reserva -> reserva.getCodigoExterno().equalsIgnoreCase(codigoExterno.trim()));
     }
-
-    //GETTERS Y SETTERS
-
     public int getTarifaSegunTemporada(TipoTemporada tipoTemporada){
         if (tipoTemporada == null) {
             return (int) Math.round(this.precioNoche);
         }
-        // Tarifa propia de este apartamento para la temporada, definida por el administrador
         Double tarifaPropia = tarifasPorTemporada.get(tipoTemporada);
         if (tarifaPropia != null && tarifaPropia > 0) {
             return (int) Math.round(tarifaPropia);
         }
-
         switch (tipoTemporada){
             case ALTA:
                 return (int) Math.round(this.precioNoche * 1.50);
@@ -165,74 +149,60 @@ public class Apartamento implements Reservable, Serializable {
                 return (int) Math.round(this.precioNoche);
         }
     }
-
     public String getId() {
         return id;
     }
-
     public static int getNumeroApartamentos() {
         return numeroApartamentos;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("EL nombre del apartamento no puede estar vacio. ");
         }
         this.nombre = nombre.trim();
     }
-
     public int getNumeroDormitorios() {
         return numeroDormitorios;
     }
-
     public void setNumeroDormitorios(int numeroDormitorios) {
         if (numeroDormitorios <= 0) {
             throw new IllegalArgumentException("El numero de dormitorios debe ser mayor a 0. ");
         }
         this.numeroDormitorios = numeroDormitorios;
     }
-
     public int getCantMaximaPersonas() {
         return cantMaximaPersonas;
     }
-
     public void setCantMaximaPersonas(int cantMaximaPersonas) {
         if (cantMaximaPersonas <= 0) {
             throw new IllegalArgumentException("La cantidad maxima de personas debe ser mayor a 0. ");
         }
         this.cantMaximaPersonas = cantMaximaPersonas;
     }
-
     public String getCaracteristicas() {
         return caracteristicas;
     }
-
     public void setCaracteristicas(String caracteristicas) {
         if (caracteristicas == null || caracteristicas.trim().isEmpty()) {
             throw new IllegalArgumentException("Las caracteristicas no pueden estar vacias");
         }
         this.caracteristicas = caracteristicas;
     }
-
     public double getPrecioNoche() {
         return precioNoche;
     }
-
     public void setPrecioNoche(double precioNoche) {
         if (precioNoche <= 0) {
             throw new IllegalArgumentException("El precio por noche debe ser mayor a 0. ");
         }
         this.precioNoche = precioNoche;
     }
-
     public EstadoOperativo getEstadoOperativo() {
         return estadoOperativo;
     }
-
     public void setEstadoOperativo(EstadoOperativo estadoOperativo) {
         if (estadoOperativo == null) {
             throw new IllegalArgumentException("El estado operativo no puede ser nulo. ");
@@ -242,38 +212,29 @@ public class Apartamento implements Reservable, Serializable {
             this.motivoFueraServicio = null;
         }
     }
-
     public String getMotivoFueraServicio() {
         return motivoFueraServicio;
     }
-
     public void setMotivoFueraServicio(String motivoFueraServicio) {
         this.motivoFueraServicio = motivoFueraServicio;
     }
-
     public List<Reserva> getReservas() {
         return Empresa.getInstance().getListaReservas().stream()
                 .filter(r -> r.getApartamento() == this)
                 .collect(java.util.stream.Collectors.toList());
     }
-
-    /** Eliminación lógica: el apartamento deja de mostrarse y de reservarse, pero su historial se conserva. */
     public boolean isActivo() {
         return activo;
     }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
     public List<Bloqueo> getBloqueos() {
         return new ArrayList<>(bloqueos);
     }
     public void setTarifa(TipoTemporada tipo, double precio) {
         tarifasPorTemporada.put(tipo, precio);
     }
-
-    /** Tarifa efectiva por persona por noche en esa temporada (propia o la derivada de la tarifa base). */
     public double getTarifa(TipoTemporada tipo) {
         return getTarifaSegunTemporada(tipo);
     }

@@ -6,9 +6,7 @@ import Aparta_Suites_UQ.model.reserva.Reserva;
 import java.util.List;
 
 public class InterfazReservaDirectaController {
-
     private final ReservaServicio reservaServicio = ReservaServicio.getInstance();
-
     public List<Reserva> listarReservas() {
         return reservaServicio.listarReservas();
     }

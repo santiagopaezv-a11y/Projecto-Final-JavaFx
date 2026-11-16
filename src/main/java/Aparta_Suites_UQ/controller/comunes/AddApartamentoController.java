@@ -4,7 +4,6 @@ import Aparta_Suites_UQ.controller.servicio.ApartamentoServicio;
 import Aparta_Suites_UQ.model.alojamiento.Apartamento;
 
 public class AddApartamentoController {
-
     private final ApartamentoServicio apartamentoServicio = ApartamentoServicio.getInstance();
     public Apartamento getApartamentoEnEdicion() {
         return apartamentoServicio.getApartamentoSeleccionado();

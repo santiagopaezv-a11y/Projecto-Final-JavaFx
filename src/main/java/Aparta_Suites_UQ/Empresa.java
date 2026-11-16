@@ -10,16 +10,12 @@ import Aparta_Suites_UQ.model.reserva.ConflictoCanal;
 import Aparta_Suites_UQ.model.reserva.PoliticaCancelacion;
 import Aparta_Suites_UQ.model.reserva.Reserva;
 import Aparta_Suites_UQ.model.transacciones.Novedad;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 public class Empresa implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     private String nombre;
     private String nit;
     private String direccion;
@@ -42,14 +38,12 @@ public class Empresa implements Serializable {
         this.direccion = direccion;
         cargarTemporadasPorDefecto();
     }
-
     protected Empresa() {
         this.nombre = "Aparta-Suites UQ";
         this.nit = "-";
         this.direccion = "Salento, Quindío";
         cargarTemporadasPorDefecto();
     }
-
     private void cargarTemporadasPorDefecto() {
         // 1. TEMPORADA ALTA (Diciembre - Enero)
         listaTemporadas.add(new Temporada(
@@ -57,21 +51,18 @@ public class Empresa implements Serializable {
                 LocalDate.of(2026, 12, 1),
                 LocalDate.of(2027, 1, 31)
         ));
-
         // TEMPORADA ALTA (Semana Santa 2026)
         listaTemporadas.add(new Temporada(
                 TipoTemporada.ALTA,
                 LocalDate.of(2026, 3, 29),
                 LocalDate.of(2026, 4, 5)
         ));
-
         // TEMPORADA ALTA (Mitad de Año)
         listaTemporadas.add(new Temporada(
                 TipoTemporada.ALTA,
                 LocalDate.of(2026, 6, 15),
                 LocalDate.of(2026, 7, 15)
         ));
-
         // 2. TEMPORADA MEDIA (Ejemplo: Puente Festivo)
         listaTemporadas.add(new Temporada(
                 TipoTemporada.MEDIA,
@@ -79,17 +70,12 @@ public class Empresa implements Serializable {
                 LocalDate.of(2026, 5, 18)
         ));
     }
-
     public static Empresa getInstance() {
         if (instance == null) {
             instance = new Empresa();
         }
         return instance;
     }
-
-    /**
-     * Reemplaza la instancia estática cuando los datos son cargados desde la persistencia.
-     */
     public static void setInstance(Empresa nuevaEmpresa) {
         if (nuevaEmpresa != null) {
             instance = nuevaEmpresa;
@@ -170,8 +156,6 @@ public class Empresa implements Serializable {
     public PoliticaCancelacion getPoliticaCancelacion() {
         return politicaCancelacion;
     }
-
-    /** Solo afecta a las reservas que se creen después: las existentes conservan la suya. */
     public void setPoliticaCancelacion(PoliticaCancelacion politicaCancelacion) {
         if (politicaCancelacion == null) {
             throw new IllegalArgumentException("La política de cancelación no puede ser nula.");

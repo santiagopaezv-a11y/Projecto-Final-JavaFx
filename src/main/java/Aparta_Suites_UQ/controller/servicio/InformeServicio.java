@@ -27,26 +27,21 @@ public class InformeServicio {
     public static final String CANALES = "Reservas por canal";
     public static final String SALDOS = "Saldos pendientes";
     public static final String NOVEDADES = "Apartamentos con más novedades";
-
     private static InformeServicio instance;
-
     private InformeServicio() {
     }
-
     public static InformeServicio getInstance() {
         if (instance == null) {
             instance = new InformeServicio();
         }
         return instance;
     }
-
     public List<String> nombresDeInformes() {
         return List.of(OCUPACION, INGRESOS, CANALES, SALDOS, NOVEDADES);
     }
     public boolean requierePeriodo(String nombre) {
         return OCUPACION.equals(nombre) || INGRESOS.equals(nombre);
     }
-
     public Informe generar(String nombre, LocalDate desde, LocalDate hasta) {
         if (nombre == null) {
             throw new IllegalArgumentException("Seleccione un informe.");
@@ -68,7 +63,6 @@ public class InformeServicio {
                 throw new IllegalArgumentException("Informe no reconocido: " + nombre);
         }
     }
-
     private void validarPeriodo(LocalDate desde, LocalDate hasta) {
         if (desde == null || hasta == null) {
             throw new IllegalArgumentException("Seleccione la fecha inicial y la final del periodo.");
@@ -77,7 +71,6 @@ public class InformeServicio {
             throw new IllegalArgumentException("La fecha final no puede ser anterior a la inicial.");
         }
     }
-
     public Informe ocupacionPorApartamento(LocalDate desde, LocalDate hasta) {
         long totalNoches = ChronoUnit.DAYS.between(desde, hasta) + 1;
         List<List<String>> filas = new ArrayList<>();
@@ -108,7 +101,6 @@ public class InformeServicio {
         return new Informe(OCUPACION + " (" + desde + " a " + hasta + ")",
                 List.of("Apartamento", "Noches ocupadas", "Noches bloqueadas", "Noches libres", "% ocupación"), filas);
     }
-
     public Informe ingresosPorPeriodo(LocalDate desde, LocalDate hasta) {
         Map<MedioPago, double[]> porMedio = new EnumMap<>(MedioPago.class);
         for (MedioPago medio : MedioPago.values()) {
@@ -136,8 +128,6 @@ public class InformeServicio {
         return new Informe(INGRESOS + " (" + desde + " a " + hasta + ")",
                 List.of("Medio de pago", "Movimientos", "Ingresos"), filas);
     }
-
-    /* Reservas de cada canal por estado, incluidas las canceladas y las no-show, y la comisión del canal Externo. */
     public Informe reservasPorCanal() {
         List<String> columnas = new ArrayList<>();
         columnas.add("Canal");
@@ -164,8 +154,6 @@ public class InformeServicio {
         }
         return new Informe(CANALES, columnas, filas);
     }
-
-    /* Reservas (no canceladas) cuyo folio tiene saldo a favor del alojamiento, de mayor a menor. */
     public Informe saldosPendientes() {
         List<Reserva> conSaldo = Empresa.getInstance().getListaReservas().stream()
                 .filter(r -> r.getEstado() != EstadoReserva.CANCELADA)
@@ -182,7 +170,6 @@ public class InformeServicio {
         filas.add(List.of("TOTAL", "", "", "", "", "", dinero(total)));
         return new Informe(SALDOS, List.of("Reserva", "Titular", "Apartamento", "Estado", "Cargos", "Pagos", "Saldo"), filas);
     }
-
     public Informe apartamentosConMasNovedades() {
         List<Novedad> novedades = Empresa.getInstance().getListaNovedades();
         List<Apartamento> aptos = new ArrayList<>(ApartamentoServicio.getInstance().listarApartamentos());
@@ -196,7 +183,6 @@ public class InformeServicio {
         }
         return new Informe(NOVEDADES, List.of("Apartamento", "Novedades", "Última novedad"), filas);
     }
-
     private String dinero(double valor) {
         return String.format(Locale.of("es", "CO"), "$%,.0f", valor);
     }

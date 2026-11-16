@@ -58,19 +58,14 @@ public class ApartamentoPanelViewController implements Initializable {
     private Button buttom_apartamento;
     @FXML
     private Button buttom_bloqueo;
-
     @FXML
     private Button buttom_configuracion;
-
     @FXML
     private Button buttom_informe;
-
     @FXML
     private Button buttom_empleado;
-
     @FXML
     private Button buttom_inicio;
-
     @FXML
     private Button buttom_temporada;
     @FXML
@@ -79,16 +74,12 @@ public class ApartamentoPanelViewController implements Initializable {
     private Rectangle rect_bloqueo_buttom;
     @FXML
     private Rectangle rect_apart_buttom;
-
     @FXML
     private Rectangle rect_config_buttom;
-
     @FXML
     private Rectangle rect_empleado_buttom;
-
     @FXML
     private Rectangle rect_inicio_buttom;
-
     @FXML
     private Rectangle rect_temporada_buttom;
     @FXML

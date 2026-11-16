@@ -1,6 +1,6 @@
 package Aparta_Suites_UQ.model.alojamiento;
 
-public enum EstadoOperativo {
+public enum EstadoOperativo{
     PREPARADO,
     OCUPADO,
     PENDIENTE,

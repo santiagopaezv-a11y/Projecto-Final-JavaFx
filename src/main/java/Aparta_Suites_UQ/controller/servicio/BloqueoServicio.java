@@ -10,19 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BloqueoServicio {
-
     private static BloqueoServicio instance;
-
     private BloqueoServicio() {
     }
-
     public static BloqueoServicio getInstance() {
         if (instance == null) {
             instance = new BloqueoServicio();
         }
         return instance;
     }
-
     public List<Bloqueo> listarBloqueos() {
         return ApartamentoServicio.getInstance().listarApartamentos().stream()
                 .flatMap(a -> a.getBloqueos().stream())
@@ -45,7 +41,6 @@ public class BloqueoServicio {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
-
     public void eliminarBloqueo(Bloqueo bloqueo) {
         if (bloqueo == null) {
             throw new IllegalArgumentException("Seleccione un bloqueo de la tabla.");

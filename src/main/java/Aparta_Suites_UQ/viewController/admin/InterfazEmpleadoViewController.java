@@ -19,8 +19,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class InterfazEmpleadoViewController {
-
-    // --- Componentes Menú Lateral ---
     @FXML private Button buttom_apartamento;
     @FXML private Button buttom_configuracion;
     @FXML private Button buttom_informe;
@@ -28,7 +26,6 @@ public class InterfazEmpleadoViewController {
     @FXML private Button buttom_bloqueo;
     @FXML private Button buttom_inicio;
     @FXML private Button buttom_temporada;
-
     @FXML private Rectangle rect_bloqueo_buttom;
     @FXML private Rectangle rect_informe_buttom;
     @FXML private Rectangle rect_apart_buttom;
@@ -36,15 +33,12 @@ public class InterfazEmpleadoViewController {
     @FXML private Rectangle rect_empleado_buttom;
     @FXML private Rectangle rect_inicio_buttom;
     @FXML private Rectangle rect_temporada_buttom;
-
-    // --- Componentes Gestión Empleados ---
     @FXML private TextField txtBuscar;
     @FXML private ComboBox<String> cbFiltroRol;
     @FXML private Button btnLimpiarFiltros;
     @FXML private Button btnNuevoEmpleado;
     @FXML private Button btnEditar;
     @FXML private Button btnEliminar;
-
     @FXML private TableView<Empleado> tblEmpleados;
     @FXML private TableColumn<Empleado, String> colDocumento;
     @FXML private TableColumn<Empleado, String> colNombre;
@@ -53,40 +47,32 @@ public class InterfazEmpleadoViewController {
     @FXML private TableColumn<Empleado, String> colRol;
     @FXML private TableColumn<Empleado, String> colFechaNacimiento;
     @FXML private TableColumn<Empleado, String> colUsuario;
-
     private final InterfazEmpleadoController controller = new InterfazEmpleadoController();
     private ObservableList<Empleado> listaEmpleados = FXCollections.observableArrayList();
     private FilteredList<Empleado> listaFiltrada;
-
     @FXML
     public void initialize() {
         rect_empleado_buttom.setVisible(true);
-
         cargarComboRol();
         configurarTabla();
         cargarDatosEmpleados();
         configurarBuscadorEnTiempoReal();
     }
-
     private void cargarComboRol() {
         cbFiltroRol.setItems(FXCollections.observableArrayList("TODOS", "ADMINISTRADOR", "RECEPCIONISTA"));
         cbFiltroRol.setValue("TODOS");
         cbFiltroRol.setOnAction(e -> aplicarFiltros());
     }
-
     private void configurarTabla() {
         colDocumento.setCellValueFactory(new PropertyValueFactory<>("documento"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
         colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         colUsuario.setCellValueFactory(new PropertyValueFactory<>("usuario"));
-
-        // Uso directo de la propiedad 'rol' a través del getter getRol()
         colRol.setCellValueFactory(cellData -> {
             Object rolObj = cellData.getValue().getRol();
             return new SimpleStringProperty(rolObj != null ? rolObj.toString() : "");
         });
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         colFechaNacimiento.setCellValueFactory(cellData -> {
             if (cellData.getValue().getFechaNacimiento() != null) {
@@ -95,7 +81,6 @@ public class InterfazEmpleadoViewController {
             return new SimpleStringProperty("");
         });
     }
-
     private void cargarDatosEmpleados() {
         List<Empleado> guardados = controller.listarEmpleados();
         listaEmpleados.setAll(guardados);
@@ -103,32 +88,27 @@ public class InterfazEmpleadoViewController {
         listaFiltrada = new FilteredList<>(listaEmpleados, p -> true);
         tblEmpleados.setItems(listaFiltrada);
     }
-
     private void configurarBuscadorEnTiempoReal() {
         txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> aplicarFiltros());
     }
-
     private void aplicarFiltros() {
         String textoBusqueda = txtBuscar.getText() != null ? txtBuscar.getText().toLowerCase().trim() : "";
         String rolSeleccionado = cbFiltroRol.getValue();
 
         listaFiltrada.setPredicate(empleado -> controller.coincideFiltro(empleado, textoBusqueda, rolSeleccionado));
     }
-
     @FXML
     void onLimpiarFiltros(ActionEvent event) {
         txtBuscar.clear();
         cbFiltroRol.setValue("TODOS");
         listaFiltrada.setPredicate(p -> true);
     }
-
     @FXML
     void onNuevoEmpleado(ActionEvent event) {
         controller.prepararNuevoEmpleado();
         Vista.abrirModal(event, Paths.ADD_EMPLEADO);
         cargarDatosEmpleados();
     }
-
     @FXML
     void onEditarEmpleado(ActionEvent event) {
         Empleado seleccionado = tblEmpleados.getSelectionModel().getSelectedItem();
@@ -140,7 +120,6 @@ public class InterfazEmpleadoViewController {
         Vista.abrirModal(event, Paths.ADD_EMPLEADO);
         cargarDatosEmpleados();
     }
-
     @FXML
     void onEliminarEmpleado(ActionEvent event) {
         Empleado seleccionado = tblEmpleados.getSelectionModel().getSelectedItem();
@@ -148,7 +127,6 @@ public class InterfazEmpleadoViewController {
             Vista.enviarAlertaWarning("Seleccione el empleado que desea eliminar.");
             return;
         }
-
         boolean confirmar = Vista.enviarAlertaConfirmacion(
                 "¿Está seguro de que desea eliminar a " + seleccionado.getNombre());
         if (confirmar) {
@@ -157,8 +135,6 @@ public class InterfazEmpleadoViewController {
             Vista.enviarAlertaInfo("Empleado eliminado correctamente.");
         }
     }
-
-    // --- Controladores de Eventos del Menú Lateral ---
     @FXML void vistaMouseEncimaInformes(MouseEvent event) { rect_informe_buttom.setVisible(true); }
     @FXML private void vistaMouseAfueraInformes(MouseEvent event) { rect_informe_buttom.setVisible(false); }
     @FXML void vistaMouseEncimaInicio(MouseEvent event) { rect_inicio_buttom.setVisible(true); }
@@ -173,7 +149,6 @@ public class InterfazEmpleadoViewController {
     @FXML private void vistaMouseAfueraTemporada(MouseEvent event) { rect_temporada_buttom.setVisible(false); }
     @FXML void vistaMouseEncimaBloqueo(MouseEvent event) { rect_bloqueo_buttom.setVisible(true); }
     @FXML private void vistaMouseAfueraBloqueo(MouseEvent event) { rect_bloqueo_buttom.setVisible(false); }
-
     @FXML private void mostrarPanelApartamento(ActionEvent event) { Vista.cambiarEscena(event, Paths.APARTAMENTO_PANEL); }
     @FXML private void mostrarPanelTemporadas(ActionEvent event) { Vista.cambiarEscena(event, Paths.TEMPORADAS_PANEL); }
     @FXML private void mostrarPanelEmpleados() { }

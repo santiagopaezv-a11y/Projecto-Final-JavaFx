@@ -4,9 +4,7 @@ import Aparta_Suites_UQ.model.huesped.Ocupante;
 
 import java.time.LocalDate;
 public class OcupanteServicio {
-
     private static OcupanteServicio instance;
-
     private OcupanteServicio() {
     }
     public static OcupanteServicio getInstance() {

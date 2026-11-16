@@ -11,10 +11,7 @@ import javafx.stage.Stage;
 public class ApplicationLaunch extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // 1. Intentar cargar los datos guardados desde disco
         Empresa empresaCargada = PersistenciaUtil.cargarEmpresa();
-
-        // 2. Si se encontró un estado previo, se asigna al Singleton de Empresa
         if (empresaCargada != null) {
             Empresa.setInstance(empresaCargada);
             Empresa.getInstance().sincronizarContadores();
@@ -24,7 +21,6 @@ public class ApplicationLaunch extends Application {
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/comunes/login.fxml"));
         Parent root = loader.load();
-
         Scene scene = new Scene(root);
         primaryStage.setTitle("SGA - Aparta-Suites UQ");
         primaryStage.setScene(scene);
@@ -32,11 +28,9 @@ public class ApplicationLaunch extends Application {
     }
     @Override
     public void stop() throws Exception {
-        // Guardar el estado actual del Singleton al cerrar la aplicación
         PersistenciaUtil.guardarEmpresa(Empresa.getInstance());
         super.stop();
     }
-
     public static void main(String[] args) {
         launch(args);
     }

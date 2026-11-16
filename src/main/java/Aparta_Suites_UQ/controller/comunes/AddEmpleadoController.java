@@ -5,7 +5,6 @@ import Aparta_Suites_UQ.model.huesped.Empleado;
 import java.time.LocalDate;
 
 public class AddEmpleadoController {
-
     private final EmpleadoServicio empleadoServicio = EmpleadoServicio.getInstance();
     public Empleado getEmpleadoEnEdicion() {
         return empleadoServicio.getEmpleadoEditar();

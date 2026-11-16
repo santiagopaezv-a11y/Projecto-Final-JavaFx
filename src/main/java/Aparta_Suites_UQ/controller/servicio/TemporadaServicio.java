@@ -10,9 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 public class TemporadaServicio {
-
     private static TemporadaServicio instance;
-
     private TemporadaServicio() {
     }
     public static TemporadaServicio getInstance() {

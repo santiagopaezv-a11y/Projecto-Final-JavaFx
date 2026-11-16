@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class NovedadServicio {
-
     private static NovedadServicio instance;
     private NovedadServicio() {
     }

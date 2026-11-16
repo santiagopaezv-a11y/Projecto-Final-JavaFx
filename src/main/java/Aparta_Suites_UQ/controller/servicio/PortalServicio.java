@@ -23,24 +23,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PortalServicio {
-
     private static PortalServicio instance;
     private BusquedaPortal ultimaBusqueda;
-
     private PortalServicio() {
     }
-
     public static PortalServicio getInstance() {
         if (instance == null) {
             instance = new PortalServicio();
         }
         return instance;
     }
-
     public BusquedaPortal getUltimaBusqueda() {
         return ultimaBusqueda;
     }
-
     public void setUltimaBusqueda(BusquedaPortal busqueda) {
         this.ultimaBusqueda = busqueda;
     }
@@ -75,7 +70,6 @@ public class PortalServicio {
         SesionServicio.getInstance().setHuespedActual(huesped);
         return huesped;
     }
-
     public void cerrarPerfil() {
         SesionServicio.getInstance().setHuespedActual(null);
     }
@@ -178,7 +172,6 @@ public class PortalServicio {
     public ResultadoCancelacion cancelar(Reserva reserva) {
         return ReservaServicio.getInstance().cancelarReserva(reserva);
     }
-
     private boolean vacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }

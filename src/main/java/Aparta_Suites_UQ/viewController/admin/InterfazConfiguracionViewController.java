@@ -151,9 +151,9 @@ public class InterfazConfiguracionViewController {
     }
 
     private void cargarPolitica() {
-        txtDiasTotal.setText(String.valueOf(controller.getPolitica().getDiasDevolucionTotal()));
-        txtDiasParcial.setText(String.valueOf(controller.getPolitica().getDiasRetencionParcial()));
-        txtPorcentaje.setText(String.valueOf(Math.round(controller.getPolitica().getPorcentajeRetencionParcial() * 100)));
+        txtDiasTotal.setText(String.valueOf(controller.getPolitica().diasDevolucionTotal()));
+        txtDiasParcial.setText(String.valueOf(controller.getPolitica().diasRetencionParcial()));
+        txtPorcentaje.setText(String.valueOf(Math.round(controller.getPolitica().porcentajeRetencionParcial() * 100)));
         lblPolitica.setText("Vigente: " + controller.getPolitica().descripcion());
     }
 

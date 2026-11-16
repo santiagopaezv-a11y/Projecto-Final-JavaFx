@@ -6,25 +6,19 @@ public enum CanalReserva {
     EXTERNA(0.15, 0.0);
     private final double comision;
     private final double porcentajeAnticipo;
-
     CanalReserva(double comision,  double porcentajeAnticipo) {
         this.comision = comision;
         this.porcentajeAnticipo = porcentajeAnticipo;
     }
-
     public double getComision() {
         return comision;
     }
-
     public double getPorcentajeAnticipo() {
         return porcentajeAnticipo;
     }
-
-
     public int calcularComision(int valorEstancia){
         return (int) Math.round(valorEstancia * comision);
     }
-
     public int calcularAnticipoRequerido(int valorEstancia){
         return (int) Math.round(valorEstancia * porcentajeAnticipo);
     }

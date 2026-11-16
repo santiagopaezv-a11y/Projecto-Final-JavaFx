@@ -8,7 +8,6 @@ public class ConflictoCanal implements Serializable {
     private String canalOrigen;
     private String motivo;
     private LocalDateTime fechaRegistro;
-
     public ConflictoCanal( String codigoExterno, String canalOrigen, String motivo, LocalDateTime fechaRegistro) {
     if (codigoExterno == null || codigoExterno.trim().isEmpty() ) {
         throw new IllegalArgumentException("El codigo de Externo no puede estar vacio. ");
@@ -25,11 +24,9 @@ public class ConflictoCanal implements Serializable {
     this.motivo = motivo;
     this.fechaRegistro = fechaRegistro;
     }
-
     public String getCodigoExterno() {
         return codigoExterno;
     }
-
     public String getCanalOrigen() {
         return canalOrigen;
     }
@@ -39,7 +36,6 @@ public class ConflictoCanal implements Serializable {
     public LocalDateTime getFechaRegistro() {
         return fechaRegistro;
     }
-
     public String toString() {
         return "ConflictoCanal[ " +
                 " codigoExterno = " + codigoExterno +

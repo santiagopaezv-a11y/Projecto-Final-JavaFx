@@ -8,7 +8,6 @@ public class ResultadoCancelacion implements Serializable {
     private long diasAntelacion;
     private double montoRetenido;
     private double montoADevolver;
-
     public ResultadoCancelacion(double totalPagado,  double valorTotalEstancia, long diasAntelacion, double montoRetenido, double montoADevolver) {
         this.totalPagado = totalPagado;
         this.valorTotalEstancia = valorTotalEstancia;
@@ -16,7 +15,6 @@ public class ResultadoCancelacion implements Serializable {
         this.montoRetenido = montoRetenido;
         this.montoADevolver = montoADevolver;
     }
-
     public double getTotalPagado() {
         return totalPagado;
     }
@@ -32,11 +30,9 @@ public class ResultadoCancelacion implements Serializable {
     public double getMontoADevolver() {
         return montoADevolver;
     }
-
     public String string(){
         return "Resultado Cancelacion [" +
                 "Dias antelacion = " + "diasAntelacion + totalPagado = $" + totalPagado
                 + " Retenido = $"  + montoRetenido + " A devolver = $" +  montoADevolver + "]";
     }
-
 }

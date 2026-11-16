@@ -21,40 +21,30 @@ public class InterfazBloqueoViewController {
     private final InterfazBloqueoController controller = new InterfazBloqueoController();
     @FXML
     private Button buttom_apartamento;
-
     @FXML
     private Button buttom_configuracion;
-
     @FXML
     private Button buttom_informe;
-
     @FXML
     private Button buttom_empleado;
     @FXML
     private Button buttom_bloqueo;
-
     @FXML
     private Button buttom_inicio;
-
     @FXML
     private Button buttom_temporada;
     @FXML
     private Rectangle rect_bloqueo_buttom;
     @FXML
     private Rectangle rect_informe_buttom;
-
     @FXML
     private Rectangle rect_apart_buttom;
-
     @FXML
     private Rectangle rect_config_buttom;
-
     @FXML
     private Rectangle rect_empleado_buttom;
-
     @FXML
     private Rectangle rect_inicio_buttom;
-
     @FXML
     private Rectangle rect_temporada_buttom;
     @FXML
@@ -139,13 +129,11 @@ public class InterfazBloqueoViewController {
     private void mostrarPanelInicio(ActionEvent event){
         Vista.cambiarEscena(event,Paths.ADMINPANEL);
     }
-
     @FXML private ComboBox<Apartamento> cbApartamento;
     @FXML private DatePicker dpInicio;
     @FXML private DatePicker dpFin;
     @FXML private TextField txtMotivo;
     @FXML private TableView<Bloqueo> tblBloqueos;
-
     @FXML
     public void initialize() {
         Tablas.mostrarNombres(cbApartamento);
@@ -155,12 +143,10 @@ public class InterfazBloqueoViewController {
         Tablas.columna(tblBloqueos, "Motivo", Bloqueo::getMotivo);
         recargar();
     }
-
     private void recargar() {
         cbApartamento.setItems(FXCollections.observableArrayList(controller.listarApartamentos()));
         tblBloqueos.setItems(FXCollections.observableArrayList(controller.listarBloqueos()));
     }
-
     @FXML
     void onRegistrarBloqueo(ActionEvent event) {
         try {
@@ -174,7 +160,6 @@ public class InterfazBloqueoViewController {
             Vista.enviarAlertaWarning(e.getMessage());
         }
     }
-
     @FXML
     void onEliminarBloqueo(ActionEvent event) {
         Bloqueo seleccionado = tblBloqueos.getSelectionModel().getSelectedItem();
