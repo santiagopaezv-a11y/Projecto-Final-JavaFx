@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c72c410-84e5-49e6-a46b-4c1de5148147" name="Changes" comment="PROYECTO ACTUALIZADO - VERSION PRELIMINAR">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Aparta_Suites_UQ/EmpresaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/empresa.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/empresa.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Aparta_Suites_UQ/viewController/comunes/AddApartamentoControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/Empresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/controller/servicio/AutenticacionServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Aparta_Suites_UQ/controller/servicio/AutenticacionServicio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,45 +59,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ApplicationLaunch.executor": "Run",
-    "Application.IniciarPrograma.executor": "Run",
-    "JUnit.AddApartamentoControllerTest.verficarValores.executor": "Run",
-    "JUnit.AdministradorTest.executor": "Run",
-    "JUnit.ApartamentoTest.executor": "Run",
-    "JUnit.ApartamentoTest.testCrearApartamentoDatosInvalidos.executor": "Run",
-    "JUnit.ConflictoCanalTest.executor": "Run",
-    "JUnit.EmpresaTest.executor": "Run",
-    "JUnit.EmpresaTest.testCargaTemporadasPorDefecto.executor": "Run",
-    "JUnit.RecepcionistaTest.executor": "Run",
-    "JUnit.ReservaTest.executor": "Run",
-    "JUnit.TemporadaTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/SANTIAGO PAEZ/OneDrive/Desktop/Projecto-Final-JavaFx/src/main",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ApplicationLaunch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.IniciarPrograma.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddApartamentoControllerTest.verficarValores.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdministradorTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ApartamentoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ApartamentoTest.testCrearApartamentoDatosInvalidos.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConflictoCanalTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmpresaTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmpresaTest.testCargaTemporadasPorDefecto.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RecepcionistaTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservaTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TemporadaTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SANTIAGO PAEZ/OneDrive/Desktop/Projecto-Final-JavaFx/src/main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SANTIAGO PAEZ\OneDrive\Desktop\Projecto-Final-JavaFx\src\main" />
@@ -127,9 +125,9 @@
       <recent name="Aparta_Suites_UQ.viewController.comunes" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EmpresaTest">
+  <component name="RunManager" selected="Application.IniciarPrograma">
     <configuration name="IniciarPrograma" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Aparta_Suites_UQ.Launcher" />
+      <option name="MAIN_CLASS_NAME" value="Aparta_Suites_UQ.ApplicationLaunch" />
       <module name="demo" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -210,15 +208,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Application.IniciarPrograma" />
+      <item itemvalue="JUnit.AdministradorTest" />
+      <item itemvalue="JUnit.ConflictoCanalTest" />
+      <item itemvalue="JUnit.EmpresaTest" />
+      <item itemvalue="JUnit.RecepcionistaTest" />
+      <item itemvalue="JUnit.TemporadaTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.EmpresaTest" />

@@ -6,6 +6,7 @@ import Aparta_Suites_UQ.model.alojamiento.TipoTemporada;
 import Aparta_Suites_UQ.model.huesped.Administrador;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 import Aparta_Suites_UQ.model.huesped.Huesped;
+import Aparta_Suites_UQ.model.huesped.Recepcionista;
 import Aparta_Suites_UQ.model.reserva.ConflictoCanal;
 import Aparta_Suites_UQ.model.reserva.PoliticaCancelacion;
 import Aparta_Suites_UQ.model.reserva.Reserva;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     private String nombre;
@@ -37,13 +39,17 @@ public class Empresa implements Serializable {
         this.nit = nit;
         this.direccion = direccion;
         cargarTemporadasPorDefecto();
+        cargarEmpleadosPorDefecto();
     }
+
     protected Empresa() {
         this.nombre = "Aparta-Suites UQ";
         this.nit = "-";
         this.direccion = "Salento, Quindío";
         cargarTemporadasPorDefecto();
+        cargarEmpleadosPorDefecto();
     }
+
     private void cargarTemporadasPorDefecto() {
         // 1. TEMPORADA ALTA (Diciembre - Enero)
         listaTemporadas.add(new Temporada(
@@ -70,15 +76,58 @@ public class Empresa implements Serializable {
                 LocalDate.of(2026, 5, 18)
         ));
     }
+
+    public void cargarEmpleadosPorDefecto() {
+        if (listaEmpleados == null) {
+            listaEmpleados = new ArrayList<>();
+        }
+
+        // 1. Verificar y crear Administrador por defecto (User: admin123 | Pass: 123)
+        boolean existeAdmin = listaEmpleados.stream()
+                .anyMatch(e -> "admin123".equalsIgnoreCase(e.getUsuario()));
+
+        if (!existeAdmin) {
+            Administrador admin = new Administrador(
+                    "Administrador Principal",
+                    "10000001",
+                    LocalDate.of(1990, 1, 1),
+                    "3000000001",
+                    "admin@apartasuites.uq",
+                    "123"
+            );
+            admin.setUsuario("admin123");
+            listaEmpleados.add(admin);
+        }
+
+        // 2. Verificar y crear Recepcionista por defecto (User: recepcion123 | Pass: 123)
+        boolean existeRecepcion = listaEmpleados.stream()
+                .anyMatch(e -> "recepcion123".equalsIgnoreCase(e.getUsuario()));
+
+        if (!existeRecepcion) {
+            Recepcionista recepcionista = new Recepcionista(
+                    "Recepcionista Principal",
+                    "10000002",
+                    LocalDate.of(1995, 5, 10),
+                    "3000000002",
+                    "recepcion@apartasuites.uq",
+                    "123"
+            );
+            recepcionista.setUsuario("recepcion123");
+            listaEmpleados.add(recepcionista);
+        }
+    }
+
     public static Empresa getInstance() {
         if (instance == null) {
             instance = new Empresa();
         }
         return instance;
     }
+
     public static void setInstance(Empresa nuevaEmpresa) {
         if (nuevaEmpresa != null) {
             instance = nuevaEmpresa;
+            instance.cargarEmpleadosPorDefecto();
         }
     }
 
@@ -156,12 +205,14 @@ public class Empresa implements Serializable {
     public PoliticaCancelacion getPoliticaCancelacion() {
         return politicaCancelacion;
     }
+
     public void setPoliticaCancelacion(PoliticaCancelacion politicaCancelacion) {
         if (politicaCancelacion == null) {
             throw new IllegalArgumentException("La política de cancelación no puede ser nula.");
         }
         this.politicaCancelacion = politicaCancelacion;
     }
+
     public void sincronizarContadores() {
         // 1. Sincronizar contador de Reservas
         int maxReserva = listaReservas.stream()
@@ -176,7 +227,7 @@ public class Empresa implements Serializable {
                 .orElse(0);
         Reserva.setCantidadReserva(maxReserva);
 
-        // 2. Sincronizar contador de Apartamentos (Usando el setter real de tu clase)
+        // 2. Sincronizar contador de Apartamentos
         int maxApto = listaApartamentos.stream()
                 .mapToInt(a -> {
                     try {
@@ -187,20 +238,20 @@ public class Empresa implements Serializable {
                 })
                 .max()
                 .orElse(0);
-        Apartamento.setNumeroApartamentos(maxApto); // <-- ¡Aquí estaba comentado y con otro nombre!
+        Apartamento.setNumeroApartamentos(maxApto);
 
-        // 3. Sincronizar contador de Empleados (Asegúrate de usar getId() o getCodigo(), NO getDocumento())
+        // 3. Sincronizar contador de Empleados
         int maxEmpleado = listaEmpleados.stream()
                 .mapToInt(e -> {
                     try {
-                        return Integer.parseInt(e.getUsuario().replaceAll("[^0-9]", "")); // <-- Ajusta si se llama getCodigo()
+                        return Integer.parseInt(e.getUsuario().replaceAll("[^0-9]", ""));
                     } catch (Exception ex) {
                         return 0;
                     }
                 })
                 .max()
                 .orElse(0);
-        Empleado.setCantidadEmpleado(maxEmpleado); // <-- Descomenta y pon el nombre exacto de tu setter en Empleado
+        Empleado.setCantidadEmpleado(maxEmpleado);
     }
 
     public List<Novedad> getListaNovedades() {

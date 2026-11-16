@@ -5,33 +5,36 @@ import Aparta_Suites_UQ.Empresa;
 import Aparta_Suites_UQ.model.huesped.Empleado;
 
 public class AutenticacionServicio {
-    private static final String LOGIN_ADMIN_USUARIO = "sanglie";
-    private static final String LOGIN_ADMIN_CLAVE = "123";
     private static final String PORTAL_ADMIN_USUARIO = "admin123";
     private static final String PORTAL_ADMIN_CLAVE = "1234";
     private static final String PORTAL_RECEPCION_USUARIO = "recepcion123";
     private static final String PORTAL_RECEPCION_CLAVE = "123";
+
     private static AutenticacionServicio instance;
+
     private AutenticacionServicio() {
     }
+
     public static AutenticacionServicio getInstance() {
         if (instance == null) {
             instance = new AutenticacionServicio();
         }
         return instance;
     }
+
     public Acceso autenticarLogin(String usuario, String password) {
-        if (LOGIN_ADMIN_USUARIO.equals(usuario) && LOGIN_ADMIN_CLAVE.equals(password)) {
-            SesionServicio.getInstance().setEmpleadoActual(null);
-            return Acceso.ADMINISTRADOR;
-        }
+        // Busca directamente en la lista de Empresa (donde ya están ambos creados)
         Empleado empleado = Empresa.getInstance().buscarEmpleado(usuario, password);
+
         if (empleado != null) {
             SesionServicio.getInstance().setEmpleadoActual(empleado);
-            return "Administrador".equalsIgnoreCase(empleado.getRol()) ? Acceso.ADMINISTRADOR : Acceso.RECEPCION;
+            return "Administrador".equalsIgnoreCase(empleado.getRol())
+                    ? Acceso.ADMINISTRADOR
+                    : Acceso.RECEPCION;
         }
         return Acceso.DENEGADO;
     }
+
     public Acceso autenticarPortal(String usuario, String password) {
         String u = usuario == null ? "" : usuario.trim();
         String p = password == null ? "" : password.trim();
@@ -43,6 +46,7 @@ public class AutenticacionServicio {
         }
         return Acceso.DENEGADO;
     }
+
     public boolean esAdministradorPortal(String usuario, String password) {
         String u = usuario == null ? "" : usuario.trim();
         String p = password == null ? "" : password.trim();
