@@ -69,4 +69,5 @@ public class Folio implements Cobrable, Serializable {
     }
     public List<Cargo> getCargos() { return new ArrayList<>(cargos); }
     public List<Pago> getPagos() { return new ArrayList<>(pagos); }
+
 }

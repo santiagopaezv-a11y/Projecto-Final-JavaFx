@@ -17,6 +17,7 @@ public class ApplicationLaunch extends Application {
         // 2. Si se encontró un estado previo, se asigna al Singleton de Empresa
         if (empresaCargada != null) {
             Empresa.setInstance(empresaCargada);
+            Empresa.getInstance().sincronizarContadores();
             System.out.println("[App]  Datos cargados e instalados en Empresa.getInstance()");
         } else {
             System.out.println("[App] Iniciando con una nueva instancia de Empresa.");

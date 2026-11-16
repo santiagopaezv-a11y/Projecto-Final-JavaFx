@@ -83,16 +83,13 @@ public class Apartamento implements Reservable, Serializable {
     public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida) {
         return estaDisponible(fechaEntrada, fechaSalida, null);
     }
-
-    /**
-     * Sin doble venta: el apartamento no puede tener dos reservas ACTIVAS (Pendiente, Confirmada o En curso)
-     * que compartan al menos una noche, ni una noche bloqueada. La noche de la fecha de salida no cuenta.
-     *
-     * @param reservaExcluida reserva que se ignora (la que se está editando), o null
-     */
     public boolean estaDisponible(LocalDate fechaEntrada, LocalDate fechaSalida, Reserva reservaExcluida) {
         return !tieneReservaActivaEn(fechaEntrada, fechaSalida, reservaExcluida)
                 && !tieneBloqueoEn(fechaEntrada, fechaSalida);
+    }
+
+    public static void setNumeroApartamentos(int numeroApartamentos) {
+        Apartamento.numeroApartamentos = numeroApartamentos;
     }
 
     public boolean tieneReservaActivaEn(LocalDate fechaEntrada, LocalDate fechaSalida, Reserva reservaExcluida) {

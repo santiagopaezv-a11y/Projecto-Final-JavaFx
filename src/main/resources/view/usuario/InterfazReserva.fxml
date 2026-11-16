@@ -2,26 +2,19 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.TextArea?>
 
 <AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aparta_Suites_UQ.viewController.user.InterfazReservaViewController">
     <children>
@@ -148,15 +141,15 @@
 </VBox>
 <HBox alignment="TOP_LEFT" spacing="12.0" VBox.vgrow="ALWAYS">
 <children>
-<VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;" prefWidth="320.0">
+<VBox prefWidth="320.0" spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;">
 <children>
 <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Mi perfil" />
-<HBox alignment="BOTTOM_LEFT" spacing="8.0" >
+<HBox alignment="BOTTOM_LEFT" spacing="8.0">
 <children>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Documento" />
-        <TextField fx:id="txtDocumento" prefHeight="35.0" prefWidth="170.0" promptText="Su número de documento" style="-fx-background-radius: 5;" />
+        <TextField fx:id="txtDocumento" prefHeight="35.0" prefWidth="170.0" promptText="Su número de documento" style="-fx-background-radius: 5;" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <Button fx:id="btnBuscarPerfil" mnemonicParsing="false" onAction="#onBuscarPerfil" prefHeight="36.0" prefWidth="80.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Buscar" />
@@ -165,28 +158,28 @@
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nombre completo" />
-        <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+        <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Fecha de nacimiento" />
-        <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+        <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="260.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Teléfono" />
-        <TextField fx:id="txtTelefono" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+        <TextField fx:id="txtTelefono" prefHeight="35.0" prefWidth="260.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Correo" />
-        <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="260.0" promptText="" style="-fx-background-radius: 5;" />
+        <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="260.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
-<HBox alignment="CENTER_LEFT" spacing="8.0" >
+<HBox alignment="CENTER_LEFT" spacing="8.0">
 <children>
 <Button fx:id="btnGuardarPerfil" mnemonicParsing="false" onAction="#onGuardarPerfil" prefHeight="36.0" prefWidth="130.0" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Guardar perfil" />
 <Button fx:id="btnCerrarPerfil" mnemonicParsing="false" onAction="#onCerrarPerfil" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #E0E0E0; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Cerrar" />
@@ -195,38 +188,38 @@
 <Label fx:id="lblPerfil" style="-fx-font-size: 12px; -fx-text-fill: #27AE60;" text="" wrapText="true" />
 </children>
 </VBox>
-<VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;" prefWidth="560.0" HBox.hgrow="ALWAYS">
+<VBox prefWidth="560.0" spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-radius: 8;" HBox.hgrow="ALWAYS">
 <children>
 <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Nueva reserva (canal Portal)" />
-<HBox alignment="CENTER_LEFT" spacing="12.0" >
+<HBox alignment="CENTER_LEFT" spacing="12.0">
 <children>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Entrada" />
-        <DatePicker fx:id="dpEntrada" prefHeight="35.0" prefWidth="150.0" promptText="" style="-fx-background-radius: 5;" />
+        <DatePicker fx:id="dpEntrada" prefHeight="35.0" prefWidth="150.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Salida" />
-        <DatePicker fx:id="dpSalida" prefHeight="35.0" prefWidth="150.0" promptText="" style="-fx-background-radius: 5;" />
+        <DatePicker fx:id="dpSalida" prefHeight="35.0" prefWidth="150.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 </children>
 </HBox>
 <Label style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;" text="Ocupantes (además de usted). Todos cuentan para la capacidad; los menores de 6 años no pagan." wrapText="true" />
-<HBox alignment="BOTTOM_LEFT" spacing="8.0" >
+<HBox alignment="BOTTOM_LEFT" spacing="8.0">
 <children>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nombre" />
-        <TextField fx:id="txtOcNombre" prefHeight="35.0" prefWidth="170.0" promptText="" style="-fx-background-radius: 5;" />
+        <TextField fx:id="txtOcNombre" prefHeight="35.0" prefWidth="170.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <VBox spacing="4.0">
     <children>
         <Label style="-fx-font-weight: bold; -fx-text-fill: #34495E;" text="Nacimiento" />
-        <DatePicker fx:id="dpOcNacimiento" prefHeight="35.0" prefWidth="140.0" promptText="" style="-fx-background-radius: 5;" />
+        <DatePicker fx:id="dpOcNacimiento" prefHeight="35.0" prefWidth="140.0" promptText="" styleClass="textField3" stylesheets="@../../css/HojaEstilos.css" />
     </children>
 </VBox>
 <Button fx:id="btnAgregarOcupante" mnemonicParsing="false" onAction="#onAgregarOcupante" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="+ Agregar" />
@@ -237,15 +230,15 @@
         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
     </columnResizePolicy>
 </TableView>
-<HBox alignment="CENTER_LEFT" spacing="12.0" >
+<HBox alignment="CENTER_LEFT" spacing="12.0">
 <children>
 <Button fx:id="btnQuitarOcupante" mnemonicParsing="false" onAction="#onQuitarOcupante" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #E0E0E0; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Quitar seleccionado" />
 </children>
 </HBox>
-<HBox alignment="CENTER_LEFT" spacing="8.0" >
+<HBox alignment="CENTER_LEFT" spacing="8.0">
 <children>
 <Button fx:id="btnVerDisponibles" mnemonicParsing="false" onAction="#onVerDisponibles" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: #2980B9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;" text="Ver disponibles" />
-<ComboBox fx:id="cbApartamento" prefHeight="35.0" prefWidth="220.0" promptText="Apartamento disponible" style="-fx-background-radius: 5;" />
+<ComboBox fx:id="cbApartamento" prefHeight="35.0" prefWidth="220.0" promptText="Apartamento disponible" style="-fx-background-radius: 5;" styleClass="comboBox" stylesheets="@../../css/HojaEstilos.css" />
 </children>
 </HBox>
 <Label fx:id="lblResumen" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" text="" wrapText="true" />

@@ -41,4 +41,8 @@ public abstract class Empleado extends Persona implements Autenticable, Serializ
     public static int getCantidadEmpleado() {
         return cantidadEmpleado;
     }
+
+    public static void setCantidadEmpleado(int cantidadEmpleado) {
+        Empleado.cantidadEmpleado = cantidadEmpleado;
+    }
 }

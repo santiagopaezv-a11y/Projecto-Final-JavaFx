@@ -198,7 +198,7 @@ scrollPane .scroll-bar .decrement-arrow{
     -fx-control-inner-background-alt: white;
     -fx-selection-bar: #c5bcbc;
     -fx-selection-bar-text: #ffffff;
-    -fx-selection-bar-non-focused: #C5BCBCFF;
+    -fx-selection-bar-non-focused: #dad8d8;
     -fx-selection-bar-non-focused-text: #ffffff;
     -fx-focused-cell-border: transparent;
     -fx-focused-row-border: transparent;
@@ -218,7 +218,6 @@ scrollPane .scroll-bar .decrement-arrow{
     -fx-alignment: CENTER_LEFT;
 }
 .table-row-cell {
-    /* Línea divisoria horizontal sutil entre filas */
     -fx-border-color: transparent transparent #f0f0f0 transparent;
     -fx-border-width: 1px;
 }

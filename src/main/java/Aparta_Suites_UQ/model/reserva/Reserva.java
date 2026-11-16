@@ -281,4 +281,12 @@ public class Reserva implements Cancelable, Serializable {
 
     public int getCantidadOcupantes() { return cantidadOcupantes; }
     public void setCantidadOcupantes(int cantidadOcupantes) { this.cantidadOcupantes = cantidadOcupantes; }
+
+    public static int getCantidadReserva() {
+        return cantidadReserva;
+    }
+
+    public static void setCantidadReserva(int cantidadReserva) {
+        Reserva.cantidadReserva = cantidadReserva;
+    }
 }

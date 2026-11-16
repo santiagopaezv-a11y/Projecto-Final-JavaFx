@@ -178,6 +178,46 @@ public class Empresa implements Serializable {
         }
         this.politicaCancelacion = politicaCancelacion;
     }
+    public void sincronizarContadores() {
+        // 1. Sincronizar contador de Reservas
+        int maxReserva = listaReservas.stream()
+                .mapToInt(r -> {
+                    try {
+                        return Integer.parseInt(r.getCodigo().replaceAll("[^0-9]", ""));
+                    } catch (Exception e) {
+                        return 0;
+                    }
+                })
+                .max()
+                .orElse(0);
+        Reserva.setCantidadReserva(maxReserva);
+
+        // 2. Sincronizar contador de Apartamentos (Usando el setter real de tu clase)
+        int maxApto = listaApartamentos.stream()
+                .mapToInt(a -> {
+                    try {
+                        return Integer.parseInt(a.getId().replaceAll("[^0-9]", ""));
+                    } catch (Exception e) {
+                        return 0;
+                    }
+                })
+                .max()
+                .orElse(0);
+        Apartamento.setNumeroApartamentos(maxApto); // <-- ¡Aquí estaba comentado y con otro nombre!
+
+        // 3. Sincronizar contador de Empleados (Asegúrate de usar getId() o getCodigo(), NO getDocumento())
+        int maxEmpleado = listaEmpleados.stream()
+                .mapToInt(e -> {
+                    try {
+                        return Integer.parseInt(e.getUsuario().replaceAll("[^0-9]", "")); // <-- Ajusta si se llama getCodigo()
+                    } catch (Exception ex) {
+                        return 0;
+                    }
+                })
+                .max()
+                .orElse(0);
+        Empleado.setCantidadEmpleado(maxEmpleado); // <-- Descomenta y pon el nombre exacto de tu setter en Empleado
+    }
 
     public List<Novedad> getListaNovedades() {
         return listaNovedades;
